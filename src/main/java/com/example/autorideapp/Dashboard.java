@@ -17,11 +17,10 @@ public class Dashboard extends Application {
     public void start(Stage stage) {
         stage.setTitle("AutoRide - Dashboard");
 
-        // === Sidebar ===
         VBox sidebar = new VBox(25);
         sidebar.setPadding(new Insets(25));
         sidebar.setPrefWidth(230);
-        sidebar.setStyle("-fx-background-color: #166534;"); // updated green
+        sidebar.setStyle("-fx-background-color: #166534;");
 
         Label brand = new Label("AutoRide");
         brand.setFont(Font.font("Arial", FontWeight.BOLD, 22));
@@ -43,7 +42,6 @@ public class Dashboard extends Application {
                 navItem("👤 User Management", false)
         );
 
-        // --- Admin Info Section ---
         Label adminName = new Label("Admin User");
         adminName.setFont(Font.font("Arial", FontWeight.BOLD, 13));
         adminName.setTextFill(Color.WHITE);
@@ -72,7 +70,6 @@ public class Dashboard extends Application {
         VBox.setVgrow(bottom, Priority.ALWAYS);
         sidebar.getChildren().addAll(header, navMenu, new Region(), bottom);
 
-        // === Main Dashboard Content ===
         Label title = new Label("Dashboard");
         title.setFont(Font.font("Arial", FontWeight.BOLD, 20));
         title.setTextFill(Color.web("#111827"));
@@ -85,7 +82,6 @@ public class Dashboard extends Application {
         );
         topCards.setPadding(new Insets(20, 0, 10, 0));
 
-        // --- Recent Bookings Table ---
         Label recentLabel = new Label("Recent Bookings");
         recentLabel.setFont(Font.font("Arial", FontWeight.BOLD, 16));
 
@@ -94,9 +90,7 @@ public class Dashboard extends Application {
         VBox mainContent = new VBox(20, title, topCards, recentLabel, table);
         mainContent.setPadding(new Insets(30));
         mainContent.setStyle("-fx-background-color: white;");
-        mainContent.setAlignment(Pos.TOP_LEFT);
 
-        // === Root Layout ===
         BorderPane root = new BorderPane();
         root.setLeft(sidebar);
         root.setCenter(mainContent);
@@ -107,7 +101,6 @@ public class Dashboard extends Application {
         stage.show();
     }
 
-    // Sidebar item builder
     private HBox navItem(String label, boolean active) {
         Label lbl = new Label(label);
         lbl.setFont(Font.font("Arial", 14));
@@ -119,7 +112,7 @@ public class Dashboard extends Application {
 
         if (active) {
             box.setStyle("-fx-background-color: white; -fx-background-radius: 8;");
-            lbl.setTextFill(Color.web("#166534")); // active green
+            lbl.setTextFill(Color.web("#166534"));
         } else {
             lbl.setTextFill(Color.WHITE);
         }
@@ -127,7 +120,6 @@ public class Dashboard extends Application {
         return box;
     }
 
-    // Dashboard card builder
     private VBox createCard(String title, String value, String subtext) {
         Label titleLabel = new Label(title);
         titleLabel.setFont(Font.font("Arial", FontWeight.MEDIUM, 13));
@@ -139,10 +131,9 @@ public class Dashboard extends Application {
 
         Label subLabel = new Label(subtext);
         subLabel.setFont(Font.font("Arial", 13));
-        subLabel.setTextFill(Color.web("#166534")); // accent green
+        subLabel.setTextFill(Color.web("#166534"));
 
         VBox card = new VBox(5, titleLabel, valueLabel, subLabel);
-        card.setAlignment(Pos.CENTER_LEFT);
         card.setPadding(new Insets(15));
         card.setPrefWidth(200);
         card.setStyle("""
@@ -154,7 +145,6 @@ public class Dashboard extends Application {
         return card;
     }
 
-    // Table of recent bookings
     private TableView<String> createRecentBookingsTable() {
         TableView<String> table = new TableView<>();
 
@@ -173,10 +163,8 @@ public class Dashboard extends Application {
 
         table.getColumns().addAll(id, customer, car, dates, status, amount);
         table.setPlaceholder(new Label("No recent bookings"));
-        table.setStyle("-fx-background-radius: 10; -fx-border-radius: 10;");
         table.setPrefHeight(250);
 
         return table;
-
     }
 }

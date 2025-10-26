@@ -20,11 +20,11 @@ public class AutoRideLogin extends Application {
         // --- Title Section ---
         Label title = new Label("AutoRide");
         title.setFont(Font.font("Arial", FontWeight.BOLD, 28));
-        title.setTextFill(Color.web("#065f46"));
+        title.setTextFill(Color.web("#065f46")); // dark green
 
         Label subtitle = new Label("Admin Portal");
         subtitle.setFont(Font.font("Arial", 16));
-        subtitle.setTextFill(Color.web("#4b5563"));
+        subtitle.setTextFill(Color.web("#4b5563")); // gray text
 
         VBox header = new VBox(5, title, subtitle);
         header.setAlignment(Pos.CENTER);
@@ -59,7 +59,7 @@ public class AutoRideLogin extends Application {
             -fx-background-radius: 8;
         """);
 
-        // --- Sign In Button ---
+        // --- Sign In Button (UI Only) ---
         Button loginBtn = new Button("Sign In");
         loginBtn.setPrefWidth(300);
         loginBtn.setStyle("""
@@ -71,19 +71,7 @@ public class AutoRideLogin extends Application {
             -fx-padding: 10 0;
         """);
 
-        // when clicked -> open Dashboard
-        loginBtn.setOnAction(e -> {
-            Stage dashboardStage = new Stage();
-            Dashboard dashboard = new Dashboard();
-            try {
-                dashboard.start(dashboardStage);
-                stage.close();
-            } catch (Exception ex) {
-                ex.printStackTrace();
-            }
-        });
-
-        // --- Demo Account Section ---
+        // --- Demo Account Section (visual only) ---
         Label demoTitle = new Label("Demo Admin Account:");
         demoTitle.setFont(Font.font("Arial", FontWeight.MEDIUM, 13));
         demoTitle.setTextFill(Color.web("#374151"));
@@ -123,11 +111,15 @@ public class AutoRideLogin extends Application {
 
         StackPane root = new StackPane(card);
         root.setAlignment(Pos.CENTER);
-        root.setStyle("-fx-background-color: #f3f4f6;");
+        root.setStyle("-fx-background-color: #f3f4f6;"); // light gray background
         StackPane.setMargin(card, new Insets(30));
 
         Scene scene = new Scene(root, 450, 550);
         stage.setScene(scene);
         stage.show();
+    }
+
+    public static void main(String[] args) {
+        launch(args);
     }
 }

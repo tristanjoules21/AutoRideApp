@@ -1,15 +1,13 @@
 package com.example.autorideapp;
 
 import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 public class AutoRideApp extends Application {
 
     @Override
-    public void start(Stage stage) throws Exception {
-        // Launch the JavaFX Login Scene
+    public void start(Stage stage) {
+        // Start with login screen
         AutoRideLogin login = new AutoRideLogin();
         login.start(stage);
     }
@@ -18,4 +16,3 @@ public class AutoRideApp extends Application {
         launch(args);
     }
 }
-
