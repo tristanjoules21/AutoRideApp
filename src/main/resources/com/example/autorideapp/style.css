@@ -1,0 +1,70 @@
+/* Background */
+.root {
+    -fx-background-color: #f3f4f6;
+    -fx-font-family: "Segoe UI", system-ui, -apple-system, "Helvetica Neue", Arial;
+}
+
+/* Login card */
+.login-card {
+    -fx-background-color: #ffffff;
+    -fx-background-radius: 12;
+    -fx-padding: 40;
+    -fx-spacing: 16;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.12), 18, 0, 0, 6);
+    -fx-pref-width: 400;
+}
+
+/* Title */
+.label-title {
+    -fx-font-size: 22px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #0b5b34;
+}
+
+/* Labels above text fields */
+.label-field {
+    -fx-font-size: 13px;
+    -fx-text-fill: #374151;
+}
+
+/* Input fields */
+.text-field, .password-field {
+    -fx-pref-width: 320;
+    -fx-pref-height: 40;
+    -fx-background-color: #f5f6f7;
+    -fx-background-radius: 8;
+    -fx-border-color: transparent;
+    -fx-font-size: 13px;
+    -fx-prompt-text-fill: #9ca3af;
+    -fx-padding: 0 12 0 12;
+}
+
+.text-field:focused, .password-field:focused {
+    -fx-border-color: #12a24a;
+    -fx-background-color: #ffffff;
+    -fx-effect: dropshadow(three-pass-box, rgba(18,162,74,0.16), 6, 0, 0, 2);
+}
+
+/* Button */
+.button-signIn {
+    -fx-background-color: #12a24a;
+    -fx-text-fill: #ffffff;
+    -fx-font-weight: 600;
+    -fx-pref-width: 320;
+    -fx-pref-height: 42;
+    -fx-background-radius: 8;
+    -fx-cursor: hand;
+}
+
+.button-signIn:hover { -fx-background-color: #0e8e3f; }
+.button-signIn:pressed { -fx-background-color: #0a6c30; }
+
+/* Demo info */
+.demo-container { -fx-padding: 10 0 0 0; }
+.label-demo { -fx-text-fill: #6b7280; -fx-font-size: 12px; }
+.demo-box {
+    -fx-background-color: #ecfdf5;
+    -fx-background-radius: 6;
+    -fx-padding: 8 10 8 10;
+}
+.label-demo-info { -fx-text-fill: #111827; -fx-font-size: 12px; }

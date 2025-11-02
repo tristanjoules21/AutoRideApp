@@ -1,0 +1,108 @@
+/* === Sidebar === */
+.sidebar {
+    -fx-background-color: #166534; /* Dark Green Sidebar */
+}
+
+.brand {
+    -fx-font-size: 22px;
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+}
+
+.subtitle {
+    -fx-font-size: 13px;
+    -fx-text-fill: #e0f2e8;
+}
+
+/* === Navigation === */
+.nav-item,
+.nav-item-active {
+    -fx-pref-width: 180px;
+    -fx-font-size: 14px;
+    -fx-background-radius: 8;
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+    -fx-alignment: center-left;
+    -fx-padding: 10 12 10 12;
+    -fx-cursor: hand;
+}
+
+.nav-item:hover {
+    -fx-background-color: rgba(255,255,255,0.15);
+}
+
+.nav-item-active {
+    -fx-background-color: #14532d; /* Darker Green */
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-border-width: 0 0 0 4px;
+    -fx-border-color: #22c55e;
+}
+
+/* === Admin Info === */
+.admin-name {
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+}
+
+.admin-email {
+    -fx-font-size: 12px;
+    -fx-text-fill: #e0f2e8;
+}
+
+/* === Logout Button === */
+.logout-btn {
+    -fx-background-color: transparent;
+    -fx-border-color: white;
+    -fx-text-fill: white;
+    -fx-font-size: 13px;
+    -fx-border-radius: 8;
+    -fx-background-radius: 8;
+    -fx-pref-width: 180px;
+}
+
+.logout-btn:hover {
+    -fx-background-color: rgba(255,255,255,0.15);
+}
+
+/* === Main Content === */
+.main-content {
+    -fx-background-color: white;
+}
+
+.main-title {
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #111827;
+}
+
+.section-title {
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #111827;
+}
+
+/* === Cards === */
+.card {
+    -fx-background-color: white;
+    -fx-background-radius: 10;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.05), 6, 0, 0, 2);
+    -fx-padding: 15;
+    -fx-pref-width: 200;
+}
+
+.card-title {
+    -fx-font-size: 13px;
+    -fx-text-fill: #6b7280;
+}
+
+.card-value {
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #111827;
+}
+
+.card-sub {
+    -fx-font-size: 13px;
+    -fx-text-fill: #166534;
+}

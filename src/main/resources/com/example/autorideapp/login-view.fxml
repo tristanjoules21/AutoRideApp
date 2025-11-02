@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="600.0" prefWidth="779.0" stylesheets="@style.css"
+            xmlns="http://javafx.com/javafx/17.0.12"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.example.autorideapp.autoride.LoginController">
+
+    <!-- Center VBox -->
+    <VBox alignment="CENTER" spacing="15">
+
+        <!-- Card Container -->
+        <VBox alignment="CENTER" prefHeight="394.0" spacing="15" styleClass="login-card">
+
+            <Label styleClass="label-title" text="AutoRide" />
+
+            <VBox prefHeight="121.0" spacing="10">
+
+                <!-- Email -->
+                <Label styleClass="label-field" text="Email Address" />
+                <TextField fx:id="emailField" promptText="Enter your email" styleClass="text-field" />
+
+                <!-- Password -->
+                <Label styleClass="label-field" text="Password" />
+                <PasswordField fx:id="passwordField" promptText="Enter your password" styleClass="password-field" />
+
+            </VBox>
+
+            <!-- Sign In Button -->
+            <Button onAction="#onSignInClick" styleClass="button-signIn" text="Sign In" />
+
+            <!-- Error or Info Label -->
+            <Label fx:id="messageLabel" visible="false" />
+
+            <!-- Demo Info -->
+            <VBox alignment="CENTER_LEFT" spacing="5" styleClass="demo-container">
+                <Label styleClass="label-demo" text="Demo Admin Account:" />
+                <HBox spacing="5" styleClass="demo-box">
+                    <Label style="-fx-font-weight: bold; -fx-font-size: 12;" text="Admin:" />
+                    <Label styleClass="label-demo-info" text="admin@autoride.com / admin123" />
+                </HBox>
+            </VBox>
+
+        </VBox>
+    </VBox>
+
+    <opaqueInsets>
+        <Insets />
+    </opaqueInsets>
+    <effect>
+        <Blend />
+    </effect>
+
+</AnchorPane>
