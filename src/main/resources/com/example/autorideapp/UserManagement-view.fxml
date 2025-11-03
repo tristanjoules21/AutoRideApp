@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane prefHeight="700.0" prefWidth="1100.0"
+            xmlns="http://javafx.com/javafx/17.0.12"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.example.autorideapp.autoride.UserManagementController"
+            stylesheets="@user.css">
+
+    <!-- Sidebar -->
+    <left>
+        <VBox prefWidth="230.0" spacing="25" styleClass="sidebar">
+            <padding>
+                <Insets bottom="25" left="25" right="25" top="25" />
+            </padding>
+
+            <!-- Header -->
+            <VBox spacing="3">
+                <Label styleClass="sidebar-title" text="AutoRide" />
+                <Label text="Car Rental System" style="-fx-text-fill: white; -fx-font-size: 13;" />
+            </VBox>
+
+            <!-- Navigation -->
+            <VBox spacing="10" VBox.vgrow="ALWAYS">
+                <Button text="🏠 Dashboard" styleClass="sidebar-button" />
+                <Button text="🚗 Car Management" styleClass="sidebar-button" />
+                <Button text="📅 Booking Management" styleClass="sidebar-button" />
+                <Button text="👥 Customer Management" styleClass="sidebar-button" />
+                <Button text="👤 User Management" styleClass="sidebar-button active" />
+            </VBox>
+
+            <!-- Footer / Admin Info -->
+            <VBox spacing="10">
+                <Label text="Admin User" style="-fx-text-fill: white; -fx-font-weight: bold;" />
+                <Label text="admin@autoride.com" style="-fx-text-fill: white; -fx-font-size: 12;" />
+                <Button fx:id="logoutButton" text="⏻ Logout" styleClass="logout-button" />
+            </VBox>
+        </VBox>
+    </left>
+
+    <!-- Main Content -->
+    <center>
+        <VBox spacing="20" style="-fx-background-color: white;">
+            <padding>
+                <Insets bottom="30" left="30" right="30" top="30" />
+            </padding>
+
+            <!-- Header Bar -->
+            <HBox alignment="CENTER_LEFT" spacing="10">
+                <Label fx:id="mainTitle" styleClass="main-title" text="User Management" />
+                <Pane HBox.hgrow="ALWAYS" />
+                <TextField fx:id="searchField" promptText="🔍 Search user..." prefWidth="220"
+                           style="-fx-background-radius: 6; -fx-border-radius: 6;" />
+                <Button fx:id="addUserButton" text="+ Add User" prefWidth="130" styleClass="add-button" />
+            </HBox>
+
+            <!-- Table Section -->
+            <TableView fx:id="userTable" prefHeight="500.0" styleClass="table-view">
+                <columns>
+                    <TableColumn text="User ID" prefWidth="100.0" />
+                    <TableColumn text="Name" prefWidth="180.0" />
+                    <TableColumn text="Email" prefWidth="220.0" />
+                    <TableColumn text="Role" prefWidth="150.0" />
+                    <TableColumn text="Status" prefWidth="150.0" />
+                    <TableColumn text="Actions" prefWidth="100.0" />
+                </columns>
+            </TableView>
+        </VBox>
+    </center>
+</BorderPane>
