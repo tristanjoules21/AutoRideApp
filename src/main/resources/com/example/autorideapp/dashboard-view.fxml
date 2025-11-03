@@ -4,11 +4,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane prefHeight="700.0" prefWidth="1100.0"
-            xmlns="http://javafx.com/javafx/17.0.12"
-            xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="com.example.autorideapp.autoride.DashboardController"
-            stylesheets="@dashboard.css">
+<BorderPane prefHeight="700.0" prefWidth="1100.0" stylesheets="@dashboard.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.autorideapp.autoride.DashboardController">
 
     <!-- Sidebar -->
     <left>
@@ -34,7 +30,7 @@
 
             <!-- Admin Info + Logout -->
             <VBox spacing="10">
-                <VBox spacing="3">
+                <VBox alignment="CENTER" spacing="3">
                     <Label styleClass="admin-name" text="Admin User" />
                     <Label styleClass="admin-email" text="admin@autoride.com" />
                 </VBox>
@@ -92,4 +88,3 @@
         </VBox>
     </center>
 </BorderPane>
-

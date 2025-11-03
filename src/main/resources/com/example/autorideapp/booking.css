@@ -1,6 +1,6 @@
 /* === Sidebar === */
 .sidebar {
-    -fx-background-color: #114B2D; /* Dark Green Sidebar */
+    -fx-background-color: #114B2D; /* Dark Green */
 }
 
 .brand {
@@ -32,11 +32,10 @@
 }
 
 .nav-item-active {
-    -fx-background-color: #0F3D25; /* Darker Green Active */
-    -fx-text-fill: white;
+    -fx-background-color: #0F3D25; /* Active Dark Green */
     -fx-font-weight: bold;
     -fx-border-width: 0 0 0 4px;
-    -fx-border-color: #22c55e; /* Highlight border */
+    -fx-border-color: #22c55e;
 }
 
 /* === Admin Info === */
@@ -50,7 +49,6 @@
     -fx-text-fill: #cfd8dc;
 }
 
-/* === Logout Button === */
 .logout-btn {
     -fx-background-color: transparent;
     -fx-border-color: white;
@@ -68,6 +66,7 @@
 /* === Main Content === */
 .main-content {
     -fx-background-color: white;
+    -fx-padding: 20;
 }
 
 .main-title {
@@ -76,33 +75,33 @@
     -fx-text-fill: #111827;
 }
 
-.section-title {
-    -fx-font-size: 16px;
+/* === Buttons === */
+.add-btn {
+    -fx-background-color: #22c55e;
+    -fx-text-fill: white;
     -fx-font-weight: bold;
-    -fx-text-fill: #111827;
+    -fx-padding: 8 16;
+    -fx-background-radius: 6;
 }
 
-/* === Cards === */
-.card {
+.add-btn:hover {
+    -fx-background-color: #16a34a;
+}
+
+/* === Table Styling === */
+.booking-table {
     -fx-background-color: white;
-    -fx-background-radius: 10;
-    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.05), 6, 0, 0, 2);
-    -fx-padding: 15;
-    -fx-pref-width: 200;
+    -fx-border-radius: 6;
+    -fx-background-radius: 6;
+    -fx-padding: 5;
 }
 
-.card-title {
-    -fx-font-size: 13px;
-    -fx-text-fill: #6b7280;
-}
-
-.card-value {
-    -fx-font-size: 24px;
+.table-view .column-header {
+    -fx-background-color: #f0fdf4;
     -fx-font-weight: bold;
-    -fx-text-fill: #111827;
+    -fx-text-fill: #166534;
 }
 
-.card-sub {
-    -fx-font-size: 13px;
-    -fx-text-fill: #114B2D; /* Sidebar color accent */
+.table-row-cell:selected {
+    -fx-background-color: #dcfce7;
 }
