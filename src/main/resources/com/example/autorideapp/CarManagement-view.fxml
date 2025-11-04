@@ -5,67 +5,69 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<BorderPane prefHeight="700.0" prefWidth="1100.0" stylesheets="@car-management.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.autorideapp.autoride.CarManagementController">
+<BorderPane prefHeight="1080.0" prefWidth="1920.0"
+            stylesheets="@car-management.css"
+            xmlns="http://javafx.com/javafx/17.0.12"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.example.autorideapp.autoride.CarManagementController">
 
     <!-- Sidebar -->
     <left>
-        <VBox prefWidth="230.0" spacing="25" styleClass="sidebar">
+        <VBox prefWidth="280.0" spacing="30" styleClass="sidebar">
             <padding>
-                <Insets bottom="25" left="25" right="25" top="25" />
+                <Insets bottom="30" left="30" right="30" top="40" />
             </padding>
 
             <!-- Header -->
-            <VBox spacing="3">
+            <VBox spacing="4">
                 <Label styleClass="brand" text="AutoRide" />
                 <Label styleClass="subtitle" text="Car Rental System" />
             </VBox>
 
             <!-- Navigation -->
-            <VBox spacing="10" VBox.vgrow="ALWAYS">
-                <Button prefHeight="49.0" prefWidth="194.0" styleClass="nav-item" text="🏠 Dashboard" />
-                <Button alignment="CENTER" graphicTextGap="5.0" prefHeight="43.0" prefWidth="169.0" styleClass="nav-item-active" text="🚗  Car Management" textAlignment="JUSTIFY">
-                    <font>
-                        <Font size="14.0" />
-                    </font>
-                </Button>
+            <VBox spacing="12" VBox.vgrow="ALWAYS">
+                <Button styleClass="nav-item" text="🏠 Dashboard" />
+                <Button styleClass="nav-item-active" text="🚗 Car Management" />
                 <Button styleClass="nav-item" text="📅 Booking Management" />
                 <Button styleClass="nav-item" text="👥 Customer Management" />
                 <Button styleClass="nav-item" text="👤 User Management" />
             </VBox>
 
             <!-- Admin Info + Logout -->
-            <VBox spacing="10">
+            <VBox spacing="15">
                 <VBox alignment="CENTER" spacing="3">
                     <Label styleClass="admin-name" text="Admin User" />
                     <Label styleClass="admin-email" text="admin@autoride.com" />
                 </VBox>
-                <Button contentDisplay="CENTER" prefHeight="27.0" prefWidth="214.0" styleClass="logout-btn" text="⏻ Logout" />
+                <Button fx:id="logoutButton" styleClass="logout-btn" text="⏻ Logout" />
             </VBox>
         </VBox>
     </left>
 
     <!-- Main Content -->
     <center>
-        <VBox spacing="20" styleClass="main-content">
+        <VBox spacing="25" styleClass="main-content">
             <padding>
-                <Insets bottom="30" left="30" right="30" top="30" />
+                <Insets bottom="40" left="50" right="50" top="40" />
             </padding>
 
             <!-- Header -->
-            <HBox alignment="CENTER_LEFT" spacing="10">
+            <HBox alignment="CENTER_LEFT" spacing="15">
                 <Label fx:id="titleLabel" styleClass="main-title" text="Car Management" />
                 <Pane HBox.hgrow="ALWAYS" />
-                <Button style="-fx-background-color: green;" styleClass="add-btn" text="+ Add New Car" />
+                <TextField fx:id="searchField" promptText="🔍 Search cars..." prefWidth="300.0" styleClass="search-field" />
+                <Button fx:id="addCarButton" styleClass="add-btn" text="+ Add New Car" />
             </HBox>
 
             <!-- Table -->
-            <TableView fx:id="carTable" prefHeight="500.0" styleClass="car-table">
+            <TableView fx:id="carTable" prefHeight="700.0" styleClass="car-table">
                 <columns>
-                    <TableColumn prefWidth="200.0" text="Car" />
-                    <TableColumn prefWidth="200.0" text="Details" />
-                    <TableColumn prefWidth="100.0" text="Status" />
-                    <TableColumn prefWidth="120.0" text="Price" />
-                    <TableColumn prefWidth="100.0" text="Actions" />
+                    <TableColumn prefWidth="200.0" text="Car ID" />
+                    <TableColumn prefWidth="300.0" text="Model" />
+                    <TableColumn prefWidth="250.0" text="Type" />
+                    <TableColumn prefWidth="200.0" text="Status" />
+                    <TableColumn prefWidth="200.0" text="Price" />
+                    <TableColumn prefWidth="150.0" text="Actions" />
                 </columns>
             </TableView>
         </VBox>

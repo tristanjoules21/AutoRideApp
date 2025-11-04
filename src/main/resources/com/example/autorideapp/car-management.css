@@ -1,102 +1,133 @@
+/* === Global === */
 .root {
     -fx-font-family: "Poppins", "Segoe UI", sans-serif;
     -fx-background-color: #f8f9fa;
 }
 
-/* Sidebar */
+/* === Sidebar === */
 .sidebar {
     -fx-background-color: #114B2D;
-    -fx-padding: 20;
-    -fx-pref-width: 250;
-    -fx-alignment: TOP_CENTER;
 }
 
 .brand {
-    -fx-text-fill: white;
-    -fx-font-size: 22px;
+    -fx-font-size: 28px;
     -fx-font-weight: bold;
+    -fx-text-fill: white;
 }
 
 .subtitle {
+    -fx-font-size: 15px;
     -fx-text-fill: #cfd8dc;
-    -fx-font-size: 12px;
 }
 
-.nav-item {
+/* === Navigation === */
+.nav-item,
+.nav-item-active {
+    -fx-pref-width: 220px;
+    -fx-font-size: 16px;
+    -fx-background-radius: 8;
     -fx-background-color: transparent;
-    -fx-text-fill: #d9d9d9;
-    -fx-font-size: 14px;
-    -fx-alignment: CENTER_LEFT;
-    -fx-padding: 10 20 10 20;
+    -fx-text-fill: white;
+    -fx-alignment: center-left;
+    -fx-padding: 12 18 12 18;
     -fx-cursor: hand;
-    -fx-background-radius: 5;
 }
 
 .nav-item:hover {
-    -fx-background-color: #1B5E3A;
+    -fx-background-color: rgba(255,255,255,0.15);
 }
 
 .nav-item-active {
     -fx-background-color: #0F3D25;
     -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-border-width: 0 0 0 4px;
+    -fx-border-color: #22c55e;
 }
 
+/* === Admin Info === */
 .admin-name {
+    -fx-font-size: 15px;
+    -fx-font-weight: bold;
     -fx-text-fill: white;
-    -fx-font-size: 13px;
 }
 
 .admin-email {
+    -fx-font-size: 13px;
     -fx-text-fill: #cfd8dc;
-    -fx-font-size: 11px;
 }
 
+/* === Logout Button === */
 .logout-btn {
     -fx-background-color: transparent;
-    -fx-text-fill: #cfd8dc;
-    -fx-font-size: 13px;
-    -fx-cursor: hand;
+    -fx-border-color: white;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-border-radius: 8;
+    -fx-background-radius: 8;
+    -fx-pref-width: 200px;
+    -fx-font-weight: bold;
 }
 
 .logout-btn:hover {
-    -fx-text-fill: #ffffff;
+    -fx-background-color: rgba(255,255,255,0.15);
 }
 
-/* Main Content */
+/* === Main Content === */
 .main-content {
-    -fx-padding: 20;
+    -fx-background-color: white;
+    -fx-background-radius: 10;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.05), 6, 0, 0, 2);
 }
 
 .main-title {
-    -fx-font-size: 20px;
+    -fx-font-size: 26px;
     -fx-font-weight: bold;
-    -fx-text-fill: #2e7d32;
+    -fx-text-fill: #111827;
 }
 
-.add-btn {
-    -fx-background-color: #26a69a;
-    -fx-text-fill: white;
-    -fx-padding: 8 16;
+/* === Search Field === */
+.search-field {
+    -fx-background-color: white;
+    -fx-border-color: #d1d5db;
+    -fx-border-radius: 6;
     -fx-background-radius: 6;
+    -fx-padding: 8 12;
+    -fx-font-size: 14px;
+}
+
+.search-field:focused {
+    -fx-border-color: #22c55e;
+    -fx-effect: dropshadow(gaussian, rgba(34,197,94,0.3), 5, 0, 0, 1);
+}
+
+/* === Add Button === */
+.add-btn {
+    -fx-background-color: #22c55e;
+    -fx-text-fill: white;
     -fx-font-weight: bold;
+    -fx-background-radius: 8;
+    -fx-padding: 10 20;
+    -fx-font-size: 15px;
 }
 
 .add-btn:hover {
-    -fx-background-color: #2bbbad;
+    -fx-background-color: #16a34a;
 }
 
-/* Table */
+/* === Table === */
 .car-table {
     -fx-background-color: white;
     -fx-border-color: #dcdcdc;
-    -fx-border-radius: 6;
-    -fx-background-radius: 6;
-    -fx-padding: 5;
+    -fx-border-radius: 8;
+    -fx-background-radius: 8;
+    -fx-padding: 8;
 }
 
 .table-view .column-header {
     -fx-background-color: #e8f5e9;
     -fx-font-weight: bold;
+    -fx-font-size: 14px;
     -fx-text-fill: #388e3c;
 }
 

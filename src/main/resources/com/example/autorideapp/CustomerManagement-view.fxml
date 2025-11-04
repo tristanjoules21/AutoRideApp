@@ -4,26 +4,26 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane prefHeight="700.0" prefWidth="1100.0" stylesheets="@booking.css"
+<BorderPane prefHeight="1080.0" prefWidth="1920.0" stylesheets="@booking.css"
             xmlns="http://javafx.com/javafx/17.0.12"
             xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="com.example.autorideapp.autoride.CustomerManagementController">
 
     <!-- Sidebar -->
     <left>
-        <VBox prefWidth="230.0" spacing="25" styleClass="sidebar">
+        <VBox prefWidth="280.0" spacing="30" styleClass="sidebar">
             <padding>
-                <Insets bottom="25" left="25" right="25" top="25" />
+                <Insets bottom="30" left="30" right="30" top="40" />
             </padding>
 
             <!-- Header -->
-            <VBox spacing="3">
+            <VBox spacing="4">
                 <Label styleClass="brand" text="AutoRide" />
                 <Label styleClass="subtitle" text="Car Rental System" />
             </VBox>
 
             <!-- Navigation -->
-            <VBox spacing="10" VBox.vgrow="ALWAYS">
+            <VBox spacing="12" VBox.vgrow="ALWAYS">
                 <Button styleClass="nav-item" text="🏠 Dashboard" />
                 <Button styleClass="nav-item" text="🚗 Car Management" />
                 <Button styleClass="nav-item" text="📅 Booking Management" />
@@ -32,7 +32,7 @@
             </VBox>
 
             <!-- Admin Info + Logout -->
-            <VBox spacing="10">
+            <VBox spacing="15">
                 <VBox alignment="CENTER" spacing="3">
                     <Label styleClass="admin-name" text="Admin User" />
                     <Label styleClass="admin-email" text="admin@autoride.com" />
@@ -44,34 +44,28 @@
 
     <!-- Main Content -->
     <center>
-        <VBox spacing="20" styleClass="main-content">
+        <VBox spacing="25" styleClass="main-content">
             <padding>
-                <Insets bottom="30" left="30" right="30" top="30" />
+                <Insets bottom="40" left="50" right="50" top="40" />
             </padding>
 
-            <!-- Top Bar (Title + Search + Add Button) -->
-            <HBox alignment="CENTER_LEFT" spacing="10">
+            <!-- Top Bar -->
+            <HBox alignment="CENTER_LEFT" spacing="15">
                 <Label fx:id="mainTitle" styleClass="main-title" text="Customer Management" />
                 <Pane HBox.hgrow="ALWAYS" />
-                <TextField fx:id="searchField"
-                           promptText="🔍 Search customers..."
-                           prefWidth="200.0"
-                           style="-fx-background-radius: 6; -fx-border-radius: 6;" />
-                <Button fx:id="addCustomerButton"
-                        text="+ Add Customer"
-                        prefWidth="150.0"
-                        styleClass="add-btn" />
+                <TextField fx:id="searchField" promptText="🔍 Search customers..." prefWidth="300.0" styleClass="search-field" />
+                <Button fx:id="addCustomerButton" text="+ Add Customer" prefWidth="180.0" styleClass="add-btn" />
             </HBox>
 
-            <!-- Customer Table -->
-            <TableView fx:id="customerTable" prefHeight="500.0" styleClass="booking-table">
+            <!-- Table -->
+            <TableView fx:id="customerTable" prefHeight="700.0" styleClass="customer-table">
                 <columns>
-                    <TableColumn prefWidth="100.0" text="Customer ID" />
-                    <TableColumn prefWidth="200.0" text="Name" />
-                    <TableColumn prefWidth="250.0" text="Email" />
-                    <TableColumn prefWidth="150.0" text="Total Bookings" />
-                    <TableColumn prefWidth="150.0" text="Total Spent" />
-                    <TableColumn prefWidth="100.0" text="Actions" />
+                    <TableColumn prefWidth="150.0" text="Customer ID" />
+                    <TableColumn prefWidth="250.0" text="Name" />
+                    <TableColumn prefWidth="350.0" text="Email" />
+                    <TableColumn prefWidth="200.0" text="Total Bookings" />
+                    <TableColumn prefWidth="200.0" text="Total Spent" />
+                    <TableColumn prefWidth="150.0" text="Actions" />
                 </columns>
             </TableView>
         </VBox>

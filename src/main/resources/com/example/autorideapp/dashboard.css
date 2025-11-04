@@ -1,29 +1,36 @@
+.root {
+    -fx-font-family: "Poppins", "Segoe UI", sans-serif;
+    -fx-background-color: #f8f9fa;
+}
+
 /* === Sidebar === */
 .sidebar {
     -fx-background-color: #114B2D; /* Dark Green Sidebar */
+    -fx-pref-width: 280;
+    -fx-padding: 40 30;
 }
 
 .brand {
-    -fx-font-size: 22px;
+    -fx-font-size: 26px;
     -fx-font-weight: bold;
     -fx-text-fill: white;
 }
 
 .subtitle {
-    -fx-font-size: 13px;
+    -fx-font-size: 14px;
     -fx-text-fill: #cfd8dc;
 }
 
 /* === Navigation === */
 .nav-item,
 .nav-item-active {
-    -fx-pref-width: 180px;
-    -fx-font-size: 14px;
+    -fx-pref-width: 220px;
+    -fx-font-size: 16px;
     -fx-background-radius: 8;
     -fx-background-color: transparent;
     -fx-text-fill: white;
     -fx-alignment: center-left;
-    -fx-padding: 10 12 10 12;
+    -fx-padding: 12 15;
     -fx-cursor: hand;
 }
 
@@ -35,18 +42,19 @@
     -fx-background-color: #0F3D25; /* Darker Green Active */
     -fx-text-fill: white;
     -fx-font-weight: bold;
-    -fx-border-width: 0 0 0 4px;
+    -fx-border-width: 0 0 0 5px;
     -fx-border-color: #22c55e; /* Highlight border */
 }
 
 /* === Admin Info === */
 .admin-name {
     -fx-font-weight: bold;
+    -fx-font-size: 15px;
     -fx-text-fill: white;
 }
 
 .admin-email {
-    -fx-font-size: 12px;
+    -fx-font-size: 13px;
     -fx-text-fill: #cfd8dc;
 }
 
@@ -55,10 +63,11 @@
     -fx-background-color: transparent;
     -fx-border-color: white;
     -fx-text-fill: white;
-    -fx-font-size: 13px;
+    -fx-font-size: 14px;
     -fx-border-radius: 8;
     -fx-background-radius: 8;
-    -fx-pref-width: 180px;
+    -fx-pref-width: 200px;
+    -fx-padding: 10 12;
 }
 
 .logout-btn:hover {
@@ -71,13 +80,13 @@
 }
 
 .main-title {
-    -fx-font-size: 20px;
+    -fx-font-size: 32px;
     -fx-font-weight: bold;
     -fx-text-fill: #111827;
 }
 
 .section-title {
-    -fx-font-size: 16px;
+    -fx-font-size: 20px;
     -fx-font-weight: bold;
     -fx-text-fill: #111827;
 }
@@ -85,24 +94,43 @@
 /* === Cards === */
 .card {
     -fx-background-color: white;
-    -fx-background-radius: 10;
-    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.05), 6, 0, 0, 2);
-    -fx-padding: 15;
-    -fx-pref-width: 200;
+    -fx-background-radius: 12;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.05), 8, 0, 0, 3);
+    -fx-padding: 20;
 }
 
 .card-title {
-    -fx-font-size: 13px;
+    -fx-font-size: 15px;
     -fx-text-fill: #6b7280;
 }
 
 .card-value {
-    -fx-font-size: 24px;
+    -fx-font-size: 28px;
     -fx-font-weight: bold;
     -fx-text-fill: #111827;
 }
 
 .card-sub {
-    -fx-font-size: 13px;
+    -fx-font-size: 14px;
     -fx-text-fill: #114B2D; /* Sidebar color accent */
+}
+
+/* === Table === */
+.table-view {
+    -fx-background-color: white;
+    -fx-border-color: #dcdcdc;
+    -fx-border-radius: 8;
+    -fx-background-radius: 8;
+    -fx-font-size: 14px;
+    -fx-padding: 10;
+}
+
+.table-view .column-header {
+    -fx-background-color: #e8f5e9;
+    -fx-font-weight: bold;
+    -fx-text-fill: #388e3c;
+}
+
+.table-row-cell:selected {
+    -fx-background-color: #c8e6c9;
 }

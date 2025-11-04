@@ -4,23 +4,27 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane prefHeight="700.0" prefWidth="1100.0" stylesheets="@booking.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.autorideapp.autoride.BookingManagementController">
+<BorderPane prefHeight="1080.0" prefWidth="1920.0"
+            stylesheets="@booking.css"
+            xmlns="http://javafx.com/javafx/17.0.12"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.example.autorideapp.autoride.BookingManagementController">
 
     <!-- Sidebar -->
     <left>
-        <VBox prefWidth="230.0" spacing="25" styleClass="sidebar">
+        <VBox prefWidth="280.0" spacing="30" styleClass="sidebar">
             <padding>
-                <Insets bottom="25" left="25" right="25" top="25" />
+                <Insets bottom="30" left="30" right="30" top="40" />
             </padding>
 
             <!-- Header -->
-            <VBox spacing="3">
+            <VBox spacing="4">
                 <Label styleClass="brand" text="AutoRide" />
                 <Label styleClass="subtitle" text="Car Rental System" />
             </VBox>
 
             <!-- Navigation -->
-            <VBox spacing="10" VBox.vgrow="ALWAYS">
+            <VBox spacing="12" VBox.vgrow="ALWAYS">
                 <Button styleClass="nav-item" text="🏠 Dashboard" />
                 <Button styleClass="nav-item" text="🚗 Car Management" />
                 <Button styleClass="nav-item-active" text="📅 Booking Management" />
@@ -29,7 +33,7 @@
             </VBox>
 
             <!-- Admin Info + Logout -->
-            <VBox spacing="10">
+            <VBox spacing="15">
                 <VBox alignment="CENTER" spacing="3">
                     <Label styleClass="admin-name" text="Admin User" />
                     <Label styleClass="admin-email" text="admin@autoride.com" />
@@ -41,27 +45,28 @@
 
     <!-- Main Content -->
     <center>
-        <VBox spacing="20" styleClass="main-content">
+        <VBox spacing="25" styleClass="main-content">
             <padding>
-                <Insets bottom="30" left="30" right="30" top="30" />
+                <Insets bottom="40" left="50" right="50" top="40" />
             </padding>
 
-            <HBox alignment="CENTER_LEFT" spacing="10">
+            <HBox alignment="CENTER_LEFT" spacing="15">
                 <Label fx:id="mainTitle" styleClass="main-title" text="Booking Management" />
                 <Pane HBox.hgrow="ALWAYS" />
-                <Button onAction="#handleAddBooking" style="-fx-background-color: gray;" styleClass="add-btn" text=" All Bookings " />
+                <TextField fx:id="searchField" promptText="🔍 Search bookings..." prefWidth="300.0" styleClass="search-field" />
+                <Button onAction="#handleAddBooking" styleClass="add-btn" text="+ New Booking" />
             </HBox>
 
             <!-- Booking Table -->
-            <TableView fx:id="bookingTable" prefHeight="500.0" styleClass="booking-table">
+            <TableView fx:id="bookingTable" prefHeight="700.0" styleClass="booking-table">
                 <columns>
-                    <TableColumn prefWidth="80.0" text="Booking ID" />
-                    <TableColumn prefWidth="150.0" text="Customer" />
-                    <TableColumn prefWidth="150.0" text="Car" />
-                    <TableColumn prefWidth="180.0" text="Dates" />
-                    <TableColumn prefWidth="120.0" text="Amount" />
-                    <TableColumn prefWidth="100.0" text="Payment" />
-                    <TableColumn prefWidth="100.0" text="Actions" />
+                    <TableColumn prefWidth="150.0" text="Booking ID" />
+                    <TableColumn prefWidth="250.0" text="Customer" />
+                    <TableColumn prefWidth="250.0" text="Car" />
+                    <TableColumn prefWidth="300.0" text="Dates" />
+                    <TableColumn prefWidth="200.0" text="Amount" />
+                    <TableColumn prefWidth="200.0" text="Payment" />
+                    <TableColumn prefWidth="150.0" text="Actions" />
                 </columns>
             </TableView>
         </VBox>
