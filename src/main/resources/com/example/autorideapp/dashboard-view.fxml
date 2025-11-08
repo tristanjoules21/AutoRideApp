@@ -6,7 +6,7 @@
 
 <BorderPane prefHeight="1080.0" prefWidth="1920.0" stylesheets="@dashboard.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.autorideapp.autoride.DashboardController">
 
-    <!-- ================= Sidebar ================= -->
+    <!-- Sidebar -->
     <left>
         <VBox prefWidth="280.0" spacing="35" styleClass="sidebar">
             <padding>
@@ -32,21 +32,21 @@
             <VBox spacing="15">
                 <VBox alignment="CENTER" spacing="5">
                     <Label styleClass="admin-name" text="Admin User" />
-                    <Label styleClass="admin-email" text="admin@autoride.com" />
+                    <Label fx:id="adminEmail" styleClass="admin-email" text="admin@autoride.com" />
                 </VBox>
                 <Button alignment="CENTER" styleClass="logout-btn" text="⏻ Logout" />
             </VBox>
         </VBox>
     </left>
 
-    <!-- ================= Main Content ================= -->
+    <!-- Main Content -->
     <center>
         <VBox spacing="30" styleClass="main-content">
             <padding>
                 <Insets bottom="40" left="40" right="40" top="40" />
             </padding>
 
-            <Label styleClass="main-title" text="Dashboard" />
+            <Label fx:id="welcomeLabel" styleClass="main-title" text="Dashboard" />
 
             <!-- Top Cards -->
             <HBox spacing="25">

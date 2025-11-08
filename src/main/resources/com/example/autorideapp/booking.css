@@ -6,7 +6,7 @@
 
 /* === Sidebar === */
 .sidebar {
-    -fx-background-color: #114B2D; /* Dark Green */
+    -fx-background-color: #166534; /* Dark Green */
 }
 
 .brand {
@@ -40,8 +40,7 @@
 .nav-item-active {
     -fx-background-color: #0F3D25;
     -fx-font-weight: bold;
-    -fx-border-width: 0 0 0 4px;
-    -fx-border-color: #22c55e;
+
 }
 
 /* === Admin Info === */

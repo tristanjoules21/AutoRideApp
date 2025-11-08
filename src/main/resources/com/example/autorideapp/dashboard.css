@@ -3,12 +3,10 @@
     -fx-background-color: #f8f9fa;
 }
 
-/* === Sidebar === */
 .sidebar {
-    -fx-background-color: #114B2D; /* Dark Green Sidebar */
-    -fx-pref-width: 280;
-    -fx-padding: 40 30;
+    -fx-background-color: #166534; /* Updated Green */
 }
+
 
 .brand {
     -fx-font-size: 26px;
@@ -42,8 +40,7 @@
     -fx-background-color: #0F3D25; /* Darker Green Active */
     -fx-text-fill: white;
     -fx-font-weight: bold;
-    -fx-border-width: 0 0 0 5px;
-    -fx-border-color: #22c55e; /* Highlight border */
+
 }
 
 /* === Admin Info === */

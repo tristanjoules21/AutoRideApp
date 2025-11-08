@@ -2,54 +2,41 @@
 
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
-<?import javafx.scene.effect.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="600.0" prefWidth="779.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.autorideapp.autoride.LoginController">
+<VBox xmlns="http://javafx.com/javafx/17.0.12"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.example.autorideapp.autoride.LoginController"
+      prefHeight="600.0" prefWidth="779.0"
+      alignment="CENTER"
+      spacing="20"
+      stylesheets="@style.css">
 
-    <!-- Center VBox -->
-    <VBox alignment="CENTER" spacing="15" />
-   <AnchorPane prefHeight="200.0" prefWidth="200.0" />
+    <!-- Card Container -->
+    <VBox alignment="CENTER" spacing="15" styleClass="login-card" maxWidth="400">
 
-     <!-- Card Container -->
-     <VBox alignment="CENTER" layoutX="198.0" layoutY="103.0" prefHeight="394.0" spacing="15" styleClass="login-card">
+        <Label styleClass="label-title" text="AutoRide" />
 
-         <Label styleClass="label-title" text="AutoRide" />
+        <VBox spacing="10" maxWidth="350">
+            <Label styleClass="label-field" text="Email Address" />
+            <TextField fx:id="emailField" promptText="Enter your email" styleClass="text-field" />
 
-         <VBox prefHeight="121.0" spacing="10">
+            <Label styleClass="label-field" text="Password" />
+            <PasswordField fx:id="passwordField" promptText="Enter your password" styleClass="password-field" />
+        </VBox>
 
-             <!-- Email -->
-             <Label styleClass="label-field" text="Email Address" />
-             <TextField fx:id="emailField" promptText="Enter your email" styleClass="text-field" />
+        <Button fx:id="signinBtn" onAction="#onSignInClick" styleClass="button-signIn" text="Sign In" />
 
-             <!-- Password -->
-             <Label styleClass="label-field" text="Password" />
-             <PasswordField fx:id="passwordField" promptText="Enter your password" styleClass="password-field" />
+        <Label fx:id="messageLabel" visible="false" />
 
-         </VBox>
+        <VBox alignment="CENTER_LEFT" spacing="5" styleClass="demo-container" maxWidth="350">
+            <Label styleClass="label-demo" text="Demo Admin Account:" />
+            <HBox spacing="5" styleClass="demo-box">
+                <Label style="-fx-font-weight: bold; -fx-font-size: 12;" text="Admin:" />
+                <Label styleClass="label-demo-info" text="admin@autoride.com / admin123" />
+            </HBox>
+        </VBox>
 
-         <!-- Sign In Button -->
-         <Button onAction="#onSignInClick" styleClass="button-signIn" text="Sign In" />
+    </VBox>
 
-         <!-- Error or Info Label -->
-         <Label fx:id="messageLabel" visible="false" />
-
-         <!-- Demo Info -->
-         <VBox alignment="CENTER_LEFT" spacing="5" styleClass="demo-container">
-             <Label styleClass="label-demo" text="Demo Admin Account:" />
-             <HBox spacing="5" styleClass="demo-box">
-                 <Label style="-fx-font-weight: bold; -fx-font-size: 12;" text="Admin:" />
-                 <Label styleClass="label-demo-info" text="admin@autoride.com / admin123" />
-             </HBox>
-         </VBox>
-
-     </VBox>
-
-    <opaqueInsets>
-        <Insets />
-    </opaqueInsets>
-    <effect>
-        <Blend />
-    </effect>
-
-</AnchorPane>
+</VBox>

@@ -3,6 +3,7 @@
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
 <BorderPane prefHeight="1080.0" prefWidth="1920.0"
             stylesheets="@user.css"
@@ -10,54 +11,56 @@
             xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="com.example.autorideapp.autoride.UserManagementController">
 
-    <!-- ===================== Sidebar ===================== -->
+    <!-- Sidebar -->
     <left>
         <VBox prefWidth="280.0" spacing="30" styleClass="sidebar">
             <padding>
-                <Insets bottom="40" left="30" right="30" top="40" />
+                <Insets bottom="30" left="30" right="30" top="40" />
             </padding>
 
             <!-- Header -->
-            <VBox spacing="5">
-                <Label styleClass="sidebar-title" text="AutoRide" />
-                <Label styleClass="sidebar-subtitle" text="Car Rental System" />
+            <VBox spacing="4">
+                <Label styleClass="brand" text="AutoRide" />
+                <Label styleClass="subtitle" text="Car Rental System" />
             </VBox>
 
             <!-- Navigation -->
-            <VBox spacing="15" VBox.vgrow="ALWAYS">
-                <Button styleClass="sidebar-button" text="🏠 Dashboard" />
-                <Button styleClass="sidebar-button" text="🚗 Car Management" />
-                <Button styleClass="sidebar-button" text="📅 Booking Management" />
-                <Button styleClass="sidebar-button" text="👥 Customer Management" />
-                <Button prefWidth="200.0" styleClass="sidebar-button active" text="👤 User Management" />
+            <VBox spacing="12" VBox.vgrow="ALWAYS">
+                <Button styleClass="nav-item" text="🏠 Dashboard" />
+                <Button styleClass="nav-item" text="🚗 Car Management" />
+                <Button styleClass="nav-item" text="📅 Booking Management" />
+                <Button styleClass="nav-item" text="👥 Customer Management" />
+                <Button styleClass="nav-item-active" text="👤 User Management" />
             </VBox>
 
-            <!-- Footer / Admin Info -->
-            <VBox spacing="10">
-                <Label styleClass="admin-name" text="Admin User" />
-                <Label styleClass="admin-email" text="admin@autoride.com" />
-                <Button fx:id="logoutButton" styleClass="logout-button" text="⏻ Logout" />
+            <!-- Admin Info + Logout -->
+            <VBox spacing="15">
+                <VBox alignment="CENTER" spacing="3">
+                    <Label styleClass="admin-name" text="Admin User" />
+                    <Label styleClass="admin-email" text="admin@autoride.com" />
+                </VBox>
+                <Button fx:id="logoutButton" styleClass="logout-btn" text="⏻ Logout" />
             </VBox>
         </VBox>
     </left>
 
-    <!-- ===================== Main Content ===================== -->
+    <!-- Main Content -->
     <center>
-        <VBox prefHeight="1080.0" prefWidth="1640.0" spacing="30" style="-fx-background-color: white;">
+        <VBox spacing="25" styleClass="main-content">
             <padding>
-                <Insets bottom="40" left="40" right="40" top="40" />
+                <Insets bottom="40" left="50" right="50" top="40" />
             </padding>
 
-            <!-- Header Bar -->
+            <!-- Header -->
             <HBox alignment="CENTER_LEFT" spacing="15">
-                <Label fx:id="mainTitle" styleClass="main-title" text="User Management" />
+                <Label fx:id="titleLabel" styleClass="main-title" text="User Management" />
                 <Pane HBox.hgrow="ALWAYS" />
-                <TextField fx:id="searchField" prefWidth="280" promptText="🔍 Search user..." style="-fx-background-radius: 6; -fx-border-radius: 6;" />
-                <Button fx:id="addUserButton" prefWidth="160" styleClass="add-button" text="+ Add User" />
+                <TextField fx:id="searchField" promptText="🔍 Search users..." prefWidth="300.0" styleClass="search-field" />
+                <Button fx:id="addUserButton" styleClass="add-btn" text="+ Add User" />
             </HBox>
 
-            <!-- Table Section -->
-            <TableView fx:id="userTable" prefHeight="850.0" styleClass="table-view">
+            <!-- Table -->
+            <TableView fx:id="userTable" prefHeight="700.0" styleClass="customer-table">
                 <columns>
                     <TableColumn prefWidth="150.0" text="User ID" />
                     <TableColumn prefWidth="250.0" text="Name" />

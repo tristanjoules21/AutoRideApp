@@ -6,7 +6,7 @@
 
 /* === Sidebar === */
 .sidebar {
-    -fx-background-color: #114B2D;
+    -fx-background-color: #166534; /* Updated Green */
 }
 
 .brand {
@@ -41,8 +41,7 @@
     -fx-background-color: #0F3D25;
     -fx-text-fill: white;
     -fx-font-weight: bold;
-    -fx-border-width: 0 0 0 4px;
-    -fx-border-color: #22c55e;
+
 }
 
 /* === Admin Info === */
