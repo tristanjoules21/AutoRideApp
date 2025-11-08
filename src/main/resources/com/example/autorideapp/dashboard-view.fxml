@@ -4,87 +4,90 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane prefHeight="1080.0" prefWidth="1920.0" stylesheets="@dashboard.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.autorideapp.autoride.DashboardController">
+<VBox xmlns="http://javafx.com/javafx/17.0.12"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.example.autorideapp.autoride.DashboardController"
+      prefHeight="1080.0" prefWidth="1920.0"
+      stylesheets="@dashboard.css"
+      spacing="0">
 
-    <!-- Sidebar -->
-    <left>
-        <VBox prefWidth="280.0" spacing="35" styleClass="sidebar">
+    <!-- Root HBox: Sidebar + Main Content -->
+    <HBox spacing="0" VBox.vgrow="ALWAYS" HBox.hgrow="ALWAYS">
+
+        <!-- Sidebar (fixed width) -->
+        <VBox fx:id="sidebarVBox" prefWidth="280.0" minWidth="280.0" maxWidth="280.0" spacing="35" styleClass="sidebar">
             <padding>
-                <Insets bottom="40" left="35" right="35" top="40" />
+                <Insets bottom="40" left="35" right="35" top="40"/>
             </padding>
 
             <!-- Header -->
             <VBox spacing="5">
-                <Label styleClass="brand" text="AutoRide" />
-                <Label styleClass="subtitle" text="Car Rental System" />
+                <Label styleClass="brand" text="AutoRide"/>
+                <Label styleClass="subtitle" text="Car Rental System"/>
             </VBox>
 
             <!-- Navigation -->
             <VBox spacing="15" VBox.vgrow="ALWAYS">
-                <Button styleClass="nav-item-active" text="🏠 Dashboard" />
-                <Button styleClass="nav-item" text="🚗 Car Management" />
-                <Button styleClass="nav-item" text="📅 Booking Management" />
-                <Button styleClass="nav-item" text="👥 Customer Management" />
-                <Button styleClass="nav-item" text="👤 User Management" />
+                <Button fx:id="btnDashboard" styleClass="nav-item-active" text="🏠 Dashboard" onAction="#showDashboardView" maxWidth="Infinity"/>
+                <Button fx:id="btnCarManagement" styleClass="nav-item" text="🚗 Car Management" onAction="#showCarManagementView" maxWidth="Infinity"/>
+                <Button fx:id="btnBookingManagement" styleClass="nav-item" text="📅 Booking Management" onAction="#showBookingView" maxWidth="Infinity"/>
+                <Button fx:id="btnCustomerManagement" styleClass="nav-item" text="👥 Customer Management" onAction="#showCustomerManagementView" maxWidth="Infinity"/>
+                <Button fx:id="btnUserManagement" styleClass="nav-item" text="👤 User Management" onAction="#showUserManagementView" maxWidth="Infinity"/>
             </VBox>
 
             <!-- Admin Info + Logout -->
             <VBox spacing="15">
                 <VBox alignment="CENTER" spacing="5">
-                    <Label styleClass="admin-name" text="Admin User" />
-                    <Label fx:id="adminEmail" styleClass="admin-email" text="admin@autoride.com" />
+                    <Label styleClass="admin-name" text="Admin User"/>
+                    <Label fx:id="adminEmail" styleClass="admin-email" text="admin@autoride.com"/>
                 </VBox>
-                <Button alignment="CENTER" styleClass="logout-btn" text="⏻ Logout" />
+                <Button fx:id="btnLogout" alignment="CENTER" styleClass="logout-btn" text="⏻ Logout" onAction="#onLogoutClick" maxWidth="Infinity"/>
             </VBox>
         </VBox>
-    </left>
 
-    <!-- Main Content -->
-    <center>
-        <VBox spacing="30" styleClass="main-content">
+        <!-- Main Content Area (resizable) -->
+        <VBox fx:id="mainContent" spacing="30" styleClass="main-content" HBox.hgrow="ALWAYS" VBox.vgrow="ALWAYS">
             <padding>
-                <Insets bottom="40" left="40" right="40" top="40" />
+                <Insets bottom="40" left="40" right="40" top="40"/>
             </padding>
-
-            <Label fx:id="welcomeLabel" styleClass="main-title" text="Dashboard" />
 
             <!-- Top Cards -->
             <HBox spacing="25">
                 <VBox prefWidth="260" styleClass="card">
-                    <Label styleClass="card-title" text="Total Cars" />
-                    <Label styleClass="card-value" text="5" />
-                    <Label styleClass="card-sub" text="4 available" />
+                    <Label styleClass="card-title" text="Total Cars"/>
+                    <Label styleClass="card-value" text="5"/>
+                    <Label styleClass="card-sub" text="4 available"/>
                 </VBox>
 
                 <VBox prefWidth="260" styleClass="card">
-                    <Label styleClass="card-title" text="Total Bookings" />
-                    <Label styleClass="card-value" text="2" />
-                    <Label styleClass="card-sub" text="1 active" />
+                    <Label styleClass="card-title" text="Total Bookings"/>
+                    <Label styleClass="card-value" text="2"/>
+                    <Label styleClass="card-sub" text="1 active"/>
                 </VBox>
 
                 <VBox prefWidth="260" styleClass="card">
-                    <Label styleClass="card-title" text="Pending Bookings" />
-                    <Label styleClass="card-value" text="1" />
+                    <Label styleClass="card-title" text="Pending Bookings"/>
+                    <Label styleClass="card-value" text="1"/>
                 </VBox>
 
                 <VBox prefWidth="260" styleClass="card">
-                    <Label styleClass="card-title" text="Total Revenue" />
-                    <Label styleClass="card-value" text="₱14,400" />
+                    <Label styleClass="card-title" text="Total Revenue"/>
+                    <Label styleClass="card-value" text="₱14,400"/>
                 </VBox>
             </HBox>
 
-            <!-- Table Section -->
-            <Label styleClass="section-title" text="Recent Bookings" />
-            <TableView prefHeight="500.0" styleClass="table-view">
+            <!-- Recent Bookings Table -->
+            <Label styleClass="section-title" text="Recent Bookings"/>
+            <TableView prefHeight="500.0" styleClass="table-view" VBox.vgrow="ALWAYS">
                 <columns>
-                    <TableColumn prefWidth="80.0" text="ID" />
-                    <TableColumn prefWidth="250.0" text="Customer" />
-                    <TableColumn prefWidth="250.0" text="Car" />
-                    <TableColumn prefWidth="300.0" text="Dates" />
-                    <TableColumn prefWidth="180.0" text="Status" />
-                    <TableColumn prefWidth="200.0" text="Amount" />
+                    <TableColumn prefWidth="80.0" text="ID"/>
+                    <TableColumn prefWidth="250.0" text="Customer"/>
+                    <TableColumn prefWidth="250.0" text="Car"/>
+                    <TableColumn prefWidth="300.0" text="Dates"/>
+                    <TableColumn prefWidth="180.0" text="Status"/>
+                    <TableColumn prefWidth="200.0" text="Amount"/>
                 </columns>
             </TableView>
         </VBox>
-    </center>
-</BorderPane>
+    </HBox>
+</VBox>

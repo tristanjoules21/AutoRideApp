@@ -10,7 +10,6 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-
 import java.io.IOException;
 
 public class LoginController {
@@ -46,7 +45,8 @@ public class LoginController {
 
             // Load the dashboard
             try {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("dashboard-view.fxml"));
+                // ✅ Updated path (matches your folder structure)
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/autorideapp/dashboard-view.fxml"));
                 Scene scene = new Scene(loader.load());
 
                 // Pass email to DashboardController
@@ -54,7 +54,7 @@ public class LoginController {
                 controller.setUserEmail(email);
 
                 // Apply dashboard CSS
-                String styleCss = this.getClass().getResource("dashboard.css").toExternalForm();
+                String styleCss = getClass().getResource("/com/example/autorideapp/dashboard.css").toExternalForm();
                 scene.getStylesheets().add(styleCss);
 
                 Stage stage = (Stage) signinBtn.getScene().getWindow();

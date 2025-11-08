@@ -7,15 +7,16 @@ import javafx.scene.control.TableView;
 public class BookingManagementController {
 
     @FXML
-    private TableView<?> bookingTable; // TableView reference
+    private TableView<?> bookingTable;
 
     @FXML
-    private Label mainTitle; // Label reference for main title
+    private Label mainTitle;
 
     @FXML
     public void initialize() {
-        // Set initial title
-        mainTitle.setText("Booking Management");
+        if (mainTitle != null) {
+            mainTitle.setText("Booking Management");
+        }
     }
 
     @FXML

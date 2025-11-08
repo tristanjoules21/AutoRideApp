@@ -14,6 +14,8 @@ public class CarManagementController {
 
     @FXML
     public void initialize() {
-        titleLabel.setText("Car Management - Manage Cars in AutoRide");
+        if (titleLabel != null) {
+            titleLabel.setText("Car Management - Manage Cars in AutoRide");
+        }
     }
 }

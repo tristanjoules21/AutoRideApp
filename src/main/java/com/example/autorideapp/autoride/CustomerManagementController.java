@@ -22,4 +22,11 @@ public class CustomerManagementController {
 
     @FXML
     private TableView<?> customerTable;
+
+    @FXML
+    public void initialize() {
+        if (mainTitle != null) {
+            mainTitle.setText("Customer Management");
+        }
+    }
 }
