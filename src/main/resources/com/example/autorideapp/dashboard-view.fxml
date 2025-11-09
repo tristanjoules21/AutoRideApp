@@ -9,10 +9,10 @@
       fx:controller="com.example.autorideapp.autoride.DashboardController"
       prefHeight="1080.0" prefWidth="1920.0"
       stylesheets="@dashboard.css"
-      spacing="0">
+>
 
     <!-- Root HBox: Sidebar + Main Content -->
-    <HBox spacing="0" VBox.vgrow="ALWAYS" HBox.hgrow="ALWAYS">
+    <HBox VBox.vgrow="ALWAYS" HBox.hgrow="ALWAYS">
 
         <!-- Sidebar (fixed width) -->
         <VBox fx:id="sidebarVBox" prefWidth="280.0" minWidth="280.0" maxWidth="280.0" spacing="35" styleClass="sidebar">

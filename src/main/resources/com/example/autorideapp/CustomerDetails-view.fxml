@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.collections.FXCollections?>
+
+<?import java.lang.String?>
+<BorderPane prefHeight="1080.0" prefWidth="1920.0"
+            stylesheets="@customerdetails.css"
+            xmlns="http://javafx.com/javafx/17.0.12"
+            xmlns:fx="http://javafx.com/fxml/1">
+
+    <!-- Sidebar -->
+    <left>
+        <VBox prefWidth="280.0" spacing="30" styleClass="sidebar">
+            <padding>
+                <Insets bottom="30" left="30" right="30" top="40" />
+            </padding>
+
+            <!-- Header -->
+            <VBox spacing="4">
+                <Label styleClass="brand" text="AutoRide" />
+                <Label styleClass="subtitle" text="Car Rental System" />
+            </VBox>
+
+            <!-- Navigation -->
+            <VBox spacing="12" VBox.vgrow="ALWAYS">
+                <Button styleClass="nav-item" text="🏠 Dashboard" />
+                <Button styleClass="nav-item" text="🚗 Car Management" />
+                <Button styleClass="nav-item-active" text="📅 Booking Management" />
+                <Button styleClass="nav-item" text="👥 Customer Management" />
+                <Button styleClass="nav-item" text="👤 User Management" />
+            </VBox>
+
+            <!-- Admin Info + Logout -->
+            <VBox spacing="15">
+                <VBox alignment="CENTER" spacing="3">
+                    <Label styleClass="admin-name" text="Admin User" />
+                    <Label styleClass="admin-email" text="admin@autoride.com" />
+                </VBox>
+                <Button styleClass="logout-btn" text="⏻ Logout" />
+            </VBox>
+        </VBox>
+    </left>
+
+    <!-- Main Content -->
+    <center>
+        <ScrollPane fitToWidth="true" style="-fx-background-color:transparent;">
+            <VBox spacing="25" styleClass="main-content">
+                <padding>
+                    <Insets top="40" right="80" bottom="40" left="80"/>
+                </padding>
+
+                <!-- Page Title -->
+                <Label text="Customer Details" styleClass="main-title"/>
+
+                <!-- Customer Information Section -->
+                <VBox spacing="15">
+                    <Label text="Customer Information" styleClass="section-title"/>
+                    <GridPane hgap="20" vgap="15">
+                        <columnConstraints>
+                            <ColumnConstraints halignment="RIGHT" minWidth="120"/>
+                            <ColumnConstraints hgrow="ALWAYS"/>
+                            <ColumnConstraints halignment="RIGHT" minWidth="120"/>
+                            <ColumnConstraints hgrow="ALWAYS"/>
+                        </columnConstraints>
+
+                        <Label text="Name:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                        <TextField text="Jane Doe" editable="false" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+
+                        <Label text="Email:" GridPane.rowIndex="0" GridPane.columnIndex="2"/>
+                        <TextField text="jane.doe@example.com" editable="false" GridPane.rowIndex="0" GridPane.columnIndex="3"/>
+                    </GridPane>
+                </VBox>
+
+                <!-- Car Rental Details Section -->
+                <VBox spacing="15">
+                    <Label text="Car Rental Details" styleClass="section-title"/>
+                    <GridPane hgap="20" vgap="15">
+                        <columnConstraints>
+                            <ColumnConstraints halignment="RIGHT" minWidth="120"/>
+                            <ColumnConstraints hgrow="ALWAYS"/>
+                            <ColumnConstraints halignment="RIGHT" minWidth="120"/>
+                            <ColumnConstraints hgrow="ALWAYS"/>
+                        </columnConstraints>
+
+                        <Label text="Car Model:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                        <TextField text="Toyota Camry" editable="false" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+
+                        <Label text="License Plate:" GridPane.rowIndex="0" GridPane.columnIndex="2"/>
+                        <TextField text="ABC-1234" editable="false" GridPane.rowIndex="0" GridPane.columnIndex="3"/>
+
+                        <Label text="Rental Start:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                        <TextField text="2023-09-25" editable="false" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+
+                        <Label text="Rental End:" GridPane.rowIndex="1" GridPane.columnIndex="2"/>
+                        <TextField text="2023-10-02" editable="false" GridPane.rowIndex="1" GridPane.columnIndex="3"/>
+
+                        <Label text="Daily Rate:" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+                        <TextField text="₱2,500.00" editable="false" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+                    </GridPane>
+                </VBox>
+
+                <!-- Payment Information Section -->
+                <VBox spacing="15">
+                    <Label text="Payment Information" styleClass="section-title"/>
+                    <GridPane hgap="20" vgap="15">
+                        <columnConstraints>
+                            <ColumnConstraints halignment="RIGHT" minWidth="120"/>
+                            <ColumnConstraints hgrow="ALWAYS"/>
+                            <ColumnConstraints halignment="RIGHT" minWidth="120"/>
+                            <ColumnConstraints hgrow="ALWAYS"/>
+                        </columnConstraints>
+
+                        <Label text="Payment Status:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                        <ComboBox GridPane.rowIndex="0" GridPane.columnIndex="1">
+                            <items>
+                                <FXCollections fx:factory="observableArrayList">
+                                    <String fx:value="Paid"/>
+                                    <String fx:value="Unpaid"/>
+                                    <String fx:value="Pending"/>
+                                </FXCollections>
+                            </items>
+                            <value>Unpaid</value>
+                        </ComboBox>
+
+                        <Label text="Payment Method:" GridPane.rowIndex="0" GridPane.columnIndex="2"/>
+                        <ComboBox GridPane.rowIndex="0" GridPane.columnIndex="3">
+                            <items>
+                                <FXCollections fx:factory="observableArrayList">
+                                    <String fx:value="Credit Card"/>
+                                    <String fx:value="Cash"/>
+                                    <String fx:value="Bank Transfer"/>
+                                </FXCollections>
+                            </items>
+                            <value>Credit Card</value>
+                        </ComboBox>
+
+                        <Label text="Amount:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                        <TextField text="₱5,000" editable="false" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+
+                        <Label text="Due Date:" GridPane.rowIndex="1" GridPane.columnIndex="2"/>
+                        <TextField text="2023-10-03" editable="false" GridPane.rowIndex="1" GridPane.columnIndex="3"/>
+                    </GridPane>
+                </VBox>
+
+                <!-- Buttons -->
+                <HBox spacing="15" alignment="CENTER_RIGHT">
+                    <Button text="Back" styleClass="btn-secondary"/>
+                    <Button text="Update" styleClass="btn-primary"/>
+                </HBox>
+            </VBox>
+        </ScrollPane>
+    </center>
+</BorderPane>

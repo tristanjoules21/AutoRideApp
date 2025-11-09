@@ -1,0 +1,134 @@
+/* General Root */
+.root {
+    -fx-font-family: "Poppins", "Segoe UI", sans-serif;
+    -fx-background-color: #f8f9fa;
+}
+
+/* Sidebar */
+.sidebar {
+    -fx-background-color: #166534; /* Updated Green */
+    -fx-padding: 20;
+}
+
+/* Brand Section */
+.brand {
+    -fx-font-size: 26px;
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+}
+
+/* Subtitle Section */
+.subtitle {
+    -fx-font-size: 14px;
+    -fx-text-fill: #cfd8dc;
+}
+
+/* === Navigation === */
+.nav-item,
+.nav-item-active {
+    -fx-pref-width: 220px;
+    -fx-font-size: 16px;
+    -fx-background-radius: 8;
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+    -fx-alignment: center-left;
+    -fx-padding: 12 15;
+    -fx-cursor: hand;
+}
+
+.nav-item:hover {
+    -fx-background-color: rgba(255,255,255,0.15);
+}
+
+.nav-item-active {
+    -fx-background-color: #0F3D25; /* Darker Green Active */
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+
+/* === Admin Info === */
+.admin-name {
+    -fx-font-weight: bold;
+    -fx-font-size: 15px;
+    -fx-text-fill: white;
+}
+
+.admin-email {
+    -fx-font-size: 13px;
+    -fx-text-fill: #cfd8dc;
+}
+
+/* === Logout Button === */
+.logout-btn {
+    -fx-background-color: transparent;
+    -fx-border-color: white;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-border-radius: 8;
+    -fx-background-radius: 8;
+    -fx-pref-width: 200px;
+    -fx-padding: 10 12;
+}
+
+.logout-btn:hover {
+    -fx-background-color: rgba(255,255,255,0.15);
+}
+
+/* === Main Content === */
+.main-content {
+    -fx-background-color: white;
+}
+
+.main-title {
+    -fx-font-size: 32px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #111827;
+}
+
+.section-title {
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #111827;
+}
+
+/* === Buttons === */
+.btn-secondary {
+    -fx-background-color: #e0e0e0;
+    -fx-text-fill: #333;
+    -fx-padding: 8 25;
+    -fx-background-radius: 5;
+}
+
+/* ✅ Updated Green "Update" Button */
+.btn-primary {
+    -fx-background-color: #28a745; /* Green */
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-padding: 8 25;
+    -fx-background-radius: 5;
+    -fx-cursor: hand;
+}
+
+.btn-primary:hover {
+    -fx-background-color: #218838; /* Darker green on hover */
+}
+
+/* === Table === */
+.table-view {
+    -fx-background-color: white;
+    -fx-border-color: #dcdcdc;
+    -fx-border-radius: 8;
+    -fx-background-radius: 8;
+    -fx-font-size: 14px;
+    -fx-padding: 10;
+}
+
+.table-view .column-header {
+    -fx-background-color: #e8f5e9;
+    -fx-font-weight: bold;
+    -fx-text-fill: #388e3c;
+}
+
+.table-row-cell:selected {
+    -fx-background-color: #c8e6c9;
+}

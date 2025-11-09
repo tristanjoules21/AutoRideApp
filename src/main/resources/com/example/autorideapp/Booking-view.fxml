@@ -25,11 +25,16 @@
 
             <!-- Navigation -->
             <VBox spacing="12" VBox.vgrow="ALWAYS">
-                <Button styleClass="nav-item" text="🏠 Dashboard" />
-                <Button styleClass="nav-item" text="🚗 Car Management" />
-                <Button styleClass="nav-item-active" text="📅 Booking Management" />
-                <Button styleClass="nav-item" text="👥 Customer Management" />
-                <Button styleClass="nav-item" text="👤 User Management" />
+                <Button styleClass="nav-item" text="🏠 Dashboard"
+                        onAction="#showDashboardView" />
+                <Button styleClass="nav-item" text="🚗 Car Management"
+                        onAction="#showCarManagementView" />
+                <Button styleClass="nav-item-active" text="📅 Booking Management"
+                        onAction="#showBookingView" />
+                <Button styleClass="nav-item" text="👥 Customer Management"
+                        onAction="#showCustomerManagementView" />
+                <Button styleClass="nav-item" text="👤 User Management"
+                        onAction="#showUserManagementView" />
             </VBox>
 
             <!-- Admin Info + Logout -->
@@ -38,7 +43,8 @@
                     <Label styleClass="admin-name" text="Admin User" />
                     <Label styleClass="admin-email" text="admin@autoride.com" />
                 </VBox>
-                <Button onAction="#handleLogout" styleClass="logout-btn" text="⏻ Logout" />
+                <Button onAction="#handleLogout"
+                        styleClass="logout-btn" text="⏻ Logout" />
             </VBox>
         </VBox>
     </left>
@@ -50,11 +56,17 @@
                 <Insets bottom="40" left="50" right="50" top="40" />
             </padding>
 
+            <!-- Header -->
             <HBox alignment="CENTER_LEFT" spacing="15">
-                <Label fx:id="mainTitle" styleClass="main-title" text="Booking Management" />
+                <Label fx:id="mainTitle" styleClass="main-title"
+                       text="Booking Management" />
                 <Pane HBox.hgrow="ALWAYS" />
-                <TextField fx:id="searchField" promptText="🔍 Search bookings..." prefWidth="300.0" styleClass="search-field" />
-                <Button onAction="#handleAddBooking" styleClass="add-btn" text="+ New Booking" />
+                <TextField fx:id="searchField"
+                           promptText="🔍 Search bookings..."
+                           prefWidth="300.0"
+                           styleClass="search-field" />
+                <Button onAction="#handleAddBooking"
+                        styleClass="add-btn" text="+ New Booking" />
             </HBox>
 
             <!-- Booking Table -->

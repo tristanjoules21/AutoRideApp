@@ -26,11 +26,16 @@
 
             <!-- Navigation -->
             <VBox spacing="12" VBox.vgrow="ALWAYS">
-                <Button styleClass="nav-item" text="🏠 Dashboard" />
-                <Button styleClass="nav-item" text="🚗 Car Management" />
-                <Button styleClass="nav-item" text="📅 Booking Management" />
-                <Button styleClass="nav-item" text="👥 Customer Management" />
-                <Button styleClass="nav-item-active" text="👤 User Management" />
+                <Button styleClass="nav-item" text="🏠 Dashboard"
+                        onAction="#showDashboardView" />
+                <Button styleClass="nav-item" text="🚗 Car Management"
+                        onAction="#showCarManagementView" />
+                <Button styleClass="nav-item" text="📅 Booking Management"
+                        onAction="#showBookingView" />
+                <Button styleClass="nav-item" text="👥 Customer Management"
+                        onAction="#showCustomerManagementView" />
+                <Button styleClass="nav-item-active" text="👤 User Management"
+                        onAction="#showUserManagementView" />
             </VBox>
 
             <!-- Admin Info + Logout -->
@@ -39,7 +44,8 @@
                     <Label styleClass="admin-name" text="Admin User" />
                     <Label styleClass="admin-email" text="admin@autoride.com" />
                 </VBox>
-                <Button fx:id="logoutButton" styleClass="logout-btn" text="⏻ Logout" />
+                <Button fx:id="logoutButton" styleClass="logout-btn"
+                        text="⏻ Logout" onAction="#handleLogout" />
             </VBox>
         </VBox>
     </left>
@@ -53,14 +59,22 @@
 
             <!-- Header -->
             <HBox alignment="CENTER_LEFT" spacing="15">
-                <Label fx:id="titleLabel" styleClass="main-title" text="User Management" />
+                <Label fx:id="titleLabel" styleClass="main-title"
+                       text="User Management" />
                 <Pane HBox.hgrow="ALWAYS" />
-                <TextField fx:id="searchField" promptText="🔍 Search users..." prefWidth="300.0" styleClass="search-field" />
-                <Button fx:id="addUserButton" styleClass="add-btn" text="+ Add User" />
+                <TextField fx:id="searchField"
+                           promptText="🔍 Search users..."
+                           prefWidth="300.0"
+                           styleClass="search-field" />
+                <Button fx:id="addUserButton"
+                        styleClass="add-btn" text="+ Add User"
+                        onAction="#handleAddUser" />
             </HBox>
 
             <!-- Table -->
-            <TableView fx:id="userTable" prefHeight="700.0" styleClass="customer-table">
+            <TableView fx:id="userTable"
+                       prefHeight="700.0"
+                       styleClass="user-table">
                 <columns>
                     <TableColumn prefWidth="150.0" text="User ID" />
                     <TableColumn prefWidth="250.0" text="Name" />

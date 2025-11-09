@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx/17.0.12"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.example.autorideapp.autoride.AddCarController"
+      spacing="20"
+      alignment="TOP_LEFT"
+      prefWidth="600"
+      prefHeight="400"
+      style="-fx-padding: 30; -fx-background-color: white; -fx-font-family: 'Segoe UI';">
+
+    <Label text="Add New Car" style="-fx-font-size: 20px; -fx-font-weight: bold;" />
+
+    <GridPane hgap="20" vgap="15">
+        <columnConstraints>
+            <ColumnConstraints halignment="LEFT" percentWidth="50"/>
+            <ColumnConstraints halignment="LEFT" percentWidth="50"/>
+        </columnConstraints>
+
+        <!-- Row 0: Model & Plate Number -->
+        <VBox spacing="5" GridPane.rowIndex="0" GridPane.columnIndex="0">
+            <Label text="Model"/>
+            <TextField fx:id="modelField" promptText="Enter model" prefWidth="250"/>
+        </VBox>
+        <VBox spacing="5" GridPane.rowIndex="0" GridPane.columnIndex="1">
+            <Label text="Plate Number"/>
+            <TextField fx:id="plateNumberField" promptText="Enter plate number" prefWidth="250"/>
+        </VBox>
+
+        <!-- Row 1: Year & Type -->
+        <VBox spacing="5" GridPane.rowIndex="1" GridPane.columnIndex="0">
+            <Label text="Year"/>
+            <TextField fx:id="yearField" promptText="2025" prefWidth="250"/>
+        </VBox>
+        <VBox spacing="5" GridPane.rowIndex="1" GridPane.columnIndex="1">
+            <Label text="Type"/>
+            <ComboBox fx:id="typeComboBox" prefWidth="250"/>
+        </VBox>
+
+        <!-- Row 2: Seats & Price -->
+        <VBox spacing="5" GridPane.rowIndex="2" GridPane.columnIndex="0">
+            <Label text="Seats"/>
+            <TextField fx:id="seatsField" promptText="Enter number of seats" prefWidth="250"/>
+        </VBox>
+        <VBox spacing="5" GridPane.rowIndex="2" GridPane.columnIndex="1">
+            <Label text="Price Per Day (₱)"/>
+            <TextField fx:id="priceField" promptText="Enter price" prefWidth="250"/>
+        </VBox>
+
+        <!-- Row 3: Fuel Type & Transmission -->
+        <VBox spacing="5" GridPane.rowIndex="3" GridPane.columnIndex="0">
+            <Label text="Fuel Type"/>
+            <ComboBox fx:id="fuelTypeComboBox" prefWidth="250"/>
+        </VBox>
+        <VBox spacing="5" GridPane.rowIndex="3" GridPane.columnIndex="1">
+            <Label text="Transmission"/>
+            <ComboBox fx:id="transmissionComboBox" prefWidth="250"/>
+        </VBox>
+
+        <!-- Row 4: Image URL full width -->
+        <VBox spacing="5" GridPane.rowIndex="4" GridPane.columnIndex="0" GridPane.columnSpan="2">
+            <Label text="Image URL"/>
+            <TextField fx:id="imageUrlField" promptText="https://example.com/car-image.jpg" prefWidth="520"/>
+        </VBox>
+    </GridPane>
+
+    <HBox spacing="10" alignment="CENTER_RIGHT">
+        <Button fx:id="cancelButton" text="Cancel" style="-fx-background-color: transparent; -fx-text-fill: #333;"/>
+        <Button fx:id="addCarButton" text="Add Car" style="-fx-background-color: #28a745; -fx-text-fill: white; -fx-font-weight: bold;"/>
+    </HBox>
+</VBox>

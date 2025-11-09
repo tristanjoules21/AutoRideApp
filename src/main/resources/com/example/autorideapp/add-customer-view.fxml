@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx/17.0.12"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.example.autorideapp.autoride.AddCustomerController"
+      spacing="20" alignment="TOP_LEFT"
+      prefWidth="600"
+      style="-fx-padding: 30; -fx-background-color: #f8f8f8; -fx-font-family: 'Segoe UI';">
+
+    <!-- Title -->
+    <Label text="Add New Customer" style="-fx-font-size: 20px; -fx-font-weight: bold;"/>
+
+    <!-- Row 1: Full Name & Email -->
+    <HBox spacing="30">
+        <VBox spacing="5" HBox.hgrow="ALWAYS">
+            <HBox spacing="8" alignment="CENTER_LEFT">
+                <ImageView fitWidth="20" fitHeight="20" preserveRatio="true">
+                    <image>
+                        <Image url="@iconfulname.png"/>
+                    </image>
+                </ImageView>
+                <Label text="Full Name"/>
+            </HBox>
+            <TextField promptText="Enter full name" prefWidth="250" editable="false"/>
+        </VBox>
+
+        <VBox spacing="5" HBox.hgrow="ALWAYS">
+            <HBox spacing="8" alignment="CENTER_LEFT">
+                <ImageView fitWidth="20" fitHeight="20" preserveRatio="true">
+                    <image>
+                        <Image url="@iconemail.png"/>
+                    </image>
+                </ImageView>
+                <Label text="Email"/>
+            </HBox>
+            <TextField promptText="Enter email" prefWidth="250" editable="false"/>
+        </VBox>
+    </HBox>
+
+    <!-- Row 2: Password & Confirm Password -->
+    <HBox spacing="30">
+        <VBox spacing="5" HBox.hgrow="ALWAYS">
+            <HBox spacing="8" alignment="CENTER_LEFT">
+                <ImageView fitWidth="20" fitHeight="20" preserveRatio="true">
+                    <image>
+                        <Image url="@iconpassword.png"/>
+                    </image>
+                </ImageView>
+                <Label text="Password"/>
+            </HBox>
+            <PasswordField promptText="Enter password" prefWidth="250" editable="false"/>
+        </VBox>
+
+        <VBox spacing="5" HBox.hgrow="ALWAYS">
+            <HBox spacing="8" alignment="CENTER_LEFT">
+                <ImageView fitWidth="20" fitHeight="20" preserveRatio="true">
+                    <image>
+                        <Image url="@iconconfirm.png"/>
+                    </image>
+                </ImageView>
+                <Label text="Confirm Password"/>
+            </HBox>
+            <PasswordField promptText="Confirm password" prefWidth="250" editable="false"/>
+        </VBox>
+    </HBox>
+
+    <!-- Buttons -->
+    <HBox spacing="10" alignment="CENTER_RIGHT">
+        <Button text="Cancel" style="-fx-background-color: transparent; -fx-text-fill: #333;"/>
+        <Button text="Register Customer" style="-fx-background-color: #28a745; -fx-text-fill: white;"/>
+    </HBox>
+
+</VBox>

@@ -26,11 +26,16 @@
 
             <!-- Navigation -->
             <VBox spacing="12" VBox.vgrow="ALWAYS">
-                <Button styleClass="nav-item" text="🏠 Dashboard" />
-                <Button styleClass="nav-item-active" text="🚗 Car Management" />
-                <Button styleClass="nav-item" text="📅 Booking Management" />
-                <Button styleClass="nav-item" text="👥 Customer Management" />
-                <Button styleClass="nav-item" text="👤 User Management" />
+                <Button styleClass="nav-item" text="🏠 Dashboard"
+                        onAction="#showDashboardView" />
+                <Button styleClass="nav-item-active" text="🚗 Car Management"
+                        onAction="#showCarManagementView" />
+                <Button styleClass="nav-item" text="📅 Booking Management"
+                        onAction="#showBookingView" />
+                <Button styleClass="nav-item" text="👥 Customer Management"
+                        onAction="#showCustomerManagementView" />
+                <Button styleClass="nav-item" text="👤 User Management"
+                        onAction="#showUserManagementView" />
             </VBox>
 
             <!-- Admin Info + Logout -->
@@ -39,7 +44,10 @@
                     <Label styleClass="admin-name" text="Admin User" />
                     <Label styleClass="admin-email" text="admin@autoride.com" />
                 </VBox>
-                <Button fx:id="logoutButton" styleClass="logout-btn" text="⏻ Logout" />
+                <Button fx:id="logoutButton"
+                        styleClass="logout-btn"
+                        text="⏻ Logout"
+                        onAction="#onLogoutClick" />
             </VBox>
         </VBox>
     </left>
@@ -53,14 +61,24 @@
 
             <!-- Header -->
             <HBox alignment="CENTER_LEFT" spacing="15">
-                <Label fx:id="titleLabel" styleClass="main-title" text="Car Management" />
+                <Label fx:id="titleLabel"
+                       styleClass="main-title"
+                       text="Car Management" />
                 <Pane HBox.hgrow="ALWAYS" />
-                <TextField fx:id="searchField" promptText="🔍 Search cars..." prefWidth="300.0" styleClass="search-field" />
-                <Button fx:id="addCarButton" styleClass="add-btn" text="+ Add New Car" />
+                <TextField fx:id="searchField"
+                           promptText="🔍 Search cars..."
+                           prefWidth="300.0"
+                           styleClass="search-field" />
+                <Button fx:id="addCarButton"
+                        styleClass="add-btn"
+                        text="+ Add New Car"
+                        onAction="#handleAddCarClick" />
             </HBox>
 
             <!-- Table -->
-            <TableView fx:id="carTable" prefHeight="700.0" styleClass="car-table">
+            <TableView fx:id="carTable"
+                       prefHeight="700.0"
+                       styleClass="car-table">
                 <columns>
                     <TableColumn prefWidth="200.0" text="Car ID" />
                     <TableColumn prefWidth="300.0" text="Model" />
