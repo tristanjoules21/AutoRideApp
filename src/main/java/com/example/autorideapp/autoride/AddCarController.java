@@ -42,19 +42,19 @@ public class AddCarController {
 
     @FXML
     public void initialize() {
-        // Initialize ComboBoxes with values to match your design
+
 
         typeComboBox.getItems().addAll("Sedan", "SUV", "Hatchback", "Truck");
         fuelTypeComboBox.getItems().addAll("Gasoline", "Diesel", "Electric", "Hybrid");
         transmissionComboBox.getItems().addAll("Automatic", "Manual");
 
-        // Optionally, set default values if you want
+
         yearField.setText("2025");
         typeComboBox.getSelectionModel().select("Sedan");
         fuelTypeComboBox.getSelectionModel().select("Gasoline");
         transmissionComboBox.getSelectionModel().select("Automatic");
         imageUrlField.setText("https://example.com/car-image.jpg");
 
-        // No functional event handlers — pure design
+
     }
 }

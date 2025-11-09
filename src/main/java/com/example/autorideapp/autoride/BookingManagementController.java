@@ -28,7 +28,6 @@ public class BookingManagementController {
     @FXML
     private void handleAddBooking() {
         System.out.println("Add Booking button clicked!");
-        // You can open a modal or another FXML for booking creation later
     }
 
     // 🔹 Sidebar Navigation

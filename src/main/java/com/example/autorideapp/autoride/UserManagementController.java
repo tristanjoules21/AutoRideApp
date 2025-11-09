@@ -2,11 +2,13 @@ package com.example.autorideapp.autoride;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -35,11 +37,27 @@ public class UserManagementController {
         }
     }
 
-    // 🔹 Add User Button
+    // 🔹 Add User Button → Opens Add User Modal
     @FXML
-    private void handleAddUser() {
-        System.out.println("Add User button clicked!");
-        // TODO: open add-user form or modal
+    private void handleAddUser() throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/autorideapp/add-user-view.fxml"));
+        Parent root = loader.load();
+
+        // Apply CSS (optional)
+        Scene scene = new Scene(root);
+        try {
+            String styleCss = this.getClass()
+                    .getResource("/com/example/autorideapp/dashboard.css")
+                    .toExternalForm();
+            scene.getStylesheets().add(styleCss);
+        } catch (Exception ignored) {}
+
+        // Create popup modal window
+        Stage popupStage = new Stage();
+        popupStage.initModality(Modality.APPLICATION_MODAL);
+        popupStage.setTitle("Add New User");
+        popupStage.setScene(scene);
+        popupStage.showAndWait();
     }
 
     // 🔹 Sidebar Navigation
