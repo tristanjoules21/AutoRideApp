@@ -25,7 +25,7 @@
                 </ImageView>
                 <Label text="Full Name"/>
             </HBox>
-            <TextField promptText="Enter full name" prefWidth="250" editable="false"/>
+            <TextField fx:id="fullNameField" promptText="Enter full name" prefWidth="250"/>
         </VBox>
 
         <VBox spacing="5" HBox.hgrow="ALWAYS">
@@ -37,7 +37,7 @@
                 </ImageView>
                 <Label text="Email"/>
             </HBox>
-            <TextField promptText="Enter email" prefWidth="250" editable="false"/>
+            <TextField fx:id="emailField" promptText="Enter email" prefWidth="250"/>
         </VBox>
     </HBox>
 
@@ -52,7 +52,7 @@
                 </ImageView>
                 <Label text="Password"/>
             </HBox>
-            <PasswordField promptText="Enter password" prefWidth="250" editable="false"/>
+            <PasswordField fx:id="passwordField" promptText="Enter password" prefWidth="250"/>
         </VBox>
 
         <VBox spacing="5" HBox.hgrow="ALWAYS">
@@ -64,14 +64,21 @@
                 </ImageView>
                 <Label text="Confirm Password"/>
             </HBox>
-            <PasswordField promptText="Confirm password" prefWidth="250" editable="false"/>
+            <PasswordField fx:id="confirmPasswordField" promptText="Confirm password" prefWidth="250"/>
         </VBox>
     </HBox>
 
     <!-- Buttons -->
     <HBox spacing="10" alignment="CENTER_RIGHT">
-        <Button text="Cancel" style="-fx-background-color: transparent; -fx-text-fill: #333;"/>
-        <Button text="Register Customer" style="-fx-background-color: #28a745; -fx-text-fill: white;"/>
+        <Button text="Cancel"
+                fx:id="cancelButton"
+                style="-fx-background-color: transparent; -fx-text-fill: #333;"/>
+
+        <!-- ✅ Functional Button -->
+        <Button text="Register Customer"
+                fx:id="registerButton"
+                onAction="#onAddCustomerClick"
+                style="-fx-background-color: #28a745; -fx-text-fill: white;"/>
     </HBox>
 
 </VBox>

@@ -17,37 +17,55 @@
     <HBox spacing="30">
         <VBox spacing="5" HBox.hgrow="ALWAYS">
             <Label text="Full Name"/>
-            <TextField fx:id="fullNameField" promptText="Enter full name" prefWidth="250"/>
+            <TextField fx:id="fullNameField"
+                       promptText="Enter full name"
+                       prefWidth="250"/>
         </VBox>
 
         <VBox spacing="5" HBox.hgrow="ALWAYS">
             <Label text="Email"/>
-            <TextField fx:id="emailField" promptText="Enter email" prefWidth="250"/>
+            <TextField fx:id="emailField"
+                       promptText="Enter email"
+                       prefWidth="250"/>
         </VBox>
     </HBox>
 
-    <!-- Row 2: Position -->
+    <!-- Row 2: Role -->
     <VBox spacing="5">
-        <Label text="Position"/>
-        <TextField fx:id="positionField" promptText="Enter position (e.g., Admin, Staff)" prefWidth="530"/>
+        <Label text="Role"/>
+        <!-- ✅ Role ComboBox to match controller -->
+        <ComboBox fx:id="roleComboBox"
+                  promptText="Select role"
+                  prefWidth="530"/>
     </VBox>
 
     <!-- Row 3: Password -->
     <VBox spacing="5">
         <Label text="Password"/>
-        <PasswordField fx:id="passwordField" promptText="Enter password" prefWidth="530"/>
+        <PasswordField fx:id="passwordField"
+                       promptText="Enter password"
+                       prefWidth="530"/>
     </VBox>
 
     <!-- Row 4: Confirm Password -->
     <VBox spacing="5">
         <Label text="Confirm Password"/>
-        <PasswordField fx:id="confirmPasswordField" promptText="Confirm password" prefWidth="530"/>
+        <PasswordField fx:id="confirmPasswordField"
+                       promptText="Confirm password"
+                       prefWidth="530"/>
     </VBox>
 
     <!-- Buttons -->
     <HBox spacing="10" alignment="CENTER_RIGHT">
-        <Button text="Cancel" fx:id="cancelButton" style="-fx-background-color: transparent; -fx-text-fill: #333;"/>
-        <Button text="Register User" fx:id="registerButton" style="-fx-background-color: #28a745; -fx-text-fill: white;"/>
+        <Button text="Cancel"
+                fx:id="cancelButton"
+                onAction="#onCancelClick"
+                style="-fx-background-color: transparent; -fx-text-fill: #333;"/>
+
+        <Button text="Register User"
+                fx:id="registerButton"
+                onAction="#onAddUserClick"
+                style="-fx-background-color: #28a745; -fx-text-fill: white;"/>
     </HBox>
 
 </VBox>

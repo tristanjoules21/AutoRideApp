@@ -4,10 +4,10 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
@@ -19,91 +19,62 @@ public class CustomerManagementController {
     private Label mainTitle;
 
     @FXML
-    private TextField searchField;
+    private TableView<Customer> customerTable;
 
     @FXML
-    private Button addCustomerButton;
+    private TableColumn<Customer, String> nameColumn;
 
     @FXML
-    private Button logoutButton;
+    private TableColumn<Customer, String> emailColumn;
 
     @FXML
-    private TableView<?> customerTable;
+    private TableColumn<Customer, String> passwordColumn;
 
     @FXML
     public void initialize() {
-        if (mainTitle != null) {
-            mainTitle.setText("Customer Management - Manage Customers");
-        }
+        mainTitle.setText("Customer Management - Manage Customers");
+
+        nameColumn.setCellValueFactory(new PropertyValueFactory<>("fullName"));
+        emailColumn.setCellValueFactory(new PropertyValueFactory<>("email"));
+        passwordColumn.setCellValueFactory(new PropertyValueFactory<>("password"));
+
+        refreshCustomerTable();
     }
 
-    // 🔹 Add Customer Button
+    private void refreshCustomerTable() {
+        customerTable.getItems().setAll(CustomerDatabase.getAllCustomers());
+    }
+
     @FXML
     private void handleAddCustomer() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/autorideapp/add-customer-view.fxml"));
         Parent root = loader.load();
 
-        Scene scene = new Scene(root);
-        try {
-            String styleCss = getClass().getResource("/com/example/autorideapp/dashboard.css").toExternalForm();
-            scene.getStylesheets().add(styleCss);
-        } catch (Exception ignored) {}
-
         Stage popupStage = new Stage();
         popupStage.initModality(Modality.APPLICATION_MODAL);
         popupStage.setTitle("Add New Customer");
-        popupStage.setScene(scene);
+        popupStage.setScene(new Scene(root));
         popupStage.showAndWait();
+
+        refreshCustomerTable();
     }
 
-    // 🔹 Sidebar Navigation
-    @FXML private void showDashboardView() {
-        loadScene("/com/example/autorideapp/dashboard-view.fxml");
-    }
+    // Sidebar navigation (keep as is)
+    @FXML private void showDashboardView() { loadScene("/com/example/autorideapp/dashboard-view.fxml"); }
+    @FXML private void showCarManagementView() { loadScene("/com/example/autorideapp/CarManagement-view.fxml"); }
+    @FXML private void showBookingView() { loadScene("/com/example/autorideapp/Booking-view.fxml"); }
+    @FXML private void showCustomerManagementView() { loadScene("/com/example/autorideapp/CustomerManagement-view.fxml"); }
+    @FXML private void showUserManagementView() { loadScene("/com/example/autorideapp/UserManagement-view.fxml"); }
+    @FXML private void handleLogout() { loadScene("/com/example/autorideapp/login-view.fxml"); }
 
-    @FXML private void showCarManagementView() {
-        loadScene("/com/example/autorideapp/CarManagement-view.fxml");
-    }
-
-    @FXML private void showBookingView() {
-        loadScene("/com/example/autorideapp/Booking-view.fxml");
-    }
-
-    @FXML private void showCustomerManagementView() {
-        loadScene("/com/example/autorideapp/CustomerManagement-view.fxml");
-    }
-
-    @FXML private void showUserManagementView() {
-        loadScene("/com/example/autorideapp/UserManagement-view.fxml");
-    }
-
-    @FXML private void handleLogout() {
-        loadScene("/com/example/autorideapp/login-view.fxml");
-    }
-
-    // 🔹 Helper: Load a new FXML scene
     private void loadScene(String fxmlPath) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlPath));
-            if (loader.getLocation() == null) {
-                System.err.println("❌ FXML file not found: " + fxmlPath);
-                return;
-            }
-
             Scene scene = new Scene(loader.load());
-
-            // Apply CSS if available
-            try {
-                String styleCss = getClass().getResource("/com/example/autorideapp/dashboard.css").toExternalForm();
-                scene.getStylesheets().add(styleCss);
-            } catch (Exception ignored) {}
-
             Stage stage = (Stage) mainTitle.getScene().getWindow();
             stage.setScene(scene);
             stage.show();
-
         } catch (IOException e) {
-            System.err.println("⚠️ Error loading FXML: " + fxmlPath);
             e.printStackTrace();
         }
     }

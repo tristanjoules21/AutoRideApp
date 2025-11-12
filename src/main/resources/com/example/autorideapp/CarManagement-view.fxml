@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
@@ -47,7 +46,7 @@
                 <Button fx:id="logoutButton"
                         styleClass="logout-btn"
                         text="⏻ Logout"
-                        onAction="#onLogoutClick" />
+                        onAction="#handleLogout" />
             </VBox>
         </VBox>
     </left>
@@ -61,7 +60,7 @@
 
             <!-- Header -->
             <HBox alignment="CENTER_LEFT" spacing="15">
-                <Label fx:id="titleLabel"
+                <Label fx:id="mainTitle"
                        styleClass="main-title"
                        text="Car Management" />
                 <Pane HBox.hgrow="ALWAYS" />
@@ -69,23 +68,28 @@
                            promptText="🔍 Search cars..."
                            prefWidth="300.0"
                            styleClass="search-field" />
+                <!-- ✅ Button now properly wired -->
                 <Button fx:id="addCarButton"
                         styleClass="add-btn"
-                        text="+ Add New Car"
-                        onAction="#handleAddCarClick" />
+                        text="+ Add Car"
+                        onAction="#handleAddCar" />
             </HBox>
 
-            <!-- Table -->
+            <!-- ✅ Functional Car Table -->
             <TableView fx:id="carTable"
                        prefHeight="700.0"
                        styleClass="car-table">
+
                 <columns>
-                    <TableColumn prefWidth="200.0" text="Car ID" />
-                    <TableColumn prefWidth="300.0" text="Model" />
-                    <TableColumn prefWidth="250.0" text="Type" />
-                    <TableColumn prefWidth="200.0" text="Status" />
-                    <TableColumn prefWidth="200.0" text="Price" />
-                    <TableColumn prefWidth="150.0" text="Actions" />
+                    <TableColumn fx:id="modelColumn" text="Model" prefWidth="200"/>
+                    <TableColumn fx:id="plateNumberColumn" text="Plate Number" prefWidth="200"/>
+                    <TableColumn fx:id="typeColumn" text="Type" prefWidth="150"/>
+                    <TableColumn fx:id="yearColumn" text="Year" prefWidth="100"/>
+                    <TableColumn fx:id="seatsColumn" text="Seats" prefWidth="100"/>
+                    <TableColumn fx:id="priceColumn" text="Price Per Day" prefWidth="150"/>
+                    <TableColumn fx:id="fuelTypeColumn" text="Fuel Type" prefWidth="150"/>
+                    <TableColumn fx:id="transmissionColumn" text="Transmission" prefWidth="150"/>
+                    <TableColumn fx:id="imageUrlColumn" text="Image URL" prefWidth="250"/>
                 </columns>
             </TableView>
         </VBox>

@@ -71,19 +71,17 @@
                         onAction="#handleAddUser" />
             </HBox>
 
-            <!-- Table -->
+            <!-- ✅ Functional User Table -->
             <TableView fx:id="userTable"
                        prefHeight="700.0"
                        styleClass="user-table">
                 <columns>
-                    <TableColumn prefWidth="150.0" text="User ID" />
-                    <TableColumn prefWidth="250.0" text="Name" />
-                    <TableColumn prefWidth="300.0" text="Email" />
-                    <TableColumn prefWidth="200.0" text="Position" />
-                    <TableColumn prefWidth="200.0" text="Status" />
-                    <TableColumn prefWidth="150.0" text="Actions" />
+                    <TableColumn fx:id="usernameColumn" text="Username" prefWidth="150"/>
+                    <TableColumn fx:id="emailColumn" text="Email" prefWidth="200"/>
+                    <TableColumn fx:id="roleColumn" text="Role" prefWidth="100"/>
                 </columns>
             </TableView>
+
         </VBox>
     </center>
 </BorderPane>

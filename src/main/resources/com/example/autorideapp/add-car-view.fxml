@@ -12,6 +12,7 @@
       prefHeight="400"
       style="-fx-padding: 30; -fx-background-color: white; -fx-font-family: 'Segoe UI';">
 
+    <!-- Title -->
     <Label text="Add New Car" style="-fx-font-size: 20px; -fx-font-weight: bold;" />
 
     <GridPane hgap="20" vgap="15">
@@ -63,12 +64,25 @@
         <!-- Row 4: Image URL full width -->
         <VBox spacing="5" GridPane.rowIndex="4" GridPane.columnIndex="0" GridPane.columnSpan="2">
             <Label text="Image URL"/>
-            <TextField fx:id="imageUrlField" promptText="https://example.com/car-image.jpg" prefWidth="520"/>
+            <TextField fx:id="imageUrlField"
+                       promptText="https://example.com/car-image.jpg"
+                       prefWidth="520"/>
         </VBox>
     </GridPane>
 
+    <!-- Buttons -->
     <HBox spacing="10" alignment="CENTER_RIGHT">
-        <Button fx:id="cancelButton" text="Cancel" style="-fx-background-color: transparent; -fx-text-fill: #333;"/>
-        <Button fx:id="addCarButton" text="Add Car" style="-fx-background-color: #28a745; -fx-text-fill: white; -fx-font-weight: bold;"/>
+        <!-- ❌ Cancel button closes the popup -->
+        <Button fx:id="cancelButton"
+                text="Cancel"
+                onAction="#onCancelClick"
+                style="-fx-background-color: transparent; -fx-text-fill: #333;"/>
+
+        <!-- ✅ Add Car button adds new car -->
+        <Button fx:id="addCarButton"
+                text="Add Car"
+                onAction="#onAddCarClick"
+                style="-fx-background-color: #28a745; -fx-text-fill: white; -fx-font-weight: bold;"/>
     </HBox>
+
 </VBox>
