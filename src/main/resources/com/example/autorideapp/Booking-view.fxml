@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
@@ -58,29 +57,42 @@
 
             <!-- Header -->
             <HBox alignment="CENTER_LEFT" spacing="15">
-                <Label fx:id="mainTitle" styleClass="main-title"
+                <Label fx:id="mainTitle"
+                       styleClass="main-title"
                        text="Booking Management" />
-                <Pane HBox.hgrow="ALWAYS" />
-                <TextField fx:id="searchField"
-                           promptText="🔍 Search bookings..."
-                           prefWidth="300.0"
-                           styleClass="search-field" />
-                <Button onAction="#handleAddBooking"
-                        styleClass="add-btn" text="+ New Booking" />
+                <Pane HBox.hgrow="ALWAYS"/>
+                <MenuButton text="All Bookings" fx:id="filterBookings"/>
             </HBox>
 
             <!-- Booking Table -->
-            <TableView fx:id="bookingTable" prefHeight="700.0" styleClass="booking-table">
+            <TableView fx:id="bookingTable"
+                       prefHeight="700.0"
+                       styleClass="booking-table">
                 <columns>
-                    <TableColumn prefWidth="150.0" text="Booking ID" />
-                    <TableColumn prefWidth="250.0" text="Customer" />
-                    <TableColumn prefWidth="250.0" text="Car" />
-                    <TableColumn prefWidth="300.0" text="Dates" />
-                    <TableColumn prefWidth="200.0" text="Amount" />
-                    <TableColumn prefWidth="200.0" text="Payment" />
-                    <TableColumn prefWidth="150.0" text="Actions" />
+                    <TableColumn fx:id="idColumn"
+                                 text="Booking ID"
+                                 prefWidth="80"/>
+                    <TableColumn fx:id="customerColumn"
+                                 text="Customer"
+                                 prefWidth="200"/>
+                    <TableColumn fx:id="carColumn"
+                                 text="Car"
+                                 prefWidth="200"/>
+                    <TableColumn fx:id="datesColumn"
+                                 text="Dates"
+                                 prefWidth="250"/>
+                    <TableColumn fx:id="amountColumn"
+                                 text="Amount"
+                                 prefWidth="120"/>
+                    <TableColumn fx:id="statusColumn"
+                                 text="Status"
+                                 prefWidth="120"/>
+                    <TableColumn fx:id="actionsColumn"
+                                 text="Actions"
+                                 prefWidth="120"/>
                 </columns>
             </TableView>
         </VBox>
     </center>
+
 </BorderPane>

@@ -1,135 +1,84 @@
-/* === Global === */
-.root {
-    -fx-font-family: "Poppins", "Segoe UI", sans-serif;
-    -fx-background-color: #f8f9fa;
-}
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
 
-/* === Sidebar === */
-.sidebar {
-    -fx-background-color: #166534; /* Updated Green */
-}
+<BorderPane xmlns="http://javafx.com/javafx/17.0.12"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.example.autorideapp.autoride.CarManagementController"
+            stylesheets="@styles/car-theme.css">
 
-.brand {
-    -fx-font-size: 28px;
-    -fx-font-weight: bold;
-    -fx-text-fill: white;
-}
+    <!-- Sidebar left omitted (your existing sidebar can stay) -->
 
-.subtitle {
-    -fx-font-size: 15px;
-    -fx-text-fill: #cfd8dc;
-}
+    <!-- Main Content -->
+    <center>
+        <HBox spacing="24" style="-fx-padding: 30;">
 
-/* === Navigation === */
-.nav-item,
-.nav-item-active {
-    -fx-pref-width: 220px;
-    -fx-font-size: 16px;
-    -fx-background-radius: 8;
-    -fx-background-color: transparent;
-    -fx-text-fill: white;
-    -fx-alignment: center-left;
-    -fx-padding: 12 18 12 18;
-    -fx-cursor: hand;
-}
+            <!-- Left: Car Table -->
+            <VBox spacing="12" prefWidth="900">
+                <HBox alignment="CENTER_LEFT" spacing="12">
+                    <Label fx:id="mainTitle" styleClass="main-title" text="Car Management"/>
+                    <Pane HBox.hgrow="ALWAYS"/>
+                    <Button fx:id="addCarButton" text="+ Add New Car" onAction="#handleAddCar" styleClass="add-btn"/>
+                </HBox>
 
-.nav-item:hover {
-    -fx-background-color: rgba(255,255,255,0.15);
-}
+                <TableView fx:id="carTable" prefHeight="700.0" styleClass="table-view">
+                    <columns>
+                        <TableColumn fx:id="modelColumn" text="Car" prefWidth="180"/>
+                        <TableColumn fx:id="typeColumn" text="Type" prefWidth="100"/>
+                        <TableColumn fx:id="yearColumn" text="Year" prefWidth="80"/>
+                        <TableColumn fx:id="seatsColumn" text="Seats" prefWidth="80"/>
+                        <TableColumn fx:id="transmissionColumn" text="Transmission" prefWidth="120"/>
+                        <TableColumn fx:id="fuelTypeColumn" text="Fuel" prefWidth="100"/>
+                        <TableColumn fx:id="priceColumn" text="Price/day" prefWidth="100"/>
+                        <TableColumn fx:id="actionsColumn" text="Actions" prefWidth="120"/>
+                    </columns>
+                </TableView>
+            </VBox>
 
-.nav-item-active {
-    -fx-background-color: #0F3D25;
-    -fx-text-fill: white;
-    -fx-font-weight: bold;
+            <!-- Right: Booking / Car Details Panel -->
+            <VBox fx:id="detailsPane" spacing="18" prefWidth="500"
+                  style="-fx-background-color: #ffffff; -fx-padding: 24; -fx-border-radius: 6; -fx-background-radius: 6;"
+                  visible="false" managed="false">
 
-}
+                <!-- Car Image -->
+                <StackPane style="-fx-alignment: center;">
+                    <ImageView fx:id="carImageView" fitWidth="400" fitHeight="220" preserveRatio="true"/>
+                </StackPane>
 
-/* === Admin Info === */
-.admin-name {
-    -fx-font-size: 15px;
-    -fx-font-weight: bold;
-    -fx-text-fill: white;
-}
+                <!-- Car Details -->
+                <VBox spacing="8">
+                    <Label fx:id="carTitle" style="-fx-font-size: 20px; -fx-font-weight: bold;"/>
+                    <Label fx:id="carSubtitle" style="-fx-text-fill: #666;"/>
+                    <Separator/>
 
-.admin-email {
-    -fx-font-size: 13px;
-    -fx-text-fill: #cfd8dc;
-}
+                    <TextArea fx:id="carSpecs" wrapText="true" editable="false"
+                              style="-fx-background-color:transparent; -fx-padding:0; -fx-border-width:0;" prefRowCount="6"/>
 
-/* === Logout Button === */
-.logout-btn {
-    -fx-background-color: transparent;
-    -fx-border-color: white;
-    -fx-text-fill: white;
-    -fx-font-size: 14px;
-    -fx-border-radius: 8;
-    -fx-background-radius: 8;
-    -fx-pref-width: 200px;
-    -fx-font-weight: bold;
-}
+                    <Separator/>
 
-.logout-btn:hover {
-    -fx-background-color: rgba(255,255,255,0.15);
-}
+                    <!-- Booking Panel -->
+                    <VBox spacing="10" style="-fx-background-color: #f7f7f7; -fx-padding: 12; -fx-border-radius:8; -fx-background-radius:8;">
+                        <Label text="Book this Car" style="-fx-font-weight: bold;"/>
+                        <Label fx:id="bookCarModel" style="-fx-text-fill: #444;"/>
+                        <Label text="Price/day" style="-fx-font-size: 12px; -fx-text-fill: #999;"/>
+                        <Label fx:id="bookPrice" style="-fx-font-weight: bold; -fx-font-size: 16px;"/>
 
-/* === Main Content === */
-.main-content {
-    -fx-background-color: white;
-    -fx-background-radius: 10;
-    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.05), 6, 0, 0, 2);
-}
+                        <Label text="Pick up / Return Dates" style="-fx-font-size: 12px; -fx-text-fill: #999;"/>
+                        <DatePicker fx:id="pickupDate" promptText="Pick up" onAction="#onDateChanged"/>
+                        <DatePicker fx:id="returnDate" promptText="Return" onAction="#onDateChanged"/>
 
-.main-title {
-    -fx-font-size: 26px;
-    -fx-font-weight: bold;
-    -fx-text-fill: #111827;
-}
+                        <Label text="Total" style="-fx-text-fill: #999; -fx-padding:6 0 0 0;"/>
+                        <Label fx:id="totalLabel" style="-fx-font-weight: bold; -fx-font-size: 14px;"/>
 
-/* === Search Field === */
-.search-field {
-    -fx-background-color: white;
-    -fx-border-color: #d1d5db;
-    -fx-border-radius: 6;
-    -fx-background-radius: 6;
-    -fx-padding: 8 12;
-    -fx-font-size: 14px;
-}
-
-.search-field:focused {
-    -fx-border-color: #22c55e;
-    -fx-effect: dropshadow(gaussian, rgba(34,197,94,0.3), 5, 0, 0, 1);
-}
-
-/* === Add Button === */
-.add-btn {
-    -fx-background-color: #22c55e;
-    -fx-text-fill: white;
-    -fx-font-weight: bold;
-    -fx-background-radius: 8;
-    -fx-padding: 10 20;
-    -fx-font-size: 15px;
-}
-
-.add-btn:hover {
-    -fx-background-color: #16a34a;
-}
-
-/* === Table === */
-.car-table {
-    -fx-background-color: white;
-    -fx-border-color: #dcdcdc;
-    -fx-border-radius: 8;
-    -fx-background-radius: 8;
-    -fx-padding: 8;
-}
-
-.table-view .column-header {
-    -fx-background-color: #e8f5e9;
-    -fx-font-weight: bold;
-    -fx-font-size: 14px;
-    -fx-text-fill: #388e3c;
-}
-
-.table-row-cell:selected {
-    -fx-background-color: #c8e6c9;
-}
+                        <HBox spacing="8" alignment="CENTER_RIGHT">
+                            <Button text="Cancel" onAction="#onCancelBooking" style="-fx-background-color:transparent;"/>
+                            <Button text="Book" onAction="#onBookNow" styleClass="table-action-book"/>
+                        </HBox>
+                    </VBox>
+                </VBox>
+            </VBox>
+        </HBox>
+    </center>
+</BorderPane>
