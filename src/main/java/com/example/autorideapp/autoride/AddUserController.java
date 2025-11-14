@@ -1,64 +1,46 @@
 package com.example.autorideapp.autoride;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
+
+import java.time.LocalDate;
 
 public class AddUserController {
 
-    @FXML
-    private TextField fullNameField;
+    @FXML private TextField fullNameField;
+    @FXML private TextField emailField;
+    @FXML private ComboBox<String> positionComboBox;
+    @FXML private PasswordField passwordField;
+    @FXML private PasswordField confirmPasswordField;
+    @FXML private Button cancelButton;
+    @FXML private Button registerButton;
 
-    @FXML
-    private TextField emailField;
-
-    @FXML
-    private ComboBox<String> roleComboBox;
-
-    @FXML
-    private PasswordField passwordField;
-
-    @FXML
-    private PasswordField confirmPasswordField;
-
-    @FXML
-    private Button cancelButton;
-
-    @FXML
-    private Button registerButton;
-
-    // --------------------------------------------------
-    // INITIALIZE (this runs automatically when popup loads)
-    // --------------------------------------------------
     @FXML
     public void initialize() {
-        System.out.println("✅ AddUserController initialized successfully.");
+        System.out.println("AddUserController initialized.");
 
-        // 🟢 Populate the role combo box options
-        roleComboBox.getItems().addAll("Admin", "Staff", "Manager", "Support");
+        positionComboBox.getItems().addAll(
+                "Administrator",
+                "Staff",
+                "Manager",
+                "Support",
+                "Clerk"
+        );
 
-        // Optional default value
-        roleComboBox.getSelectionModel().selectFirst();
+        positionComboBox.getSelectionModel().selectFirst();
     }
-
-    // --------------------------------------------------
-    // EVENT HANDLERS
-    // --------------------------------------------------
 
     @FXML
     private void onAddUserClick() {
         try {
             String fullName = fullNameField.getText().trim();
             String email = emailField.getText().trim();
-            String role = roleComboBox.getValue();
+            String position = positionComboBox.getValue();
             String password = passwordField.getText();
             String confirmPassword = confirmPasswordField.getText();
 
-            // ✅ Validation checks
-            if (fullName.isEmpty() || email.isEmpty() || role == null ||
+            if (fullName.isEmpty() || email.isEmpty() || position == null ||
                     password.isEmpty() || confirmPassword.isEmpty()) {
                 System.out.println("⚠️ Please fill out all fields.");
                 return;
@@ -69,19 +51,20 @@ public class AddUserController {
                 return;
             }
 
-            // 🟢 Create new User object (update based on your User class fields)
-            User newUser = new User(fullName, email, role, password);
+            User newUser = new User(
+                    fullName,
+                    email,
+                    position,
+                    LocalDate.now().toString()
+            );
 
-            // 🟢 Add to your in-memory database
             UserDatabase.addUser(newUser);
-            System.out.println("✅ Registered new user: " + fullName + " (" + role + ")");
+            System.out.println("New user registered: " + fullName);
 
-            // 🟢 Close popup window after success
             Stage stage = (Stage) registerButton.getScene().getWindow();
             stage.close();
 
         } catch (Exception e) {
-            System.err.println("⚠️ Error adding user: " + e.getMessage());
             e.printStackTrace();
         }
     }
@@ -90,6 +73,5 @@ public class AddUserController {
     private void onCancelClick() {
         Stage stage = (Stage) cancelButton.getScene().getWindow();
         stage.close();
-        System.out.println("❎ Add User window closed.");
     }
 }

@@ -3,10 +3,7 @@ package com.example.autorideapp.autoride;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.scene.Parent;
@@ -33,6 +30,15 @@ public class UserManagementController {
     @FXML
     private TableColumn<User, String> roleColumn;
 
+    @FXML
+    private TableColumn<User, String> positionColumn;
+
+    @FXML
+    private TableColumn<User, String> createdColumn;
+
+    @FXML
+    private TableColumn<User, Void> updateColumn;
+
     // --------------------------------------------------
     // INITIALIZATION
     // --------------------------------------------------
@@ -42,7 +48,31 @@ public class UserManagementController {
 
         usernameColumn.setCellValueFactory(new javafx.scene.control.cell.PropertyValueFactory<>("username"));
         emailColumn.setCellValueFactory(new javafx.scene.control.cell.PropertyValueFactory<>("email"));
-        roleColumn.setCellValueFactory(new javafx.scene.control.cell.PropertyValueFactory<>("role"));
+
+        positionColumn.setCellValueFactory(new javafx.scene.control.cell.PropertyValueFactory<>("position"));
+        createdColumn.setCellValueFactory(new javafx.scene.control.cell.PropertyValueFactory<>("created"));
+
+        // UPDATE BUTTON
+        updateColumn.setCellFactory(col -> new TableCell<>() {
+            private final Button updateBtn = new Button("Update");
+
+            {
+                updateBtn.setStyle(
+                        "-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-padding: 5 10; -fx-background-radius: 6;"
+                );
+
+                updateBtn.setOnAction(event -> {
+                    User user = getTableView().getItems().get(getIndex());
+                    System.out.println("UPDATE CLICKED on: " + user.getUsername());
+                });
+            }
+
+            @Override
+            protected void updateItem(Void item, boolean empty) {
+                super.updateItem(item, empty);
+                setGraphic(empty ? null : updateBtn);
+            }
+        });
 
         refreshUserTable();
     }
@@ -52,77 +82,48 @@ public class UserManagementController {
     }
 
     // --------------------------------------------------
-    // ADD USER POPUP (✅ Fixed version)
+    // ADD USER POPUP
     // --------------------------------------------------
     @FXML
     private void handleAddUser() {
         try {
-            System.out.println("🟢 Opening Add User popup...");
-
-            // ✅ Make sure your FXML file is located here:
-            // src/main/resources/com/example/autorideapp/add-user-view.fxml
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/autorideapp/add-user-view.fxml"));
-            if (loader.getLocation() == null) {
-                throw new IOException("❌ FXML not found at /com/example/autorideapp/add-user-view.fxml");
-            }
-
             Parent root = loader.load();
 
-            // ✅ Show popup window
             Stage popupStage = new Stage();
             popupStage.initModality(Modality.APPLICATION_MODAL);
             popupStage.setTitle("Add New User");
             popupStage.setScene(new Scene(root));
             popupStage.showAndWait();
 
-            System.out.println("✅ Add User popup closed — refreshing table...");
             refreshUserTable();
 
         } catch (IOException e) {
-            System.err.println("⚠️ Error loading Add User view:");
             e.printStackTrace();
-        } catch (Exception ex) {
-            System.err.println("⚠️ Unexpected error: " + ex.getMessage());
-            ex.printStackTrace();
         }
     }
 
-    // ======================================================
-    // 🔹 Navigation Buttons (Fixes “Dashboard not working” issue)
-    // ======================================================
+    // --------------------------------------------------
+    // Navigation Buttons
+    // --------------------------------------------------
     @FXML
-    private void showDashboardView() {
-        loadScene("/com/example/autorideapp/dashboard-view.fxml");
-    }
+    private void showDashboardView() { loadScene("/com/example/autorideapp/dashboard-view.fxml"); }
 
     @FXML
-    private void showCarManagementView() {
-        loadScene("/com/example/autorideapp/CarManagement-view.fxml");
-    }
+    private void showCarManagementView() { loadScene("/com/example/autorideapp/CarManagement-view.fxml"); }
 
     @FXML
-    private void showBookingView() {
-        loadScene("/com/example/autorideapp/Booking-view.fxml");
-    }
+    private void showBookingView() { loadScene("/com/example/autorideapp/BookingManagement-view.fxml"); }
 
     @FXML
-    private void showCustomerManagementView() {
-        loadScene("/com/example/autorideapp/CustomerManagement-view.fxml");
-    }
+    private void showCustomerManagementView() { loadScene("/com/example/autorideapp/CustomerManagement-view.fxml"); }
 
     @FXML
-    private void showUserManagementView() {
-        loadScene("/com/example/autorideapp/UserManagement-view.fxml");
-    }
+    private void showUserManagementView() { loadScene("/com/example/autorideapp/UserManagement-view.fxml"); }
 
     @FXML
-    private void handleLogout() {
-        loadScene("/com/example/autorideapp/login-view.fxml");
-    }
+    private void handleLogout() { loadScene("/com/example/autorideapp/login-view.fxml"); }
 
-    // ======================================================
-    // 🔧 Helper method for all navigation
-    // ======================================================
     private void loadScene(String fxmlPath) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlPath));
@@ -131,7 +132,6 @@ public class UserManagementController {
             stage.setScene(scene);
             stage.show();
         } catch (IOException e) {
-            System.err.println("⚠️ Error loading FXML: " + fxmlPath);
             e.printStackTrace();
         }
     }

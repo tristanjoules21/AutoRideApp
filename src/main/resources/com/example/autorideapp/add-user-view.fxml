@@ -8,63 +8,40 @@
       fx:controller="com.example.autorideapp.autoride.AddUserController"
       spacing="20" alignment="TOP_LEFT"
       prefWidth="600"
-      style="-fx-padding: 30; -fx-background-color: #f8f8f8; -fx-font-family: 'Segoe UI';">
+      style="-fx-padding: 30; -fx-background-color: #f8f8f8;">
 
-    <!-- Title -->
     <Label text="Add New User" style="-fx-font-size: 20px; -fx-font-weight: bold;"/>
 
-    <!-- Row 1: Full Name & Email -->
     <HBox spacing="30">
-        <VBox spacing="5" HBox.hgrow="ALWAYS">
+        <VBox spacing="5">
             <Label text="Full Name"/>
-            <TextField fx:id="fullNameField"
-                       promptText="Enter full name"
-                       prefWidth="250"/>
+            <TextField fx:id="fullNameField" promptText="Enter full name"/>
         </VBox>
 
-        <VBox spacing="5" HBox.hgrow="ALWAYS">
+        <VBox spacing="5">
             <Label text="Email"/>
-            <TextField fx:id="emailField"
-                       promptText="Enter email"
-                       prefWidth="250"/>
+            <TextField fx:id="emailField" promptText="Enter email"/>
         </VBox>
     </HBox>
 
-    <!-- Row 2: Role -->
     <VBox spacing="5">
-        <Label text="Role"/>
-        <!-- ✅ Role ComboBox to match controller -->
-        <ComboBox fx:id="roleComboBox"
-                  promptText="Select role"
-                  prefWidth="530"/>
+        <Label text="Position"/>
+        <ComboBox fx:id="positionComboBox" prefWidth="530" promptText="Select position"/>
     </VBox>
 
-    <!-- Row 3: Password -->
     <VBox spacing="5">
         <Label text="Password"/>
-        <PasswordField fx:id="passwordField"
-                       promptText="Enter password"
-                       prefWidth="530"/>
+        <PasswordField fx:id="passwordField" promptText="Enter password"/>
     </VBox>
 
-    <!-- Row 4: Confirm Password -->
     <VBox spacing="5">
         <Label text="Confirm Password"/>
-        <PasswordField fx:id="confirmPasswordField"
-                       promptText="Confirm password"
-                       prefWidth="530"/>
+        <PasswordField fx:id="confirmPasswordField" promptText="Confirm password"/>
     </VBox>
 
-    <!-- Buttons -->
     <HBox spacing="10" alignment="CENTER_RIGHT">
-        <Button text="Cancel"
-                fx:id="cancelButton"
-                onAction="#onCancelClick"
-                style="-fx-background-color: transparent; -fx-text-fill: #333;"/>
-
-        <Button text="Register User"
-                fx:id="registerButton"
-                onAction="#onAddUserClick"
+        <Button fx:id="cancelButton" text="Cancel" onAction="#onCancelClick"/>
+        <Button fx:id="registerButton" text="Register User" onAction="#onAddUserClick"
                 style="-fx-background-color: #28a745; -fx-text-fill: white;"/>
     </HBox>
 

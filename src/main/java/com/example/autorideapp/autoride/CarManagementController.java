@@ -50,7 +50,7 @@ public class CarManagementController {
 
     @FXML
     public void initialize() {
-        mainTitle.setText("Car Management - Manage Cars");
+        mainTitle.setText("Car Management ");
 
         // Setup columns to match Car fields
         modelColumn.setCellValueFactory(new PropertyValueFactory<>("model"));
@@ -93,7 +93,7 @@ public class CarManagementController {
     // ✅ Navigation Buttons (if you have them)
     @FXML private void showDashboardView() { loadScene("/com/example/autorideapp/dashboard-view.fxml"); }
     @FXML private void showCarManagementView() { loadScene("/com/example/autorideapp/CarManagement-view.fxml"); }
-    @FXML private void showBookingView() { loadScene("/com/example/autorideapp/Booking-view.fxml"); }
+    @FXML private void showBookingView() { loadScene("/com/example/autorideapp/BookingManagement-view.fxml"); }
     @FXML private void showCustomerManagementView() { loadScene("/com/example/autorideapp/CustomerManagement-view.fxml"); }
     @FXML private void showUserManagementView() { loadScene("/com/example/autorideapp/UserManagement-view.fxml"); }
     @FXML private void handleLogout() { loadScene("/com/example/autorideapp/login-view.fxml"); }
@@ -110,3 +110,4 @@ public class CarManagementController {
         }
     }
 }
+

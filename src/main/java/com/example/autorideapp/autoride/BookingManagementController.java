@@ -20,7 +20,7 @@ public class BookingManagementController {
     @FXML
     public void initialize() {
         if (mainTitle != null) {
-            mainTitle.setText("Booking Management - Manage Customer Bookings");
+            mainTitle.setText("Booking Management ");
         }
     }
 
@@ -40,7 +40,7 @@ public class BookingManagementController {
     }
 
     @FXML private void showBookingView() {
-        loadScene("/com/example/autorideapp/Booking-view.fxml");
+        loadScene("/com/example/autorideapp/BookingManagement-view.fxml");
     }
 
     @FXML private void showCustomerManagementView() {

@@ -32,7 +32,7 @@ public class CustomerManagementController {
 
     @FXML
     public void initialize() {
-        mainTitle.setText("Customer Management - Manage Customers");
+        mainTitle.setText("Customer Management");
 
         nameColumn.setCellValueFactory(new PropertyValueFactory<>("fullName"));
         emailColumn.setCellValueFactory(new PropertyValueFactory<>("email"));
@@ -62,7 +62,7 @@ public class CustomerManagementController {
     // Sidebar navigation (keep as is)
     @FXML private void showDashboardView() { loadScene("/com/example/autorideapp/dashboard-view.fxml"); }
     @FXML private void showCarManagementView() { loadScene("/com/example/autorideapp/CarManagement-view.fxml"); }
-    @FXML private void showBookingView() { loadScene("/com/example/autorideapp/Booking-view.fxml"); }
+    @FXML private void showBookingView() { loadScene("/com/example/autorideapp/BookingManagement-view.fxml"); }
     @FXML private void showCustomerManagementView() { loadScene("/com/example/autorideapp/CustomerManagement-view.fxml"); }
     @FXML private void showUserManagementView() { loadScene("/com/example/autorideapp/UserManagement-view.fxml"); }
     @FXML private void handleLogout() { loadScene("/com/example/autorideapp/login-view.fxml"); }

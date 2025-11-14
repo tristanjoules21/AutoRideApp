@@ -44,7 +44,7 @@ public class DashboardController {
     // 🔹 Load Booking Management
     @FXML
     private void showBookingView() {
-        loadScene("/com/example/autorideapp/Booking-view.fxml");
+        loadScene("/com/example/autorideapp/BookingManagement-view.fxml");
     }
 
     // 🔹 Load Customer Management

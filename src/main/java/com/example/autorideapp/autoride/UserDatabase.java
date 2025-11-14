@@ -1,14 +1,21 @@
 package com.example.autorideapp.autoride;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
 public class UserDatabase {
+
     private static final List<User> users = new ArrayList<>();
 
     static {
-        // Default admin account
-        users.add(new User("admin", "admin@autoride.com", "1234", "Admin"));
+        // Default admin
+        users.add(new User(
+                "admin",
+                "admin@autoride.com",
+                "System Administrator",
+                LocalDate.now().toString()
+        ));
     }
 
     public static void addUser(User user) {
@@ -19,9 +26,9 @@ public class UserDatabase {
         return users;
     }
 
-    public static User findUser(String username, String password) {
+    public static User findUserByUsername(String username) {
         for (User u : users) {
-            if (u.getUsername().equals(username) && u.getPassword().equals(password)) {
+            if (u.getUsername().equals(username)) {
                 return u;
             }
         }
