@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane prefHeight="1080.0" prefWidth="1920.0"
+            stylesheets="@booking.css"
+            xmlns="http://javafx.com/javafx/17.0.12"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.example.autorideapp.autoride.MainLayoutController">
+
+    <!-- Sidebar -->
+    <left>
+        <VBox fx:id="sidebar" prefWidth="280.0" spacing="30" styleClass="sidebar">
+            <padding>
+                <Insets bottom="30" left="30" right="30" top="40" />
+            </padding>
+
+            <!-- Header -->
+            <VBox spacing="4">
+                <Label styleClass="brand" text="AutoRide" />
+                <Label styleClass="subtitle" text="Car Rental System" />
+            </VBox>
+
+            <!-- Navigation -->
+            <VBox spacing="12" VBox.vgrow="ALWAYS">
+                <Button fx:id="dashboardButton" styleClass="nav-item" text="🏠 Dashboard"
+                        onAction="#showDashboardView" />
+                <Button fx:id="carButton" styleClass="nav-item" text="🚗 Car Management"
+                        onAction="#showCarManagementView" />
+                <Button fx:id="bookingButton" styleClass="nav-item" text="📅 Booking Management"
+                        onAction="#showBookingView" />
+                <Button fx:id="customerButton" styleClass="nav-item" text="👥 Customer Management"
+                        onAction="#showCustomerManagementView" />
+                <Button fx:id="userButton" styleClass="nav-item" text="👤 User Management"
+                        onAction="#showUserManagementView" />
+            </VBox>
+
+            <!-- Admin Info + Logout -->
+            <VBox spacing="15">
+                <VBox alignment="CENTER" spacing="3">
+                    <Label styleClass="admin-name" text="Admin User" />
+                    <Label styleClass="admin-email" text="admin@autoride.com" />
+                </VBox>
+                <Button onAction="#handleLogout"
+                        styleClass="logout-btn" text="⏻ Logout" />
+            </VBox>
+        </VBox>
+    </left>
+
+    <!-- Main Content -->
+    <center>
+        <ScrollPane fitToWidth="true" fitToHeight="true" styleClass="main-scrollpane">
+            <VBox fx:id="mainContent" spacing="30" styleClass="main-content">
+                <!-- Dynamic content will be injected here based on navigation -->
+            </VBox>
+        </ScrollPane>
+    </center>
+
+</BorderPane>

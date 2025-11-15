@@ -1,131 +1,116 @@
-/* === Global === */
-.root {
-    -fx-font-family: "Poppins", "Segoe UI", sans-serif;
-    -fx-background-color: #f8f9fa;
+/* ===== GENERAL PAGE STYLING ===== */
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #5A0034; /* dark maroon */
+    font-family: Arial, sans-serif;
 }
 
-/* === Main Title === */
-.main-title {
-    -fx-font-size: 26px;
-    -fx-font-weight: bold;
-    -fx-text-fill: #111827;
+/* Centered container */
+.container {
+    width: 95%;
+    margin: 30px auto;
 }
 
-/* === Add Car Button === */
-.add-btn {
-    -fx-background-color: #22c55e;
-    -fx-text-fill: white;
-    -fx-font-weight: bold;
-    -fx-background-radius: 8;
-    -fx-padding: 10 20;
-    -fx-font-size: 15px;
+/* ===== HEADER SECTION ===== */
+.header-box {
+    background-color: #000; /* black background */
+    color: white;
+    padding: 15px 20px;
+    border-radius: 8px;
 }
 
-.add-btn:hover {
-    -fx-background-color: #16a34a;
+.header-box h2 {
+    margin: 0 0 10px 0;
+    font-size: 23px;
+    font-weight: bold;
 }
 
-/* === Table === */
-.table-view {
-    -fx-background-color: white;
-    -fx-border-color: #dcdcdc;
-    -fx-border-radius: 8;
-    -fx-background-radius: 8;
-    -fx-padding: 8;
+.header-details p {
+    margin: 3px 0;
+    font-size: 14px;
 }
 
-.table-view .column-header-background {
-    -fx-background-color: #e8f5e9;
+
+/* ===== STUDENT INFO BOX ===== */
+.student-info {
+    background-color: white;
+    padding: 20px;
+    margin-top: 20px;
+    border-radius: 10px;
 }
 
-.table-view .column-header,
-.table-view .column-header .label {
-    -fx-font-weight: bold;
-    -fx-font-size: 14px;
-    -fx-text-fill: #166534;
+.info-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    row-gap: 10px;
+    column-gap: 70px;
 }
 
-.table-row-cell:selected {
-    -fx-background-color: #c8e6c9;
+.info-row p {
+    margin: 3px 0;
+    font-size: 14px;
 }
 
-/* === Details Panel === */
-#detailsPane {
-    -fx-background-color: #ffffff;
-    -fx-border-color: #e5e7eb;
-    -fx-border-radius: 10;
-    -fx-background-radius: 10;
-    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.05), 6, 0, 0, 2);
+
+/* ===== TABLE SECTION ===== */
+.grade-table-box {
+    background-color: white;
+    padding: 20px;
+    margin-top: 20px;
+    border-radius: 10px;
 }
 
-#carTitle {
-    -fx-font-size: 20px;
-    -fx-font-weight: bold;
-    -fx-text-fill: #111827;
+.table-header {
+    background-color: #000;
+    color: white;
+    padding: 10px;
+    font-weight: bold;
+    border-radius: 8px;
+    margin-bottom: 10px;
 }
 
-#carSubtitle {
-    -fx-text-fill: #6b7280;
+/* Table */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
 }
 
-/* === TextArea (Car Specs) === */
-.text-area {
-    -fx-background-color: transparent;
-    -fx-border-width: 0;
-    -fx-padding: 0;
-    -fx-text-fill: #374151;
+th {
+    background-color: #E0E0E0;
+    padding: 10px;
+    text-align: left;
+    font-weight: bold;
 }
 
-/* === Booking Panel === */
-#detailsPane VBox {
-    -fx-background-color: #f7f7f7;
-    -fx-background-radius: 8;
-    -fx-border-radius: 8;
+td {
+    padding: 10px;
 }
 
-#bookCarModel {
-    -fx-text-fill: #444;
+/* Alternating row colors */
+tr:nth-child(even) {
+    background-color: #f9f9f9;
 }
 
-#bookPrice {
-    -fx-font-weight: bold;
-    -fx-font-size: 16px;
-    -fx-text-fill: #111827;
+/* Hover effect */
+tr:hover {
+    background-color: #f0f0f0;
 }
 
-#totalLabel {
-    -fx-font-weight: bold;
-    -fx-font-size: 14px;
-    -fx-text-fill: #111827;
+
+/* ===== PRINT BUTTON ===== */
+.print-btn {
+    margin-top: 20px;
+    padding: 10px 25px;
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
 }
 
-/* === Buttons inside Booking Panel === */
-.table-action-book {
-    -fx-background-color: #22c55e;
-    -fx-text-fill: white;
-    -fx-font-weight: bold;
-    -fx-background-radius: 8;
-    -fx-padding: 8 16;
-}
-
-.table-action-book:hover {
-    -fx-background-color: #16a34a;
-}
-
-.button {
-    -fx-cursor: hand;
-}
-
-/* === DatePicker === */
-.date-picker {
-    -fx-background-color: white;
-    -fx-border-color: #d1d5db;
-    -fx-border-radius: 6;
-    -fx-background-radius: 6;
-    -fx-padding: 6 8;
-}
-
-.date-picker:focused {
-    -fx-border-color: #22c55e;
-    -fx-effect: dropshadow(gaussian, rgba(34,197,94,0.3), 5, 0, 0, 1);
+.print-btn:hover {
+    background-color: #333;
 }

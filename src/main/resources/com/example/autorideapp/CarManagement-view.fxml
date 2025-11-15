@@ -76,22 +76,29 @@
             </HBox>
 
             <!-- ✅ Functional Car Table -->
-            <TableView fx:id="carTable"
-                       prefHeight="700.0"
-                       styleClass="car-table">
+            <TableView fx:id="carTable" styleClass="car-table" prefHeight="700">
 
                 <columns>
-                    <TableColumn fx:id="modelColumn" text="Model" prefWidth="200"/>
-                    <TableColumn fx:id="plateNumberColumn" text="Plate Number" prefWidth="200"/>
-                    <TableColumn fx:id="typeColumn" text="Type" prefWidth="150"/>
-                    <TableColumn fx:id="yearColumn" text="Year" prefWidth="100"/>
-                    <TableColumn fx:id="seatsColumn" text="Seats" prefWidth="100"/>
-                    <TableColumn fx:id="priceColumn" text="Price Per Day" prefWidth="150"/>
-                    <TableColumn fx:id="fuelTypeColumn" text="Fuel Type" prefWidth="150"/>
-                    <TableColumn fx:id="transmissionColumn" text="Transmission" prefWidth="150"/>
-                    <TableColumn fx:id="imageUrlColumn" text="Image URL" prefWidth="250"/>
+                    <TableColumn fx:id="photoColumn" text="Photo" prefWidth="120"/>
+
+                    <!-- CAR NAME + PLATE BELOW -->
+                    <TableColumn fx:id="carInfoColumn" text="Car" prefWidth="250"/>
+
+                    <!-- DETAILS (year, type, seats, fuel, transmission) -->
+                    <TableColumn fx:id="detailsColumn" text="Details" prefWidth="350"/>
+
+                    <!-- STATUS BADGE -->
+                    <TableColumn fx:id="statusColumn" text="Status" prefWidth="150"/>
+
+                    <!-- PRICE -->
+                    <TableColumn fx:id="priceColumn" text="Price" prefWidth="150"/>
+
+                    <!-- ACTIONS (icons) -->
+                    <TableColumn fx:id="actionsColumn" text="Actions" prefWidth="120"/>
                 </columns>
+
             </TableView>
+
         </VBox>
     </center>
 </BorderPane>

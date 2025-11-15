@@ -74,8 +74,10 @@ public class AddCarController {
                     Double.parseDouble(priceField.getText()),
                     fuelTypeComboBox.getValue(),
                     transmissionComboBox.getValue(),
-                    imageUrlField.getText()
+                    imageUrlField.getText(),
+                    "Available" // default status
             );
+
 
             CarDatabase.addCar(newCar);
             System.out.println("✅ Added car: " + newCar.getModel());

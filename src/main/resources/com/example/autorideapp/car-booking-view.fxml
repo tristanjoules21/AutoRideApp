@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.shape.Circle?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.example.autorideapp.autoride.CarBookingController"
+            style="-fx-background-color: #F4F5F7;">
+
+    <center>
+        <VBox spacing="30" alignment="TOP_CENTER">
+            <padding>
+                <Insets top="20" right="20" bottom="20" left="20"/>
+            </padding>
+
+            <StackPane prefHeight="300"
+                       style="-fx-background-color: white; -fx-background-radius: 12;">
+                <padding>
+                    <Insets top="20" right="20" bottom="20" left="20"/>
+                </padding>
+                <ImageView fx:id="carImage" fitHeight="300" preserveRatio="true"/>
+            </StackPane>
+
+            <HBox spacing="8" alignment="CENTER">
+                <Circle radius="4" style="-fx-fill: #C0C0C0;" />
+                <Circle radius="4" style="-fx-fill: #C0C0C0;" />
+                <Circle radius="4" style="-fx-fill: #4F4F4F;" />
+                <Circle radius="4" style="-fx-fill: #C0C0C0;" />
+                <Circle radius="4" style="-fx-fill: #C0C0C0;" />
+            </HBox>
+
+            <HBox spacing="40" alignment="TOP_CENTER"
+                  style="-fx-background-color: white; -fx-background-radius: 12;
+                         -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.15), 12, 0, 0, 3);">
+                <padding>
+                    <Insets top="20" right="20" bottom="20" left="20"/>
+                </padding>
+
+                <VBox spacing="12" prefWidth="450">
+                    <Label fx:id="carName"
+                           style="-fx-font-size: 22px; -fx-font-weight: bold;" />
+                    <Label text="Specs" style="-fx-font-size: 14px; -fx-font-weight: bold;" />
+                    <Label fx:id="specsText" wrapText="true"
+                           style="-fx-font-size: 13px; -fx-text-fill: #444;" />
+                </VBox>
+
+                <VBox spacing="18" prefWidth="300">
+                    <Label text="Price" style="-fx-font-size: 14px; -fx-font-weight: bold;" />
+                    <Label fx:id="priceText"
+                           style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #28A745;" />
+
+                    <Label text="Pick Up and Return Date"
+                           style="-fx-font-size: 14px; -fx-font-weight: bold;" />
+
+                    <HBox spacing="10">
+                        <DatePicker fx:id="startDate" onAction="#calculateTotal" />
+                        <DatePicker fx:id="endDate" onAction="#calculateTotal" />
+                        <Button text="Book" onAction="#bookCar"
+                                style="-fx-background-color: #28A745; -fx-text-fill: white;
+                                       -fx-background-radius: 8; -fx-font-size: 16px;"
+                                prefHeight="40" />
+                    </HBox>
+
+                    <Label text="Total" style="-fx-font-size: 14px; -fx-font-weight: bold;" />
+                    <Label fx:id="totalPrice" text="₱0"
+                           style="-fx-font-size: 22px; -fx-font-weight: bold;" />
+                </VBox>
+            </HBox>
+        </VBox>
+    </center>
+</BorderPane>
