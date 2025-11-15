@@ -6,13 +6,12 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.util.Callback;
 
 import java.io.IOException;
 
@@ -22,18 +21,19 @@ public class CarManagementController {
     private Label mainTitle;
 
     @FXML
+    private VBox contentContainer;
+
+    @FXML
     private TableView<Car> carTable;
 
-    // Custom designed columns
+    @FXML private TableColumn<Car, String> photoColumn;
     @FXML private TableColumn<Car, Car> carInfoColumn;
     @FXML private TableColumn<Car, Car> detailsColumn;
     @FXML private TableColumn<Car, String> statusColumn;
     @FXML private TableColumn<Car, Double> priceColumn;
     @FXML private TableColumn<Car, Void> actionsColumn;
 
-    // New photo column
-    @FXML private TableColumn<Car, String> photoColumn;
-
+    @FXML private TextField searchField;
 
     @FXML
     public void initialize() {
@@ -44,17 +44,60 @@ public class CarManagementController {
         setupStatusColumn();
         setupPriceColumn();
         setupActionsColumn();
+        setupPhotoColumn();
 
-        // ==========================
-        // PHOTO PREVIEW COLUMN
-        // ==========================
+        refreshCarTable();
+        enableRowClickNavigation();
+    }
+
+    /* ======================================
+            CLICK ROW → SHOW CAR DETAILS
+       ====================================== */
+    private void enableRowClickNavigation() {
+        carTable.setRowFactory(tv -> {
+            TableRow<Car> row = new TableRow<>();
+
+            row.setOnMouseClicked(event -> {
+                if (!row.isEmpty() && event.getClickCount() == 1) {
+                    Car selected = row.getItem();
+                    showCarDetails(selected);
+                }
+            });
+
+            return row;
+        });
+    }
+
+    private void showCarDetails(Car car) {
+        try {
+            FXMLLoader loader = new FXMLLoader(
+                    getClass().getResource("/com/example/autorideapp/car-details-view.fxml")
+            );
+
+
+            Parent details = loader.load();
+
+            CarDetailsController controller = loader.getController();
+            controller.setCar(car);
+
+            contentContainer.getChildren().setAll(details);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /* ======================================
+              COLUMN SETUP
+       ====================================== */
+
+    private void setupPhotoColumn() {
         photoColumn.setCellFactory(col -> new TableCell<>() {
-
             private final ImageView imageView = new ImageView();
 
             {
-                imageView.setFitHeight(60);
                 imageView.setFitWidth(80);
+                imageView.setFitHeight(60);
                 imageView.setPreserveRatio(true);
             }
 
@@ -64,28 +107,24 @@ public class CarManagementController {
 
                 if (empty || imageUrl == null || imageUrl.isEmpty()) {
                     setGraphic(null);
-                } else {
-                    try {
-                        imageView.setImage(new Image(imageUrl, true));
-                        setGraphic(imageView);
-                    } catch (Exception e) {
-                        setGraphic(null);
-                    }
+                    return;
+                }
+
+                try {
+                    imageView.setImage(new Image(imageUrl, true));
+                    setGraphic(imageView);
+                } catch (Exception e) {
+                    setGraphic(null);
                 }
             }
         });
-
-        refreshCarTable();
+        photoColumn.setCellValueFactory(new PropertyValueFactory<>("photoUrl"));
     }
 
-
-    /* ==============================
-       CAR NAME + PLATE COLUMN
-    ============================== */
     private void setupCarInfoColumn() {
         carInfoColumn.setCellValueFactory(data -> new javafx.beans.property.SimpleObjectProperty<>(data.getValue()));
 
-        carInfoColumn.setCellFactory(col -> new TableCell<Car, Car>() {
+        carInfoColumn.setCellFactory(col -> new TableCell<>() {
             @Override
             protected void updateItem(Car car, boolean empty) {
                 super.updateItem(car, empty);
@@ -95,27 +134,18 @@ public class CarManagementController {
                 }
 
                 VBox box = new VBox(2);
-
                 Label model = new Label(car.getModel());
-                model.getStyleClass().add("car-name");
-
                 Label plate = new Label(car.getPlateNumber());
-                plate.getStyleClass().add("car-plate");
-
                 box.getChildren().addAll(model, plate);
                 setGraphic(box);
             }
         });
     }
 
-
-    /* ==============================
-       DETAILS COLUMN
-    ============================== */
     private void setupDetailsColumn() {
         detailsColumn.setCellValueFactory(data -> new javafx.beans.property.SimpleObjectProperty<>(data.getValue()));
 
-        detailsColumn.setCellFactory(col -> new TableCell<Car, Car>() {
+        detailsColumn.setCellFactory(col -> new TableCell<>() {
             @Override
             protected void updateItem(Car car, boolean empty) {
                 super.updateItem(car, empty);
@@ -131,21 +161,16 @@ public class CarManagementController {
                                 car.getTransmission() + " • " +
                                 car.getFuelType()
                 );
-                label.getStyleClass().add("car-details");
 
                 setGraphic(label);
             }
         });
     }
 
-
-    /* ==============================
-       STATUS BADGE COLUMN
-    ============================== */
     private void setupStatusColumn() {
         statusColumn.setCellValueFactory(new PropertyValueFactory<>("status"));
 
-        statusColumn.setCellFactory(col -> new TableCell<Car, String>() {
+        statusColumn.setCellFactory(col -> new TableCell<>() {
             @Override
             protected void updateItem(String status, boolean empty) {
                 super.updateItem(status, empty);
@@ -155,26 +180,15 @@ public class CarManagementController {
                 }
 
                 Label badge = new Label(status);
-
-                if (status.equalsIgnoreCase("Available")) {
-                    badge.getStyleClass().add("status-available");
-                } else {
-                    badge.getStyleClass().add("status-booked");
-                }
-
                 setGraphic(badge);
             }
         });
     }
 
-
-    /* ==============================
-       PRICE COLUMN
-    ============================== */
     private void setupPriceColumn() {
         priceColumn.setCellValueFactory(new PropertyValueFactory<>("price"));
 
-        priceColumn.setCellFactory(col -> new TableCell<Car, Double>() {
+        priceColumn.setCellFactory(col -> new TableCell<>() {
             @Override
             protected void updateItem(Double price, boolean empty) {
                 super.updateItem(price, empty);
@@ -183,21 +197,14 @@ public class CarManagementController {
                     return;
                 }
 
-                Label label = new Label("₱" + String.format("%,.0f", price) + "/day");
-                label.getStyleClass().add("price-text");
-
+                Label label = new Label("₱" + price + "/day");
                 setGraphic(label);
             }
         });
     }
 
-
-    /* ==============================
-       ACTION ICONS (EDIT + DELETE)
-    ============================== */
     private void setupActionsColumn() {
-        actionsColumn.setCellFactory(col -> new TableCell<Car, Void>() {
-
+        actionsColumn.setCellFactory(col -> new TableCell<>() {
             @Override
             protected void updateItem(Void item, boolean empty) {
                 super.updateItem(item, empty);
@@ -207,61 +214,43 @@ public class CarManagementController {
                     return;
                 }
 
-                Button editBtn = new Button("✏");
-                editBtn.getStyleClass().add("action-edit");
+                Button edit = new Button("✏");
+                Button delete = new Button("🗑");
 
-                Button deleteBtn = new Button("🗑");
-                deleteBtn.getStyleClass().add("action-delete");
-
-                // Edit action
-                editBtn.setOnAction(e -> {
+                edit.setOnAction(e -> {
                     Car selected = getTableView().getItems().get(getIndex());
                     openEditPopup(selected);
                 });
 
-                // Delete action
-                deleteBtn.setOnAction(e -> {
+                delete.setOnAction(e -> {
                     Car selected = getTableView().getItems().get(getIndex());
                     CarDatabase.deleteCar(selected);
                     refreshCarTable();
                 });
 
-                HBox box = new HBox(10, editBtn, deleteBtn);
+                HBox box = new HBox(8, edit, delete);
                 setGraphic(box);
             }
         });
     }
 
+    /* ======================================
+                 POPUPS
+       ====================================== */
 
-    /* ==============================
-       REFRESH TABLE DATA
-    ============================== */
-    private void refreshCarTable() {
-        carTable.getItems().setAll(CarDatabase.getAllCars());
-    }
-
-
-    /* ==============================
-       ADD CAR POPUP
-    ============================== */
     @FXML
     private void handleAddCar() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/autorideapp/add-car-view.fxml"));
         Parent root = loader.load();
 
-        Stage popupStage = new Stage();
-        popupStage.initModality(Modality.APPLICATION_MODAL);
-        popupStage.setTitle("Add New Car");
-        popupStage.setScene(new Scene(root));
+        Stage popup = new Stage();
+        popup.initModality(Modality.APPLICATION_MODAL);
+        popup.setScene(new Scene(root));
+        popup.showAndWait();
 
-        popupStage.showAndWait();
         refreshCarTable();
     }
 
-
-    /* ==============================
-       EDIT CAR POPUP
-    ============================== */
     private void openEditPopup(Car car) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/autorideapp/edit-car-view.fxml"));
@@ -272,7 +261,6 @@ public class CarManagementController {
 
             Stage popup = new Stage();
             popup.initModality(Modality.APPLICATION_MODAL);
-            popup.setTitle("Edit Car");
             popup.setScene(new Scene(root));
             popup.showAndWait();
 
@@ -282,10 +270,18 @@ public class CarManagementController {
         }
     }
 
+    /* ======================================
+                 REFRESH
+       ====================================== */
 
-    /* ==============================
-       NAVIGATION
-    ============================== */
+    private void refreshCarTable() {
+        carTable.getItems().setAll(CarDatabase.getAllCars());
+    }
+
+    /* ======================================
+                NAVIGATION
+       ====================================== */
+
     @FXML private void showDashboardView() { loadScene("/com/example/autorideapp/dashboard-view.fxml"); }
     @FXML private void showCarManagementView() { loadScene("/com/example/autorideapp/CarManagement-view.fxml"); }
     @FXML private void showBookingView() { loadScene("/com/example/autorideapp/BookingManagement-view.fxml"); }
@@ -293,14 +289,14 @@ public class CarManagementController {
     @FXML private void showUserManagementView() { loadScene("/com/example/autorideapp/UserManagement-view.fxml"); }
     @FXML private void handleLogout() { loadScene("/com/example/autorideapp/login-view.fxml"); }
 
-    private void loadScene(String fxmlPath) {
+    private void loadScene(String path) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlPath));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(path));
             Scene scene = new Scene(loader.load());
             Stage stage = (Stage) mainTitle.getScene().getWindow();
             stage.setScene(scene);
-            stage.show();
-        } catch (IOException e) {
+        } catch (Exception e) {
+            System.out.println("Error loading FXML: " + path);
             e.printStackTrace();
         }
     }

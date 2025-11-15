@@ -3,101 +3,69 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
 
 <BorderPane prefHeight="1080.0" prefWidth="1920.0"
             stylesheets="@car-management.css"
-            xmlns="http://javafx.com/javafx/17.0.12"
+            xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="com.example.autorideapp.autoride.CarManagementController">
 
-    <!-- Sidebar -->
+    <!-- SIDEBAR -->
     <left>
         <VBox prefWidth="280.0" spacing="30" styleClass="sidebar">
-            <padding>
-                <Insets bottom="30" left="30" right="30" top="40" />
-            </padding>
+            <padding><Insets bottom="30" left="30" right="30" top="40"/></padding>
 
-            <!-- Header -->
             <VBox spacing="4">
-                <Label styleClass="brand" text="AutoRide" />
-                <Label styleClass="subtitle" text="Car Rental System" />
+                <Label styleClass="brand" text="AutoRide"/>
+                <Label styleClass="subtitle" text="Car Rental System"/>
             </VBox>
 
-            <!-- Navigation -->
             <VBox spacing="12" VBox.vgrow="ALWAYS">
-                <Button styleClass="nav-item" text="🏠 Dashboard"
-                        onAction="#showDashboardView" />
-                <Button styleClass="nav-item-active" text="🚗 Car Management"
-                        onAction="#showCarManagementView" />
-                <Button styleClass="nav-item" text="📅 Booking Management"
-                        onAction="#showBookingView" />
-                <Button styleClass="nav-item" text="👥 Customer Management"
-                        onAction="#showCustomerManagementView" />
-                <Button styleClass="nav-item" text="👤 User Management"
-                        onAction="#showUserManagementView" />
+                <Button text="🏠 Dashboard" styleClass="nav-item" onAction="#showDashboardView"/>
+                <Button text="🚗 Car Management" styleClass="nav-item-active" onAction="#showCarManagementView"/>
+                <Button text="📅 Booking Management" styleClass="nav-item" onAction="#showBookingView"/>
+                <Button text="👥 Customer Management" styleClass="nav-item" onAction="#showCustomerManagementView"/>
+                <Button text="👤 User Management" styleClass="nav-item" onAction="#showUserManagementView"/>
             </VBox>
 
-            <!-- Admin Info + Logout -->
             <VBox spacing="15">
                 <VBox alignment="CENTER" spacing="3">
-                    <Label styleClass="admin-name" text="Admin User" />
-                    <Label styleClass="admin-email" text="admin@autoride.com" />
+                    <Label styleClass="admin-name" text="Admin User"/>
+                    <Label styleClass="admin-email" text="admin@autoride.com"/>
                 </VBox>
-                <Button fx:id="logoutButton"
-                        styleClass="logout-btn"
-                        text="⏻ Logout"
-                        onAction="#handleLogout" />
+                <Button styleClass="logout-btn" text="⏻ Logout" onAction="#handleLogout"/>
             </VBox>
         </VBox>
     </left>
 
-    <!-- Main Content -->
+    <!-- MAIN CONTENT -->
     <center>
         <VBox spacing="25" styleClass="main-content">
-            <padding>
-                <Insets bottom="40" left="50" right="50" top="40" />
-            </padding>
+            <padding><Insets bottom="40" left="50" right="50" top="40"/></padding>
 
-            <!-- Header -->
             <HBox alignment="CENTER_LEFT" spacing="15">
-                <Label fx:id="mainTitle"
-                       styleClass="main-title"
-                       text="Car Management" />
-                <Pane HBox.hgrow="ALWAYS" />
-                <TextField fx:id="searchField"
-                           promptText="🔍 Search cars..."
-                           prefWidth="300.0"
-                           styleClass="search-field" />
-                <!-- ✅ Button now properly wired -->
-                <Button fx:id="addCarButton"
-                        styleClass="add-btn"
-                        text="+ Add Car"
-                        onAction="#handleAddCar" />
+                <Label fx:id="mainTitle" styleClass="main-title" text="Car Management"/>
+                <Pane HBox.hgrow="ALWAYS"/>
+                <TextField fx:id="searchField" promptText="🔍 Search cars..." prefWidth="300" styleClass="search-field"/>
+                <Button fx:id="addCarButton" text="+ Add Car" styleClass="add-btn" onAction="#handleAddCar"/>
             </HBox>
 
-            <!-- ✅ Functional Car Table -->
-            <TableView fx:id="carTable" styleClass="car-table" prefHeight="700">
+            <!-- ❗️ THIS CONTAINER GETS REPLACED WITH DETAILS VIEW ❗️ -->
+            <VBox fx:id="contentContainer" spacing="20">
 
-                <columns>
-                    <TableColumn fx:id="photoColumn" text="Photo" prefWidth="120"/>
+                <TableView fx:id="carTable" prefHeight="700" styleClass="car-table">
+                    <columns>
+                        <TableColumn fx:id="photoColumn" text="Photo" prefWidth="120"/>
+                        <TableColumn fx:id="carInfoColumn" text="Car" prefWidth="250"/>
+                        <TableColumn fx:id="detailsColumn" text="Details" prefWidth="350"/>
+                        <TableColumn fx:id="statusColumn" text="Status" prefWidth="150"/>
+                        <TableColumn fx:id="priceColumn" text="Price" prefWidth="150"/>
+                        <TableColumn fx:id="actionsColumn" text="Actions" prefWidth="120"/>
+                    </columns>
+                </TableView>
 
-                    <!-- CAR NAME + PLATE BELOW -->
-                    <TableColumn fx:id="carInfoColumn" text="Car" prefWidth="250"/>
-
-                    <!-- DETAILS (year, type, seats, fuel, transmission) -->
-                    <TableColumn fx:id="detailsColumn" text="Details" prefWidth="350"/>
-
-                    <!-- STATUS BADGE -->
-                    <TableColumn fx:id="statusColumn" text="Status" prefWidth="150"/>
-
-                    <!-- PRICE -->
-                    <TableColumn fx:id="priceColumn" text="Price" prefWidth="150"/>
-
-                    <!-- ACTIONS (icons) -->
-                    <TableColumn fx:id="actionsColumn" text="Actions" prefWidth="120"/>
-                </columns>
-
-            </TableView>
+            </VBox>
 
         </VBox>
     </center>
