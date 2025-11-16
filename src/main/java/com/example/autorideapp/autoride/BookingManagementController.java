@@ -4,7 +4,9 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -12,7 +14,7 @@ import java.io.IOException;
 public class BookingManagementController {
 
     @FXML
-    private TableView<?> bookingTable;
+    private TableView<Booking> bookingTable; // IMPORTANT: must be <Booking>
 
     @FXML
     private Label mainTitle;
@@ -20,18 +22,46 @@ public class BookingManagementController {
     @FXML
     public void initialize() {
         if (mainTitle != null) {
-            mainTitle.setText("Booking Management ");
+            mainTitle.setText("Booking Management");
         }
+
+        setupBookingTable();   // ← loads bookings into table
     }
 
-    // 🔹 Add Booking Button
+    // ================================
+    //   TABLE INITIALIZER METHOD
+    // ================================
+    private void setupBookingTable() {
+
+        TableColumn<Booking, String> customerCol = new TableColumn<>("Customer");
+        customerCol.setCellValueFactory(new PropertyValueFactory<>("customerName"));
+
+        TableColumn<Booking, String> carCol = new TableColumn<>("Car Model");
+        carCol.setCellValueFactory(new PropertyValueFactory<>("carModel"));
+
+        TableColumn<Booking, String> dateCol = new TableColumn<>("Date");
+        dateCol.setCellValueFactory(new PropertyValueFactory<>("date"));
+
+        TableColumn<Booking, Double> totalCol = new TableColumn<>("Total Cost");
+        totalCol.setCellValueFactory(new PropertyValueFactory<>("totalCost"));
+
+        bookingTable.getColumns().setAll(customerCol, carCol, dateCol, totalCol);
+
+        // Load data from database
+        bookingTable.getItems().setAll(BookingDatabase.getAllBookings());
+    }
+
+    // ================================
+    //   BUTTONS & NAVIGATION
+    // ================================
+
     @FXML
     private void handleAddBooking() {
         System.out.println("Add Booking button clicked!");
     }
 
-    // 🔹 Sidebar Navigation
-    @FXML private void showDashboardView() {
+    @FXML
+    private void showDashboardView() {
         loadScene("/com/example/autorideapp/dashboard-view.fxml");
     }
 
@@ -55,7 +85,9 @@ public class BookingManagementController {
         loadScene("/com/example/autorideapp/login-view.fxml");
     }
 
-    // 🔹 Helper: Load a new FXML scene
+    // ================================
+    //   LOAD SCENE HELPER
+    // ================================
     private void loadScene(String fxmlPath) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlPath));
@@ -66,7 +98,7 @@ public class BookingManagementController {
 
             Scene scene = new Scene(loader.load());
 
-            // Apply CSS (optional)
+            // Apply CSS
             try {
                 String styleCss = getClass()
                         .getResource("/com/example/autorideapp/dashboard.css")

@@ -9,20 +9,15 @@
             xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="com.example.autorideapp.autoride.BookingManagementController">
 
-    <!-- Sidebar -->
     <left>
         <VBox prefWidth="280.0" spacing="30" styleClass="sidebar">
             <padding>
                 <Insets bottom="30" left="30" right="30" top="40" />
             </padding>
-
-            <!-- Header -->
             <VBox spacing="4">
                 <Label styleClass="brand" text="AutoRide" />
                 <Label styleClass="subtitle" text="Car Rental System" />
             </VBox>
-
-            <!-- Navigation -->
             <VBox spacing="12" VBox.vgrow="ALWAYS">
                 <Button styleClass="nav-item" text="🏠 Dashboard"
                         onAction="#showDashboardView" />
@@ -35,64 +30,35 @@
                 <Button styleClass="nav-item" text="👤 User Management"
                         onAction="#showUserManagementView" />
             </VBox>
-
-            <!-- Admin Info + Logout -->
             <VBox spacing="15">
                 <VBox alignment="CENTER" spacing="3">
                     <Label styleClass="admin-name" text="Admin User" />
                     <Label styleClass="admin-email" text="admin@autoride.com" />
                 </VBox>
-                <Button onAction="#handleLogout"
-                        styleClass="logout-btn" text="⏻ Logout" />
+                <Button onAction="#handleLogout" styleClass="logout-btn" text="⏻ Logout" />
             </VBox>
         </VBox>
     </left>
 
-    <!-- Main Content -->
     <center>
         <VBox spacing="25" styleClass="main-content">
             <padding>
                 <Insets bottom="40" left="50" right="50" top="40" />
             </padding>
-
-            <!-- Header -->
             <HBox alignment="CENTER_LEFT" spacing="15">
-                <Label fx:id="mainTitle"
-                       styleClass="main-title"
-                       text="Booking Management" />
+                <Label fx:id="mainTitle" styleClass="main-title" text="Booking Management" />
                 <Pane HBox.hgrow="ALWAYS"/>
                 <MenuButton text="All Bookings" fx:id="filterBookings"/>
             </HBox>
 
-            <!-- Booking Table -->
-            <TableView fx:id="bookingTable"
-                       prefHeight="700.0"
-                       styleClass="booking-table">
+            <TableView fx:id="bookingTable" prefHeight="700.0" styleClass="booking-table">
                 <columns>
-                    <TableColumn fx:id="idColumn"
-                                 text="Booking ID"
-                                 prefWidth="80"/>
-                    <TableColumn fx:id="customerColumn"
-                                 text="Customer"
-                                 prefWidth="200"/>
-                    <TableColumn fx:id="carColumn"
-                                 text="Car"
-                                 prefWidth="200"/>
-                    <TableColumn fx:id="datesColumn"
-                                 text="Dates"
-                                 prefWidth="250"/>
-                    <TableColumn fx:id="amountColumn"
-                                 text="Amount"
-                                 prefWidth="120"/>
-                    <TableColumn fx:id="statusColumn"
-                                 text="Status"
-                                 prefWidth="120"/>
-                    <TableColumn fx:id="actionsColumn"
-                                 text="Actions"
-                                 prefWidth="120"/>
+                    <TableColumn fx:id="customerNameColumn" text="Customer Name" prefWidth="200"/>
+                    <TableColumn fx:id="carModelColumn" text="Car Model" prefWidth="200"/>
+                    <TableColumn fx:id="dateColumn" text="Date" prefWidth="250"/>
+                    <TableColumn fx:id="totalCostColumn" text="Total Cost" prefWidth="150"/>
                 </columns>
             </TableView>
         </VBox>
     </center>
-
 </BorderPane>
