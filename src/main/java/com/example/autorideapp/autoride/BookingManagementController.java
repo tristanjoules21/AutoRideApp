@@ -3,105 +3,165 @@ package com.example.autorideapp.autoride;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
-
-import java.io.IOException;
+import javafx.util.Callback;
 
 public class BookingManagementController {
 
     @FXML
-    private TableView<Booking> bookingTable; // IMPORTANT: must be <Booking>
+    private TableView<Booking> bookingTable;
+
+    @FXML
+    private TableColumn<Booking, String> customerNameColumn;
+
+    @FXML
+    private TableColumn<Booking, String> carModelColumn;
+
+    @FXML
+    private TableColumn<Booking, String> dateColumn;
+
+    @FXML
+    private TableColumn<Booking, Double> totalCostColumn;
+
+    @FXML
+    private TableColumn<Booking, String> statusColumn;
+
+    @FXML
+    private TableColumn<Booking, Void> actionsColumn;
 
     @FXML
     private Label mainTitle;
 
+
     @FXML
     public void initialize() {
-        if (mainTitle != null) {
+        if (mainTitle != null)
             mainTitle.setText("Booking Management");
-        }
 
-        setupBookingTable();   // ← loads bookings into table
+        setupColumns();
+        loadBookings();
     }
 
 
-    private void setupBookingTable() {
+    private void setupColumns() {
 
-        TableColumn<Booking, String> customerCol = new TableColumn<>("Customer");
-        customerCol.setCellValueFactory(new PropertyValueFactory<>("customerName"));
+        customerNameColumn.setCellValueFactory(new PropertyValueFactory<>("customerName"));
+        carModelColumn.setCellValueFactory(new PropertyValueFactory<>("carModel"));
+        dateColumn.setCellValueFactory(new PropertyValueFactory<>("date"));
+        totalCostColumn.setCellValueFactory(new PropertyValueFactory<>("totalCost"));
 
-        TableColumn<Booking, String> carCol = new TableColumn<>("Car Model");
-        carCol.setCellValueFactory(new PropertyValueFactory<>("carModel"));
+        setupStatusDropdown();   // 🔥 NEW
+        setupDeleteButton();     // 🔥 NEW
+    }
 
-        TableColumn<Booking, String> dateCol = new TableColumn<>("Date");
-        dateCol.setCellValueFactory(new PropertyValueFactory<>("date"));
+    /* ===========================================================
+       STATUS COLUMN (Paid / Unpaid Dropdown)
+       =========================================================== */
+    private void setupStatusDropdown() {
 
-        TableColumn<Booking, Double> totalCol = new TableColumn<>("Total Cost");
-        totalCol.setCellValueFactory(new PropertyValueFactory<>("totalCost"));
+        statusColumn.setCellFactory(col -> new TableCell<>() {
 
-        bookingTable.getColumns().setAll(customerCol, carCol, dateCol, totalCol);
+            private final ComboBox<String> comboBox = new ComboBox<>();
 
-        // Load data from database
+            {
+                comboBox.getItems().addAll("Paid", "Unpaid");
+
+                comboBox.valueProperty().addListener((obs, oldVal, newVal) -> {
+                    if (getTableRow().getItem() != null) {
+                        Booking booking = getTableRow().getItem();
+                        booking.setStatus(newVal);
+                        updateStyle(newVal);
+                    }
+                });
+            }
+
+            private void updateStyle(String value) {
+                if (value == null) return;
+
+                if (value.equals("Paid")) {
+                    comboBox.setStyle("-fx-background-color: #4ade80; -fx-text-fill: white; -fx-font-weight: bold;");
+                } else {
+                    comboBox.setStyle("-fx-background-color: #ef4444; -fx-text-fill: white; -fx-font-weight: bold;");
+                }
+            }
+
+            @Override
+            protected void updateItem(String val, boolean empty) {
+                super.updateItem(val, empty);
+
+                if (empty) {
+                    setGraphic(null);
+                } else {
+                    comboBox.setValue(val);
+                    updateStyle(val);
+                    setGraphic(comboBox);
+                }
+            }
+        });
+
+        statusColumn.setCellValueFactory(new PropertyValueFactory<>("status"));
+    }
+
+
+    /* ===========================================================
+       ACTIONS COLUMN (DELETE ONLY)
+       =========================================================== */
+    private void setupDeleteButton() {
+
+        Callback<TableColumn<Booking, Void>, TableCell<Booking, Void>> factory = (col) -> {
+
+            return new TableCell<>() {
+
+                private final Button deleteBtn = new Button("Delete");
+
+                {
+                    deleteBtn.setStyle("-fx-background-color: #dc2626; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 6;");
+                    deleteBtn.setOnAction(e -> {
+                        Booking booking = getTableView().getItems().get(getIndex());
+                        BookingDatabase.removeBooking(booking);
+                        bookingTable.getItems().remove(booking);
+                    });
+                }
+
+                @Override
+                protected void updateItem(Void item, boolean empty) {
+                    super.updateItem(item, empty);
+                    if (empty) setGraphic(null);
+                    else setGraphic(new HBox(5, deleteBtn));
+                }
+            };
+        };
+
+        actionsColumn.setCellFactory(factory);
+    }
+
+
+    private void loadBookings() {
         bookingTable.getItems().setAll(BookingDatabase.getAllBookings());
     }
 
 
+    // NAVIGATION —
+    @FXML private void showDashboardView() { loadScene("/com/example/autorideapp/dashboard-view.fxml"); }
+    @FXML private void showCarManagementView() { loadScene("/com/example/autorideapp/CarManagement-view.fxml"); }
+    @FXML private void showBookingView() { loadScene("/com/example/autorideapp/BookingManagement-view.fxml"); }
+    @FXML private void showCustomerManagementView() { loadScene("/com/example/autorideapp/CustomerManagement-view.fxml"); }
+    @FXML private void showUserManagementView() { loadScene("/com/example/autorideapp/UserManagement-view.fxml"); }
+    @FXML private void handleLogout() { loadScene("/com/example/autorideapp/login-view.fxml"); }
 
-
-    @FXML
-    private void showDashboardView() {
-        loadScene("/com/example/autorideapp/dashboard-view.fxml");
-    }
-
-    @FXML private void showCarManagementView() {
-        loadScene("/com/example/autorideapp/CarManagement-view.fxml");
-    }
-
-    @FXML private void showBookingView() {
-        loadScene("/com/example/autorideapp/BookingManagement-view.fxml");
-    }
-
-    @FXML private void showCustomerManagementView() {
-        loadScene("/com/example/autorideapp/CustomerManagement-view.fxml");
-    }
-
-    @FXML private void showUserManagementView() {
-        loadScene("/com/example/autorideapp/UserManagement-view.fxml");
-    }
-
-    @FXML private void handleLogout() {
-        loadScene("/com/example/autorideapp/login-view.fxml");
-    }
-
-
-    private void loadScene(String fxmlPath) {
+    private void loadScene(String fxml) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlPath));
-            if (loader.getLocation() == null) {
-                System.err.println("❌ FXML file not found: " + fxmlPath);
-                return;
-            }
-
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(fxml));
             Scene scene = new Scene(loader.load());
-
-            // Apply CSS
-            try {
-                String styleCss = getClass()
-                        .getResource("/com/example/autorideapp/dashboard.css")
-                        .toExternalForm();
-                scene.getStylesheets().add(styleCss);
-            } catch (Exception ignored) {}
-
             Stage stage = (Stage) mainTitle.getScene().getWindow();
             stage.setScene(scene);
             stage.show();
 
-        } catch (IOException e) {
-            System.err.println("⚠️ Error loading FXML: " + fxmlPath);
+        } catch (Exception e) {
+            System.err.println("❌ Error loading " + fxml);
             e.printStackTrace();
         }
     }

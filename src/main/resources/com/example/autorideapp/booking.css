@@ -6,7 +6,7 @@
 
 /* === Sidebar === */
 .sidebar {
-    -fx-background-color: #166534; /* Dark Green */
+    -fx-background-color: #166534;
 }
 
 .brand {
@@ -20,7 +20,7 @@
     -fx-text-fill: #cfd8dc;
 }
 
-/* === Navigation === */
+/* Navigation */
 .nav-item,
 .nav-item-active {
     -fx-pref-width: 220px;
@@ -40,10 +40,9 @@
 .nav-item-active {
     -fx-background-color: #0F3D25;
     -fx-font-weight: bold;
-
 }
 
-/* === Admin Info === */
+/* Admin styles */
 .admin-name {
     -fx-font-size: 15px;
     -fx-font-weight: bold;
@@ -55,7 +54,7 @@
     -fx-text-fill: #cfd8dc;
 }
 
-/* === Logout Button === */
+/* Logout button */
 .logout-btn {
     -fx-background-color: transparent;
     -fx-border-color: white;
@@ -71,7 +70,7 @@
     -fx-background-color: rgba(255,255,255,0.15);
 }
 
-/* === Main Content === */
+/* Main Content */
 .main-content {
     -fx-background-color: white;
     -fx-background-radius: 10;
@@ -84,36 +83,7 @@
     -fx-text-fill: #111827;
 }
 
-/* === Search Field === */
-.search-field {
-    -fx-background-color: white;
-    -fx-border-color: #d1d5db;
-    -fx-border-radius: 6;
-    -fx-background-radius: 6;
-    -fx-padding: 8 12;
-    -fx-font-size: 14px;
-}
-
-.search-field:focused {
-    -fx-border-color: #22c55e;
-    -fx-effect: dropshadow(gaussian, rgba(34,197,94,0.3), 5, 0, 0, 1);
-}
-
-/* === Add Button === */
-.add-btn {
-    -fx-background-color: #22c55e;
-    -fx-text-fill: white;
-    -fx-font-weight: bold;
-    -fx-background-radius: 8;
-    -fx-padding: 10 20;
-    -fx-font-size: 15px;
-}
-
-.add-btn:hover {
-    -fx-background-color: #16a34a;
-}
-
-/* === Table === */
+/* Table */
 .booking-table {
     -fx-background-color: white;
     -fx-border-color: #dcdcdc;
