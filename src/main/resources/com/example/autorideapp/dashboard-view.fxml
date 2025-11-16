@@ -53,39 +53,43 @@
 
             <!-- Top Cards -->
             <HBox spacing="25">
+                <!-- Total Cars -->
                 <VBox prefWidth="260" styleClass="card">
                     <Label styleClass="card-title" text="Total Cars"/>
-                    <Label styleClass="card-value" text="5"/>
-                    <Label styleClass="card-sub" text="4 available"/>
+                    <Label fx:id="totalCarsLabel" styleClass="card-value" text="0"/>
+                    <Label fx:id="availableCarsLabel" styleClass="card-sub" text="0 available"/>
                 </VBox>
 
+                <!-- Total Bookings -->
                 <VBox prefWidth="260" styleClass="card">
                     <Label styleClass="card-title" text="Total Bookings"/>
-                    <Label styleClass="card-value" text="2"/>
-                    <Label styleClass="card-sub" text="1 active"/>
+                    <Label fx:id="totalBookingsLabel" styleClass="card-value" text="0"/>
+                    <Label fx:id="activeBookingsLabel" styleClass="card-sub" text="0 active"/>
                 </VBox>
 
+                <!-- Pending Bookings -->
                 <VBox prefWidth="260" styleClass="card">
                     <Label styleClass="card-title" text="Pending Bookings"/>
-                    <Label styleClass="card-value" text="1"/>
+                    <Label fx:id="pendingBookingsLabel" styleClass="card-value" text="0"/>
                 </VBox>
 
+                <!-- Total Revenue -->
                 <VBox prefWidth="260" styleClass="card">
                     <Label styleClass="card-title" text="Total Revenue"/>
-                    <Label styleClass="card-value" text="₱14,400"/>
+                    <Label fx:id="totalRevenueLabel" styleClass="card-value" text="₱0"/>
                 </VBox>
             </HBox>
 
             <!-- Recent Bookings Table -->
             <Label styleClass="section-title" text="Recent Bookings"/>
-            <TableView prefHeight="500.0" styleClass="table-view" VBox.vgrow="ALWAYS">
+            <TableView fx:id="recentBookingsTable" prefHeight="500.0" styleClass="table-view" VBox.vgrow="ALWAYS">
                 <columns>
-                    <TableColumn prefWidth="80.0" text="ID"/>
-                    <TableColumn prefWidth="250.0" text="Customer"/>
-                    <TableColumn prefWidth="250.0" text="Car"/>
-                    <TableColumn prefWidth="300.0" text="Dates"/>
-                    <TableColumn prefWidth="180.0" text="Status"/>
-                    <TableColumn prefWidth="200.0" text="Amount"/>
+                    <TableColumn fx:id="colId" prefWidth="80.0" text="ID"/>
+                    <TableColumn fx:id="colCustomer" prefWidth="250.0" text="Customer"/>
+                    <TableColumn fx:id="colCar" prefWidth="250.0" text="Car"/>
+                    <TableColumn fx:id="colDates" prefWidth="300.0" text="Dates"/>
+                    <TableColumn fx:id="colStatus" prefWidth="180.0" text="Status"/>
+                    <TableColumn fx:id="colAmount" prefWidth="200.0" text="Amount"/>
                 </columns>
             </TableView>
         </VBox>
