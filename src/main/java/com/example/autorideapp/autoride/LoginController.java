@@ -35,7 +35,7 @@ public class LoginController {
 
         } catch (IOException e) {
             e.printStackTrace();
-            // You could log or show an alert here if dashboard fails to load
+
         }
     }
 }

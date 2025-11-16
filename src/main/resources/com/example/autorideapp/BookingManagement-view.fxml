@@ -14,10 +14,14 @@
             <padding>
                 <Insets bottom="30" left="30" right="30" top="40" />
             </padding>
+
+            <!-- Branding -->
             <VBox spacing="4">
                 <Label styleClass="brand" text="AutoRide" />
                 <Label styleClass="subtitle" text="Car Rental System" />
             </VBox>
+
+            <!-- Navigation -->
             <VBox spacing="12" VBox.vgrow="ALWAYS">
                 <Button styleClass="nav-item" text="🏠 Dashboard"
                         onAction="#showDashboardView" />
@@ -30,6 +34,8 @@
                 <Button styleClass="nav-item" text="👤 User Management"
                         onAction="#showUserManagementView" />
             </VBox>
+
+            <!-- Footer: Admin Info -->
             <VBox spacing="15">
                 <VBox alignment="CENTER" spacing="3">
                     <Label styleClass="admin-name" text="Admin User" />
@@ -45,20 +51,40 @@
             <padding>
                 <Insets bottom="40" left="50" right="50" top="40" />
             </padding>
+
+            <!-- Header -->
             <HBox alignment="CENTER_LEFT" spacing="15">
-                <Label fx:id="mainTitle" styleClass="main-title" text="Booking Management" />
+                <Label fx:id="mainTitle" styleClass="main-title"
+                       text="Booking Management" />
                 <Pane HBox.hgrow="ALWAYS"/>
                 <MenuButton text="All Bookings" fx:id="filterBookings"/>
             </HBox>
 
-            <TableView fx:id="bookingTable" prefHeight="700.0" styleClass="booking-table">
+            <!-- Booking Table -->
+            <TableView fx:id="bookingTable"
+                       prefHeight="700.0"
+                       styleClass="booking-table">
+
                 <columns>
-                    <TableColumn fx:id="customerNameColumn" text="Customer Name" prefWidth="200"/>
-                    <TableColumn fx:id="carModelColumn" text="Car Model" prefWidth="200"/>
-                    <TableColumn fx:id="dateColumn" text="Date" prefWidth="250"/>
-                    <TableColumn fx:id="totalCostColumn" text="Total Cost" prefWidth="150"/>
+                    <TableColumn fx:id="customerNameColumn"
+                                 text="Customer Name"
+                                 prefWidth="350"/>
+
+                    <TableColumn fx:id="carModelColumn"
+                                 text="Car Model"
+                                 prefWidth="350"/>
+
+                    <TableColumn fx:id="dateColumn"
+                                 text="Date"
+                                 prefWidth="400"/>
+
+                    <TableColumn fx:id="totalCostColumn"
+                                 text="Total Cost"
+                                 prefWidth="450"/>
                 </columns>
+
             </TableView>
         </VBox>
     </center>
+
 </BorderPane>

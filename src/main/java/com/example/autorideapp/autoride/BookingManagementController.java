@@ -28,9 +28,7 @@ public class BookingManagementController {
         setupBookingTable();   // ← loads bookings into table
     }
 
-    // ================================
-    //   TABLE INITIALIZER METHOD
-    // ================================
+
     private void setupBookingTable() {
 
         TableColumn<Booking, String> customerCol = new TableColumn<>("Customer");
@@ -51,14 +49,8 @@ public class BookingManagementController {
         bookingTable.getItems().setAll(BookingDatabase.getAllBookings());
     }
 
-    // ================================
-    //   BUTTONS & NAVIGATION
-    // ================================
 
-    @FXML
-    private void handleAddBooking() {
-        System.out.println("Add Booking button clicked!");
-    }
+
 
     @FXML
     private void showDashboardView() {
@@ -85,9 +77,7 @@ public class BookingManagementController {
         loadScene("/com/example/autorideapp/login-view.fxml");
     }
 
-    // ================================
-    //   LOAD SCENE HELPER
-    // ================================
+
     private void loadScene(String fxmlPath) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlPath));

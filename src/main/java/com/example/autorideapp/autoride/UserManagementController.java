@@ -27,8 +27,6 @@ public class UserManagementController {
     @FXML
     private TableColumn<User, String> emailColumn;
 
-    @FXML
-    private TableColumn<User, String> roleColumn;
 
     @FXML
     private TableColumn<User, String> positionColumn;

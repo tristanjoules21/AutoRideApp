@@ -146,7 +146,7 @@
                     </GridPane>
                 </VBox>
 
-                <!-- Buttons -->
+
                 <HBox spacing="15" alignment="CENTER_RIGHT">
                     <Button text="Back" styleClass="btn-secondary"/>
                     <Button text="Update" styleClass="btn-primary"/>
