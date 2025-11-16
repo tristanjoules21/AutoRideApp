@@ -1,9 +1,14 @@
 package com.example.autorideapp.autoride;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 
 import java.time.temporal.ChronoUnit;
 
@@ -79,8 +84,13 @@ public class CarDetailsController {
         totalLabel.setText("₱" + String.format("%,.0f", total));
     }
 
+    // ===============================
+    // Book button logic with customer selection
+    // ===============================
     @FXML
     private void handleBook() {
+
+        // 1. Check if start/end dates are selected
         if (startDatePicker.getValue() == null || endDatePicker.getValue() == null) {
             totalLabel.setText("Select dates");
             return;
@@ -93,24 +103,65 @@ public class CarDetailsController {
         }
 
         double total = days * car.getPrice();
-
-        // Format date range (e.g. "2024-10-12 to 2024-10-15")
         String dateRange = startDatePicker.getValue() + " to " + endDatePicker.getValue();
 
-        // No customer name yet? Use placeholder
-        String customerName = "Walk-in Customer";
+        // 2. Check if customers exist
+        if (CustomerDatabase.getAllCustomers().isEmpty()) {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setHeaderText("No Customers Found");
+            alert.setContentText("Please add a customer first before booking.");
+            alert.show();
+            return;
+        }
 
-        // Create booking object
+        // 3. Open customer selection popup
+        Customer selectedCustomer = showCustomerSelectionPopup();
+        if (selectedCustomer == null) {
+            System.out.println("Booking cancelled: No customer selected.");
+            return;
+        }
+
+        // 4. Create booking object with selected customer
         Booking booking = new Booking(
-                customerName,
+                selectedCustomer.getFullName(),
                 car.getModel(),
                 dateRange,
                 total
         );
 
-        // Save to database
+        // 5. Save to database
         BookingDatabase.addBooking(booking);
 
+        // 6. Show success
         totalLabel.setText("Booked ✓");
+        Alert success = new Alert(Alert.AlertType.INFORMATION);
+        success.setHeaderText("Booking Successful!");
+        success.setContentText("Car booked under: " + selectedCustomer.getFullName());
+        success.show();
+    }
+
+    // ===============================
+    // Helper method to show customer selection popup
+    // ===============================
+    private Customer showCustomerSelectionPopup() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(
+                    "/com/example/autorideapp/choose-customer.fxml"
+            ));
+            Parent root = loader.load();
+
+            Stage popup = new Stage();
+            popup.setTitle("Choose Customer");
+            popup.setScene(new Scene(root));
+            popup.initModality(Modality.APPLICATION_MODAL);
+            popup.showAndWait();
+
+            ChooseCustomerController controller = loader.getController();
+            return controller.getSelectedCustomer();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 }

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.example.autorideapp.autoride.ChooseCustomerController"
+      spacing="12" alignment="CENTER"
+      style="-fx-background-color: white; -fx-padding: 20;">
+
+    <Label text="Select Customer"
+           style="-fx-font-size: 20px; -fx-font-weight: bold;" />
+
+    <ListView fx:id="customerList"
+              prefWidth="350"
+              prefHeight="200" />
+
+    <HBox spacing="10" alignment="CENTER">
+        <Button text="Cancel"
+                onAction="#cancelSelection"
+                style="-fx-background-color: #c0392b; -fx-text-fill: white;" />
+
+        <Button text="Select"
+                onAction="#confirmSelection"
+                style="-fx-background-color: #27ae60; -fx-text-fill: white;" />
+    </HBox>
+
+</VBox>
