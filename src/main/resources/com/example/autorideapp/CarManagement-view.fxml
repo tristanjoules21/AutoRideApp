@@ -39,7 +39,7 @@
         </VBox>
     </left>
 
-    <!-- MAIN CONTENT -->
+
     <center>
         <VBox spacing="25" styleClass="main-content">
             <padding><Insets bottom="40" left="50" right="50" top="40"/></padding>
@@ -51,7 +51,7 @@
                 <Button fx:id="addCarButton" text="+ Add Car" styleClass="add-btn" onAction="#handleAddCar"/>
             </HBox>
 
-            <!-- ❗️ THIS CONTAINER GETS REPLACED WITH DETAILS VIEW ❗️ -->
+
             <VBox fx:id="contentContainer" spacing="20">
 
                 <TableView fx:id="carTable" prefHeight="700" styleClass="car-table">

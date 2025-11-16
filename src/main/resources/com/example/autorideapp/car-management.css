@@ -1,116 +1,153 @@
-/* ===== GENERAL PAGE STYLING ===== */
-body {
-    margin: 0;
-    padding: 0;
-    background-color: #5A0034; /* dark maroon */
-    font-family: Arial, sans-serif;
+/* ================================
+   GLOBAL
+================================ */
+.root {
+    -fx-font-family: "Poppins", "Segoe UI", sans-serif;
+    -fx-background-color: #f8f9fa;
 }
 
-/* Centered container */
-.container {
-    width: 95%;
-    margin: 30px auto;
+/* ================================
+   SIDEBAR
+================================ */
+.sidebar {
+    -fx-background-color: #166534; /* Dark Green */
 }
 
-/* ===== HEADER SECTION ===== */
-.header-box {
-    background-color: #000; /* black background */
-    color: white;
-    padding: 15px 20px;
-    border-radius: 8px;
+.brand {
+    -fx-font-size: 28px;
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
 }
 
-.header-box h2 {
-    margin: 0 0 10px 0;
-    font-size: 23px;
-    font-weight: bold;
+.subtitle {
+    -fx-font-size: 15px;
+    -fx-text-fill: #cfd8dc;
 }
 
-.header-details p {
-    margin: 3px 0;
-    font-size: 14px;
+/* ================================
+   NAVIGATION BUTTONS
+================================ */
+.nav-item,
+.nav-item-active {
+    -fx-pref-width: 220px;
+    -fx-font-size: 16px;
+    -fx-background-color: transparent;
+    -fx-background-radius: 8;
+    -fx-text-fill: white;
+    -fx-alignment: center-left;
+    -fx-padding: 12 18 12 18;
+    -fx-cursor: hand;
 }
 
-
-/* ===== STUDENT INFO BOX ===== */
-.student-info {
-    background-color: white;
-    padding: 20px;
-    margin-top: 20px;
-    border-radius: 10px;
+.nav-item:hover {
+    -fx-background-color: rgba(255,255,255,0.15);
 }
 
-.info-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    row-gap: 10px;
-    column-gap: 70px;
+.nav-item-active {
+    -fx-background-color: #0F3D25; /* Darker Green highlight */
+    -fx-font-weight: bold;
 }
 
-.info-row p {
-    margin: 3px 0;
-    font-size: 14px;
+/* ================================
+   ADMIN INFO
+================================ */
+.admin-name {
+    -fx-font-size: 15px;
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
 }
 
-
-/* ===== TABLE SECTION ===== */
-.grade-table-box {
-    background-color: white;
-    padding: 20px;
-    margin-top: 20px;
-    border-radius: 10px;
+.admin-email {
+    -fx-font-size: 13px;
+    -fx-text-fill: #cfd8dc;
 }
 
-.table-header {
-    background-color: #000;
-    color: white;
-    padding: 10px;
-    font-weight: bold;
-    border-radius: 8px;
-    margin-bottom: 10px;
+/* ================================
+   LOGOUT BUTTON
+================================ */
+.logout-btn {
+    -fx-background-color: transparent;
+    -fx-border-color: white;
+    -fx-border-radius: 8;
+    -fx-background-radius: 8;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-pref-width: 200px;
 }
 
-/* Table */
-table {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 14px;
+.logout-btn:hover {
+    -fx-background-color: rgba(255,255,255,0.15);
 }
 
-th {
-    background-color: #E0E0E0;
-    padding: 10px;
-    text-align: left;
-    font-weight: bold;
+/* ================================
+   MAIN CONTENT WRAPPER
+================================ */
+.main-content {
+    -fx-background-color: white;
+    -fx-background-radius: 10;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.05), 6, 0, 0, 2);
 }
 
-td {
-    padding: 10px;
+.main-title {
+    -fx-font-size: 26px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #111827;
 }
 
-/* Alternating row colors */
-tr:nth-child(even) {
-    background-color: #f9f9f9;
+/* ================================
+   SEARCH BAR
+================================ */
+.search-field {
+    -fx-background-color: white;
+    -fx-border-color: #d1d5db;
+    -fx-border-radius: 6;
+    -fx-background-radius: 6;
+    -fx-padding: 8 12;
+    -fx-font-size: 14px;
 }
 
-/* Hover effect */
-tr:hover {
-    background-color: #f0f0f0;
+.search-field:focused {
+    -fx-border-color: #22c55e;
+    -fx-effect: dropshadow(gaussian, rgba(34,197,94,0.3), 5, 0, 0, 1);
 }
 
-
-/* ===== PRINT BUTTON ===== */
-.print-btn {
-    margin-top: 20px;
-    padding: 10px 25px;
-    background-color: black;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 14px;
+/* ================================
+   ADD CAR BUTTON
+================================ */
+.add-btn {
+    -fx-background-color: #22c55e;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-radius: 8;
+    -fx-padding: 10 20;
+    -fx-font-size: 15px;
 }
 
-.print-btn:hover {
-    background-color: #333;
+.add-btn:hover {
+    -fx-background-color: #16a34a;
+}
+
+/* ================================
+   TABLE STYLING (Car Table)
+================================ */
+.car-table {
+    -fx-background-color: white;
+    -fx-border-color: #dcdcdc;
+    -fx-border-radius: 8;
+    -fx-background-radius: 8;
+    -fx-padding: 8;
+}
+
+/* Table header style */
+.table-view .column-header {
+    -fx-background-color: #e8f5e9; /* Light green tint */
+    -fx-font-weight: bold;
+    -fx-font-size: 14px;
+    -fx-text-fill: #388e3c; /* Green text */
+}
+
+/* Selected row highlight */
+.table-row-cell:selected {
+    -fx-background-color: #c8e6c9; /* Soft mint green */
 }
