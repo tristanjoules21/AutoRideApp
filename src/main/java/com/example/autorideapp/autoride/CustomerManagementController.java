@@ -28,7 +28,7 @@ public class CustomerManagementController {
     private TableColumn<Customer, String> emailColumn;
 
     @FXML
-    private TableColumn<Customer, String> passwordColumn;
+    private TableColumn<Customer, String> phoneColumn; // updated from passwordColumn
 
     @FXML
     public void initialize() {
@@ -36,7 +36,7 @@ public class CustomerManagementController {
 
         nameColumn.setCellValueFactory(new PropertyValueFactory<>("fullName"));
         emailColumn.setCellValueFactory(new PropertyValueFactory<>("email"));
-        passwordColumn.setCellValueFactory(new PropertyValueFactory<>("password"));
+        phoneColumn.setCellValueFactory(new PropertyValueFactory<>("phone")); // updated
 
         refreshCustomerTable();
     }
@@ -59,7 +59,7 @@ public class CustomerManagementController {
         refreshCustomerTable();
     }
 
-    // Sidebar navigation (keep as is)
+    // Sidebar navigation
     @FXML private void showDashboardView() { loadScene("/com/example/autorideapp/dashboard-view.fxml"); }
     @FXML private void showCarManagementView() { loadScene("/com/example/autorideapp/CarManagement-view.fxml"); }
     @FXML private void showBookingView() { loadScene("/com/example/autorideapp/BookingManagement-view.fxml"); }

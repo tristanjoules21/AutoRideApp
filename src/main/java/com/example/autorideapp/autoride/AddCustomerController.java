@@ -1,7 +1,8 @@
 package com.example.autorideapp.autoride;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.PasswordField;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
@@ -14,33 +15,67 @@ public class AddCustomerController {
     private TextField emailField;
 
     @FXML
-    private PasswordField passwordField;
+    private TextField phoneField;
 
     @FXML
-    private PasswordField confirmPasswordField;
+    private TextField confirmPhoneField;
+
+    @FXML
+    private Button registerButton;
+
+    @FXML
+    private Button cancelButton;
+
+    @FXML
+    private void initialize() {
+        // Optional: Initialization logic if needed
+    }
 
     @FXML
     private void onAddCustomerClick() {
-        String name = fullNameField.getText();
-        String email = emailField.getText();
-        String password = passwordField.getText();
-        String confirm = confirmPasswordField.getText();
+        String fullName = fullNameField.getText().trim();
+        String email = emailField.getText().trim();
+        String phone = phoneField.getText().trim();
+        String confirmPhone = confirmPhoneField.getText().trim();
 
-        if (name.isEmpty() || email.isEmpty() || password.isEmpty()) {
-            System.out.println("⚠️ Please fill in all fields.");
+        // Validation
+        if (fullName.isEmpty() || email.isEmpty() || phone.isEmpty() || confirmPhone.isEmpty()) {
+            showAlert(Alert.AlertType.WARNING, "Validation Error", "Please fill in all fields.");
             return;
         }
 
-        if (!password.equals(confirm)) {
-            System.out.println("⚠️ Passwords do not match.");
+        if (!phone.equals(confirmPhone)) {
+            showAlert(Alert.AlertType.WARNING, "Validation Error", "Phone numbers do not match.");
             return;
         }
 
-        Customer newCustomer = new Customer(name, email, password);
+        if (CustomerDatabase.findByPhone(phone) != null) {
+            showAlert(Alert.AlertType.WARNING, "Validation Error", "Phone number already exists.");
+            return;
+        }
+
+        // Add customer to database
+        Customer newCustomer = new Customer(fullName, email, phone);
         CustomerDatabase.addCustomer(newCustomer);
-        System.out.println("✅ Added customer: " + newCustomer.getFullName());
 
-        // Close popup
-        ((Stage) fullNameField.getScene().getWindow()).close();
+        showAlert(Alert.AlertType.INFORMATION, "Success", "Customer added successfully!");
+
+        // Close window
+        Stage stage = (Stage) registerButton.getScene().getWindow();
+        stage.close();
+    }
+
+    @FXML
+    private void onCancelClick() {
+        Stage stage = (Stage) cancelButton.getScene().getWindow();
+        stage.close();
+    }
+
+    private void showAlert(Alert.AlertType type, String title, String message) {
+        Alert alert = new Alert(type);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
     }
 }

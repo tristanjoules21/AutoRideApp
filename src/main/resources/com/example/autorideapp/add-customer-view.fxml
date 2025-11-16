@@ -41,30 +41,30 @@
         </VBox>
     </HBox>
 
-    <!-- Row 2: Password & Confirm Password -->
+    <!-- Row 2: Phone Number & Confirm Phone Number -->
     <HBox spacing="30">
         <VBox spacing="5" HBox.hgrow="ALWAYS">
             <HBox spacing="8" alignment="CENTER_LEFT">
                 <ImageView fitWidth="20" fitHeight="20" preserveRatio="true">
                     <image>
-                        <Image url="@iconpassword.png"/>
+                        <Image url="@iconconfirm.png"/> <!-- Replace with your phone icon -->
                     </image>
                 </ImageView>
-                <Label text="Password"/>
+                <Label text="Phone Number"/>
             </HBox>
-            <PasswordField fx:id="passwordField" promptText="Enter password" prefWidth="250"/>
+            <TextField fx:id="phoneField" promptText="Enter phone number" prefWidth="250"/>
         </VBox>
 
         <VBox spacing="5" HBox.hgrow="ALWAYS">
             <HBox spacing="8" alignment="CENTER_LEFT">
                 <ImageView fitWidth="20" fitHeight="20" preserveRatio="true">
                     <image>
-                        <Image url="@iconconfirm.png"/>
+                        <Image url="@iconpassword.png"/> <!-- Optional different icon -->
                     </image>
                 </ImageView>
-                <Label text="Confirm Password"/>
+                <Label text="Confirm Phone Number"/>
             </HBox>
-            <PasswordField fx:id="confirmPasswordField" promptText="Confirm password" prefWidth="250"/>
+            <TextField fx:id="confirmPhoneField" promptText="Confirm phone number" prefWidth="250"/>
         </VBox>
     </HBox>
 
@@ -74,7 +74,6 @@
                 fx:id="cancelButton"
                 style="-fx-background-color: transparent; -fx-text-fill: #333;"/>
 
-        <!-- ✅ Functional Button -->
         <Button text="Register Customer"
                 fx:id="registerButton"
                 onAction="#onAddCustomerClick"

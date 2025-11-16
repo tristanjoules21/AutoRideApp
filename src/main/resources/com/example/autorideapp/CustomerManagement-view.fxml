@@ -67,14 +67,14 @@
                         onAction="#handleAddCustomer" />
             </HBox>
 
-            <!-- ✅ Functional Customer Table -->
+            <!-- Customer Table -->
             <TableView fx:id="customerTable"
                        prefHeight="700.0"
                        styleClass="customer-table">
                 <columns>
                     <TableColumn fx:id="nameColumn" text="Full Name" prefWidth="200"/>
                     <TableColumn fx:id="emailColumn" text="Email" prefWidth="250"/>
-                    <TableColumn fx:id="passwordColumn" text="Password" prefWidth="200"/>
+                    <TableColumn fx:id="phoneColumn" text="Phone Number" prefWidth="200"/>
                 </columns>
             </TableView>
 
