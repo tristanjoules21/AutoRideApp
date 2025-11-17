@@ -1,92 +1,73 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<BorderPane prefHeight="1080.0" prefWidth="1920.0"
-            stylesheets="@user.css"
-            xmlns="http://javafx.com/javafx/17.0.12"
+<BorderPane xmlns="http://javafx.com/javafx/17.0.12"
             xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="com.example.autorideapp.autoride.UserManagementController">
+            fx:controller="com.example.autorideapp.autoride.UserManagementController"
+            stylesheets="@user.css"
+            prefHeight="768.0"
+            prefWidth="1366.0">
 
     <!-- Sidebar -->
     <left>
-        <VBox prefWidth="280.0" spacing="30" styleClass="sidebar">
-            <padding>
-                <Insets bottom="30" left="30" right="30" top="40" />
-            </padding>
+        <VBox prefWidth="280" minWidth="280" maxWidth="280"
+              spacing="30"
+              styleClass="sidebar"
+              VBox.vgrow="ALWAYS">
+            <padding><Insets top="40" left="30" right="30" bottom="30"/></padding>
 
             <!-- Header -->
             <VBox spacing="4">
-                <Label styleClass="brand" text="AutoRide" />
-                <Label styleClass="subtitle" text="Car Rental System" />
+                <Label styleClass="brand" text="AutoRide"/>
+                <Label styleClass="subtitle" text="Car Rental System"/>
             </VBox>
 
             <!-- Navigation -->
             <VBox spacing="12" VBox.vgrow="ALWAYS">
-                <Button styleClass="nav-item" text="🏠 Dashboard"
-                        onAction="#showDashboardView" />
-                <Button styleClass="nav-item" text="🚗 Car Management"
-                        onAction="#showCarManagementView" />
-                <Button styleClass="nav-item" text="📅 Booking Management"
-                        onAction="#showBookingView" />
-                <Button styleClass="nav-item" text="👥 Customer Management"
-                        onAction="#showCustomerManagementView" />
-                <Button styleClass="nav-item-active" text="👤 User Management"
-                        onAction="#showUserManagementView" />
+                <Button styleClass="nav-item" text="🏠 Dashboard" onAction="#showDashboardView" maxWidth="Infinity"/>
+                <Button styleClass="nav-item" text="🚗 Car Management" onAction="#showCarManagementView" maxWidth="Infinity"/>
+                <Button styleClass="nav-item" text="📅 Booking Management" onAction="#showBookingView" maxWidth="Infinity"/>
+                <Button styleClass="nav-item" text="👥 Customer Management" onAction="#showCustomerManagementView" maxWidth="Infinity"/>
+                <Button styleClass="nav-item-active" text="👤 User Management" onAction="#showUserManagementView" maxWidth="Infinity"/>
             </VBox>
 
             <!-- Admin Info + Logout -->
             <VBox spacing="15">
                 <VBox alignment="CENTER" spacing="3">
-                    <Label styleClass="admin-name" text="Admin User" />
-                    <Label styleClass="admin-email" text="admin@autoride.com" />
+                    <Label styleClass="admin-name" text="Admin User"/>
+                    <Label styleClass="admin-email" text="admin@autoride.com"/>
                 </VBox>
-                <Button fx:id="logoutButton" styleClass="logout-btn"
-                        text="⏻ Logout" onAction="#handleLogout" />
+                <Button fx:id="logoutButton" styleClass="logout-btn" text="⏻ Logout" onAction="#handleLogout" maxWidth="Infinity"/>
             </VBox>
         </VBox>
     </left>
 
     <!-- Main Content -->
     <center>
-        <VBox spacing="25" styleClass="main-content">
-            <padding>
-                <Insets bottom="40" left="50" right="50" top="40" />
-            </padding>
+        <VBox spacing="25" styleClass="main-content" VBox.vgrow="ALWAYS">
+            <padding><Insets top="40" left="40" right="40" bottom="40"/></padding>
 
             <!-- Header -->
             <HBox alignment="CENTER_LEFT" spacing="15">
-                <Label fx:id="titleLabel" styleClass="main-title"
-                       text="User Management" />
-                <Pane HBox.hgrow="ALWAYS" />
-                <TextField fx:id="searchField"
-                           promptText="🔍 Search users..."
-                           prefWidth="300.0"
-                           styleClass="search-field" />
-                <Button fx:id="addUserButton"
-                        styleClass="add-btn" text="+ Add User"
-                        onAction="#handleAddUser" />
+                <Label fx:id="titleLabel" styleClass="main-title" text="User Management"/>
+                <Pane HBox.hgrow="ALWAYS"/>
+                <TextField fx:id="searchField" promptText="🔍 Search users..." prefWidth="300" styleClass="search-field"/>
+                <Button fx:id="addUserButton" styleClass="add-btn" text="+ Add User" onAction="#handleAddUser"/>
             </HBox>
 
-            <TableView fx:id="userTable"
-                       prefHeight="700.0"
-                       styleClass="user-table">
+            <!-- User Table -->
+            <TableView fx:id="userTable" VBox.vgrow="ALWAYS" HBox.hgrow="ALWAYS" styleClass="user-table">
                 <columns>
                     <TableColumn fx:id="usernameColumn" text="Username" prefWidth="350"/>
                     <TableColumn fx:id="emailColumn" text="Email" prefWidth="400"/>
-
-
-                    <!-- NEW -->
                     <TableColumn fx:id="positionColumn" text="Position" prefWidth="220"/>
                     <TableColumn fx:id="createdColumn" text="Created" prefWidth="350"/>
                     <TableColumn fx:id="updateColumn" text="Action" prefWidth="220"/>
                 </columns>
             </TableView>
-
-
         </VBox>
     </center>
 </BorderPane>

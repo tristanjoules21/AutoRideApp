@@ -9,6 +9,7 @@
             xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="com.example.autorideapp.autoride.BookingManagementController">
 
+    <!-- ================== SIDEBAR ================== -->
     <left>
         <VBox prefWidth="280.0" spacing="30" styleClass="sidebar">
             <padding>
@@ -23,12 +24,16 @@
             <VBox spacing="12" VBox.vgrow="ALWAYS">
                 <Button styleClass="nav-item" text="🏠 Dashboard"
                         onAction="#showDashboardView" />
+
                 <Button styleClass="nav-item" text="🚗 Car Management"
                         onAction="#showCarManagementView" />
+
                 <Button styleClass="nav-item-active" text="📅 Booking Management"
                         onAction="#showBookingView" />
+
                 <Button styleClass="nav-item" text="👥 Customer Management"
                         onAction="#showCustomerManagementView" />
+
                 <Button styleClass="nav-item" text="👤 User Management"
                         onAction="#showUserManagementView" />
             </VBox>
@@ -43,24 +48,30 @@
         </VBox>
     </left>
 
+    <!-- ================== MAIN CONTENT ================== -->
     <center>
         <VBox spacing="25" styleClass="main-content">
             <padding>
                 <Insets bottom="40" left="50" right="50" top="40" />
             </padding>
 
+            <!-- Header Row -->
             <HBox alignment="CENTER_LEFT" spacing="15">
-                <Label fx:id="mainTitle" styleClass="main-title"
+                <Label fx:id="mainTitle"
+                       styleClass="main-title"
                        text="Booking Management" />
+
                 <Pane HBox.hgrow="ALWAYS"/>
                 <MenuButton text="All Bookings" fx:id="filterBookings"/>
             </HBox>
 
+            <!-- TABLE -->
             <TableView fx:id="bookingTable"
                        prefHeight="700.0"
                        styleClass="booking-table">
 
                 <columns>
+
                     <TableColumn fx:id="customerNameColumn"
                                  text="Customer Name"
                                  prefWidth="300"/>
@@ -77,15 +88,19 @@
                                  text="Total Cost"
                                  prefWidth="300"/>
 
+                    <!-- STATUS DROPDOWN COLUMN -->
                     <TableColumn fx:id="statusColumn"
                                  text="Status"
                                  prefWidth="200"/>
 
+                    <!-- DELETE BUTTON COLUMN -->
                     <TableColumn fx:id="actionsColumn"
                                  text="Actions"
                                  prefWidth="200"/>
+
                 </columns>
             </TableView>
+
         </VBox>
     </center>
 </BorderPane>

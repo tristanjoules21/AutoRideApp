@@ -5,45 +5,53 @@
 <?import javafx.scene.text.*?>
 <?import javafx.scene.image.*?>
 
-<BorderPane prefHeight="1080.0" prefWidth="1920.0"
-            stylesheets="@car-management.css"
-            xmlns="http://javafx.com/javafx"
+<BorderPane xmlns="http://javafx.com/javafx/17.0.12"
             xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="com.example.autorideapp.autoride.CarManagementController">
+            fx:controller="com.example.autorideapp.autoride.CarManagementController"
+            stylesheets="@car-management.css"
+            prefHeight="768.0"
+            prefWidth="1366.0">
 
     <!-- SIDEBAR -->
     <left>
-        <VBox prefWidth="280.0" spacing="30" styleClass="sidebar">
-            <padding><Insets bottom="30" left="30" right="30" top="40"/></padding>
+        <VBox prefWidth="280.0" minWidth="280" maxWidth="280"
+              spacing="30"
+              styleClass="sidebar"
+              VBox.vgrow="ALWAYS">
+            <padding><Insets top="40" left="30" right="30" bottom="30"/></padding>
 
+            <!-- Branding -->
             <VBox spacing="4">
                 <Label styleClass="brand" text="AutoRide"/>
                 <Label styleClass="subtitle" text="Car Rental System"/>
             </VBox>
 
+            <!-- Navigation -->
             <VBox spacing="12" VBox.vgrow="ALWAYS">
-                <Button text="🏠 Dashboard" styleClass="nav-item" onAction="#showDashboardView"/>
-                <Button text="🚗 Car Management" styleClass="nav-item-active" onAction="#showCarManagementView"/>
-                <Button text="📅 Booking Management" styleClass="nav-item" onAction="#showBookingView"/>
-                <Button text="👥 Customer Management" styleClass="nav-item" onAction="#showCustomerManagementView"/>
-                <Button text="👤 User Management" styleClass="nav-item" onAction="#showUserManagementView"/>
+                <Button text="🏠 Dashboard" styleClass="nav-item" onAction="#showDashboardView" maxWidth="Infinity"/>
+                <Button text="🚗 Car Management" styleClass="nav-item-active" onAction="#showCarManagementView" maxWidth="Infinity"/>
+                <Button text="📅 Booking Management" styleClass="nav-item" onAction="#showBookingView" maxWidth="Infinity"/>
+                <Button text="👥 Customer Management" styleClass="nav-item" onAction="#showCustomerManagementView" maxWidth="Infinity"/>
+                <Button text="👤 User Management" styleClass="nav-item" onAction="#showUserManagementView" maxWidth="Infinity"/>
             </VBox>
 
+            <!-- Admin Info -->
             <VBox spacing="15">
                 <VBox alignment="CENTER" spacing="3">
                     <Label styleClass="admin-name" text="Admin User"/>
                     <Label styleClass="admin-email" text="admin@autoride.com"/>
                 </VBox>
-                <Button styleClass="logout-btn" text="⏻ Logout" onAction="#handleLogout"/>
+                <Button styleClass="logout-btn" text="⏻ Logout" maxWidth="Infinity" onAction="#handleLogout"/>
             </VBox>
         </VBox>
     </left>
 
-
+    <!-- MAIN CONTENT -->
     <center>
-        <VBox spacing="25" styleClass="main-content">
-            <padding><Insets bottom="40" left="50" right="50" top="40"/></padding>
+        <VBox spacing="25" styleClass="main-content" VBox.vgrow="ALWAYS">
+            <padding><Insets top="40" left="40" right="40" bottom="40"/></padding>
 
+            <!-- Top Bar -->
             <HBox alignment="CENTER_LEFT" spacing="15">
                 <Label fx:id="mainTitle" styleClass="main-title" text="Car Management"/>
                 <Pane HBox.hgrow="ALWAYS"/>
@@ -51,10 +59,9 @@
                 <Button fx:id="addCarButton" text="+ Add Car" styleClass="add-btn" onAction="#handleAddCar"/>
             </HBox>
 
-
-            <VBox fx:id="contentContainer" spacing="20">
-
-                <TableView fx:id="carTable" prefHeight="700" styleClass="car-table">
+            <!-- Table Container -->
+            <VBox fx:id="contentContainer" spacing="20" VBox.vgrow="ALWAYS">
+                <TableView fx:id="carTable" styleClass="car-table" VBox.vgrow="ALWAYS" HBox.hgrow="ALWAYS">
                     <columns>
                         <TableColumn fx:id="photoColumn" text="Photo" prefWidth="120"/>
                         <TableColumn fx:id="carInfoColumn" text="Car" prefWidth="250"/>
@@ -64,9 +71,7 @@
                         <TableColumn fx:id="actionsColumn" text="Actions" prefWidth="120"/>
                     </columns>
                 </TableView>
-
             </VBox>
-
         </VBox>
     </center>
 </BorderPane>

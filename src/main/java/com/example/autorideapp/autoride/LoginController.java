@@ -17,25 +17,22 @@ public class LoginController {
     @FXML
     private void onSignInClick(ActionEvent event) {
         try {
-            // Load the dashboard
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/autorideapp/dashboard-view.fxml"));
             Scene scene = new Scene(loader.load());
 
-            // Optionally, pass some info to DashboardController
-            // DashboardController controller = loader.getController();
-            // controller.setUserEmail("demo@autoride.com");
-
-            // Apply dashboard CSS
             String styleCss = getClass().getResource("/com/example/autorideapp/dashboard.css").toExternalForm();
             scene.getStylesheets().add(styleCss);
 
             Stage stage = (Stage) signinBtn.getScene().getWindow();
             stage.setScene(scene);
+
+            // Maximize the window
+            stage.setMaximized(true);
+
             stage.show();
 
         } catch (IOException e) {
             e.printStackTrace();
-
         }
     }
 }
