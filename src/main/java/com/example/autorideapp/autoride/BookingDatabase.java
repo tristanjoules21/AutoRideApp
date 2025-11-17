@@ -18,6 +18,14 @@ public class BookingDatabase {
     public static void removeBooking(Booking booking) {
         bookings.remove(booking);
     }
+    public static void updateBooking(Booking updated) {
+        for (int i = 0; i < bookings.size(); i++) {
+            if (bookings.get(i) == updated) {
+                bookings.set(i, updated);
+                return;
+            }
+        }
+    }
 
 
 

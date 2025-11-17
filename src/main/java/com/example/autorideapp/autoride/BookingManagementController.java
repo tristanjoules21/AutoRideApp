@@ -57,9 +57,7 @@ public class BookingManagementController {
         setupDeleteButton();     // 🔥 NEW
     }
 
-    /* ===========================================================
-       STATUS COLUMN (Paid / Unpaid Dropdown)
-       =========================================================== */
+
     private void setupStatusDropdown() {
 
         statusColumn.setCellFactory(col -> new TableCell<>() {
@@ -72,8 +70,24 @@ public class BookingManagementController {
                 comboBox.valueProperty().addListener((obs, oldVal, newVal) -> {
                     if (getTableRow().getItem() != null) {
                         Booking booking = getTableRow().getItem();
+                        // Save visible UI selection
                         booking.setStatus(newVal);
+
+// Convert PAID → Completed for revenue logic
+                        if (newVal.equals("Paid")) {
+                            booking.setStatus("Completed");
+                        }
+
+// Save changes to DB
+                        BookingDatabase.updateBooking(booking);
+
+// Refresh dashboard revenue instantly
+                        if (DashboardController.refreshCallback != null) {
+                            DashboardController.refreshCallback.run();
+                        }
+
                         updateStyle(newVal);
+
                     }
                 });
             }

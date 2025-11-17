@@ -15,6 +15,8 @@ import java.io.IOException;
 import java.util.List;
 
 public class DashboardController {
+    public static Runnable refreshCallback;
+
 
     @FXML
     private Label adminEmail;
@@ -54,6 +56,8 @@ public class DashboardController {
 
     @FXML
     public void initialize() {
+        refreshCallback = this::updateDashboardStats;
+
         if (adminEmail != null) {
             adminEmail.setText(userEmail);
         }
@@ -67,6 +71,8 @@ public class DashboardController {
 
         updateDashboardStats();
     }
+;
+
 
     private void updateDashboardStats() {
         List<Car> cars = CarDatabase.getAllCars();
