@@ -4,7 +4,12 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+
+import java.io.File;
 
 public class AddCarController {
 
@@ -36,14 +41,14 @@ public class AddCarController {
     private TextField imageUrlField;
 
     @FXML
+    private ImageView photoPreview;
+
+    @FXML
     private Button cancelButton;
 
     @FXML
     private Button addCarButton;
 
-    // ------------------------------
-    // INITIALIZATION
-    // ------------------------------
     @FXML
     public void initialize() {
         // Populate combo boxes
@@ -57,11 +62,26 @@ public class AddCarController {
         fuelTypeComboBox.getSelectionModel().select("Gasoline");
         transmissionComboBox.getSelectionModel().select("Automatic");
         imageUrlField.setText("https://example.com/car-image.jpg");
+        photoPreview.setImage(new Image(imageUrlField.getText()));
     }
 
-    // ------------------------------
-    // BUTTON ACTIONS
-    // ------------------------------
+    @FXML
+    private void handleChoosePhoto() {
+        FileChooser chooser = new FileChooser();
+        chooser.setTitle("Choose Car Photo");
+        chooser.getExtensionFilters().add(
+                new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.jpeg")
+        );
+
+        File file = chooser.showOpenDialog(addCarButton.getScene().getWindow());
+
+        if (file != null) {
+            String path = file.toURI().toString();
+            imageUrlField.setText(path);
+            photoPreview.setImage(new Image(path));
+        }
+    }
+
     @FXML
     private void onAddCarClick() {
         try {
@@ -75,18 +95,17 @@ public class AddCarController {
                     fuelTypeComboBox.getValue(),
                     transmissionComboBox.getValue(),
                     imageUrlField.getText(),
-                    "Available" // default status
+                    "Available"
             );
-
 
             CarDatabase.addCar(newCar);
             System.out.println("✅ Added car: " + newCar.getModel());
 
-            // ✅ Close window after adding
+            // Close window after adding
             ((Stage) addCarButton.getScene().getWindow()).close();
 
         } catch (NumberFormatException e) {
-            System.out.println("⚠️ Invalid number format. Please check year, seats, or price fields.");
+            System.out.println("⚠️ Invalid number format in Year, Seats, or Price.");
         } catch (Exception e) {
             System.out.println("⚠️ Error adding car: " + e.getMessage());
         }
@@ -94,7 +113,6 @@ public class AddCarController {
 
     @FXML
     private void onCancelClick() {
-        // ✅ Closes the popup window without adding
         ((Stage) cancelButton.getScene().getWindow()).close();
     }
 }

@@ -111,14 +111,16 @@ public class CarManagementController {
                 }
 
                 try {
-                    imageView.setImage(new Image(imageUrl, true));
+                    imageView.setImage(new javafx.scene.image.Image(imageUrl, true));
                     setGraphic(imageView);
                 } catch (Exception e) {
                     setGraphic(null);
                 }
             }
         });
-        photoColumn.setCellValueFactory(new PropertyValueFactory<>("photoUrl"));
+
+        // Bind the column to the correct Car property
+        photoColumn.setCellValueFactory(new javafx.scene.control.cell.PropertyValueFactory<>("imageUrl"));
     }
 
     private void setupCarInfoColumn() {

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 
 <VBox xmlns="http://javafx.com/javafx/17.0.12"
@@ -9,7 +10,7 @@
       spacing="20"
       alignment="TOP_LEFT"
       prefWidth="600"
-      prefHeight="400"
+      prefHeight="500"
       style="-fx-padding: 30; -fx-background-color: white; -fx-font-family: 'Segoe UI';">
 
     <!-- Title -->
@@ -21,7 +22,7 @@
             <ColumnConstraints halignment="LEFT" percentWidth="50"/>
         </columnConstraints>
 
-        <!-- Row 0: Model & Plate Number -->
+        <!-- Row 0 -->
         <VBox spacing="5" GridPane.rowIndex="0" GridPane.columnIndex="0">
             <Label text="Model"/>
             <TextField fx:id="modelField" promptText="Enter model" prefWidth="250"/>
@@ -31,7 +32,7 @@
             <TextField fx:id="plateNumberField" promptText="Enter plate number" prefWidth="250"/>
         </VBox>
 
-        <!-- Row 1: Year & Type -->
+        <!-- Row 1 -->
         <VBox spacing="5" GridPane.rowIndex="1" GridPane.columnIndex="0">
             <Label text="Year"/>
             <TextField fx:id="yearField" promptText="2025" prefWidth="250"/>
@@ -41,7 +42,7 @@
             <ComboBox fx:id="typeComboBox" prefWidth="250"/>
         </VBox>
 
-        <!-- Row 2: Seats & Price -->
+        <!-- Row 2 -->
         <VBox spacing="5" GridPane.rowIndex="2" GridPane.columnIndex="0">
             <Label text="Seats"/>
             <TextField fx:id="seatsField" promptText="Enter number of seats" prefWidth="250"/>
@@ -51,7 +52,7 @@
             <TextField fx:id="priceField" promptText="Enter price" prefWidth="250"/>
         </VBox>
 
-        <!-- Row 3: Fuel Type & Transmission -->
+        <!-- Row 3 -->
         <VBox spacing="5" GridPane.rowIndex="3" GridPane.columnIndex="0">
             <Label text="Fuel Type"/>
             <ComboBox fx:id="fuelTypeComboBox" prefWidth="250"/>
@@ -64,21 +65,22 @@
         <!-- Row 4: Image URL full width -->
         <VBox spacing="5" GridPane.rowIndex="4" GridPane.columnIndex="0" GridPane.columnSpan="2">
             <Label text="Image URL"/>
-            <TextField fx:id="imageUrlField"
-                       promptText="https://example.com/car-image.jpg"
-                       prefWidth="520"/>
+            <TextField fx:id="imageUrlField" promptText="https://example.com/car-image.jpg" prefWidth="520"/>
         </VBox>
+
+        <!-- Row 5: Photo Preview and Choose Photo Button -->
+        <HBox spacing="10" alignment="CENTER_LEFT" GridPane.rowIndex="5" GridPane.columnIndex="0" GridPane.columnSpan="2">
+            <ImageView fx:id="photoPreview" fitWidth="100" fitHeight="80" preserveRatio="true"/>
+            <Button text="Choose Photo" onAction="#handleChoosePhoto"/>
+        </HBox>
     </GridPane>
 
     <!-- Buttons -->
     <HBox spacing="10" alignment="CENTER_RIGHT">
-        <!-- ❌ Cancel button closes the popup -->
         <Button fx:id="cancelButton"
                 text="Cancel"
                 onAction="#onCancelClick"
                 style="-fx-background-color: transparent; -fx-text-fill: #333;"/>
-
-        <!-- ✅ Add Car button adds new car -->
         <Button fx:id="addCarButton"
                 text="Add Car"
                 onAction="#onAddCarClick"
